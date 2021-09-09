@@ -6,6 +6,14 @@
 % Add here any LaTeX macros you would like to load in all document blocks
 % \def\example{This is an example macro.}
 
+% Macros for Supplement/Appendix, from https://support.authorea.com/en-us/article/how-to-create-an-appendix-section-or-supplementary-information-1g25i5a/
+\newcommand{\beginsupplement}{%
+        \setcounter{table}{0}
+        \renewcommand{\thetable}{A\arabic{table}}%
+        \setcounter{figure}{0}
+        \renewcommand{\thefigure}{A\arabic{figure}}%
+     }
+
 % -----
 
 \iflatexml
