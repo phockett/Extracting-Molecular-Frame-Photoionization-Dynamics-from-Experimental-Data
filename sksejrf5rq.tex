@@ -1,1 +1,85 @@
 dfdfs
+
+14/09/21
+
+See \href{https://epsproc.readthedocs.io/en/dev/methods/ePSproc_geom_methods_summary_190821-v1-tidy.html}{https://epsproc.readthedocs.io/en/dev/methods/ePSproc\_geom\_methods\_summary\_190821-v1-tidy.html} 
+
+\section{Matrix elements}
+
+Matrix element square (ePS notation):
+
+\begin{equation}
+I_{l,m,\mu}^{p_{i}\mu_{i},p_{f}\mu_{f}}(E)I_{l',m',\mu'}^{p_{i}\mu_{i},p_{f}\mu_{f}*}(E)
+\end{equation}
+
+Rewrite as single (tensor) term:
+
+\begin{equation}
+\mathbb{I}_{lm\mu,l'm'\mu'}^{\Gamma,\Gamma'}=I_{l,m,\mu}^{\Gamma}(E)I_{l',m',\mu'}^{\Gamma'*}(E)
+\end{equation}
+
+And the symmetry/channel indices are denoted by $\Gamma,\Gamma'$
+for brevity (in general, $\Gamma=\Gamma'$ since the continua are
+orthogonal).
+
+(TODO: decide on notation here - $I$ following ePS notation, $D$
+following old notation (+ Jon), or $R$ for radial...?)
+
+This is effectively a density matrix (?) (see \href{https://epsproc.readthedocs.io/en/dev/methods/ePSproc_geom_methods_summary_190821-v1-tidy.html}{density mat dev notes}).
+
+\begin{equation}
+\mathbb{I}_{lm\mu,l'm'\mu'}^{\Gamma,\Gamma'}\equiv\mathbf{\rho}_{lm\mu,l'm'\mu'}^{\Gamma,\Gamma'}
+\end{equation}
+
+Where the matrix elements are:
+
+\begin{equation}
+\mathbf{\rho}_{lm\mu,l'm'\mu'}^{\Gamma,\Gamma'}=I_{l,m,\mu}^{p_{i}\mu_{i},p_{f}\mu_{f}}(E)I_{l',m',\mu'}^{p_{i}\mu_{i},p_{f}\mu_{f}*}(E)
+\end{equation}
+
+Rewrite MF eqn with new term:
+
+\begin{equation}
+\beta_{L,-M}^{\Gamma,\Gamma'}(E)=(-1)^{M}\sum_{P,R',R}(2P+1)^{\frac{1}{2}}E_{P-R}(\hat{e};\mu_{0})\sum_{l,m,\mu}\sum_{l',m',\mu'}(-1)^{(\mu'-\mu_{0})}\Lambda_{R',R}(R_{\hat{n}};\mu,P,R,R')B_{L,-M}(l,l',m,m')\mathbb{I}_{lm\mu,l'm'\mu'}^{\Gamma,\Gamma'}(E)
+\end{equation}
+
+And AF:
+
+\begin{equation}
+\bar{\beta}_{L,-M}^{\Gamma,\Gamma'}(E,t)=(-1)^{M}\sum_{P,R',R}[P]^{\frac{1}{2}}E_{P-R}(\hat{e};\mu_{0})\sum_{l,m,\mu}\sum_{l',m',\mu'}(-1)^{(\mu'-\mu_{0})}\bar{\Lambda}_{R'}(\mu,P,R')B_{L,S-R'}(l,l',m,m')\mathbb{I}_{lm\mu,l'm'\mu'}^{\Gamma,\Gamma'}(E)\sum_{K,Q,S}\Delta_{L,M}(K,Q,S)A_{Q,S}^{K}(t)
+\end{equation}
+
+In this case, $F_{LS}(q,q')\approx\sum_{\Gamma,\Gamma'}\sum_{l,m,\mu}\sum_{l',m',\mu'}B_{L,S-R'}(l,l',m,m')\mathbb{I}_{lm\mu,l'm'\mu'}^{\Gamma,\Gamma'}(E)$,
+where $F_{LS}(q,q')$ is from Jon's derivation (eqn. 46), except his
+also includes $\varepsilon(\epsilon)$ field term (this is the field
+averaged FT/envelope). Note also that the $A_{Q,S}^{K}$ (ADMs) are
+generally defined by rotational state populations as per eqn. 47.
+
+\section{Channel functions}
+
+From book, vol. 2, chpt. 12
+
+\begin{equation}
+\beta_{L,M}^{u}=\sum_{\zeta,\zeta'}\varUpsilon_{L,M}^{u,\zeta\zeta'}\Lambda^{\zeta\zeta'}
+\end{equation}
+
+In the current notation, this can be written as:
+
+\begin{equation}
+\beta_{L,M}^{u}=\sum_{\zeta,\zeta'}\varUpsilon_{L,M}^{u,\zeta\zeta'}\mathbb{I}_{\zeta\zeta'}^{\Gamma,\Gamma'}=\sum_{\zeta,\zeta'}\varUpsilon_{L,M}^{u,\zeta\zeta'}\mathbb{I}^{\zeta\zeta'}\equiv\sum_{\zeta,\zeta'}\varUpsilon_{L,M}^{u,\zeta\zeta'}\mathbf{\rho}^{\zeta\zeta'}
+\end{equation}
+
+This is basically the convolution form with channel functions, for
+a given ``experiment'' $u$, summed over all terms $\zeta,\zeta'$
+(the 2nd form assumes that the symmetries are lost in here too, the
+3rd just rewrites as a density matrix).
+
+The full forms are, therefore:
+
+\begin{equation}
+\varUpsilon_{L,M}^{u,\zeta\zeta'}=(-1)^{M}(2P+1)^{\frac{1}{2}}E_{P-R}(\hat{e};\mu_{0})(-1)^{(\mu'-\mu_{0})}\Lambda_{R',R}(R_{\hat{n}};\mu,P,R,R')B_{L,-M}(l,l',m,m')
+\end{equation}
+
+\begin{equation}
+\bar{\varUpsilon}_{L,M}^{u,\zeta\zeta'}=(-1)^{M}[P]^{\frac{1}{2}}E_{P-R}(\hat{e};\mu_{0})(-1)^{(\mu'-\mu_{0})}\bar{\Lambda}_{R'}(\mu,P,R')B_{L,S-R'}(l,l',m,m')\Delta_{L,M}(K,Q,S)A_{Q,S}^{K}(t)
+\end{equation}
