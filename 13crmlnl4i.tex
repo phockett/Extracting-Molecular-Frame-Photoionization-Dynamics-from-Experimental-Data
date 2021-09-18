@@ -1,0 +1,104 @@
+## Formalism
+
+The equations for the $\beta_{LM}$ parameters, in the molecular and lab frames (MF & AF respectively), can be written in terms of geometric tensor paramters.
+
+For the MF, denoted $\beta_{LM}$ ([full development notes here](https://epsproc.readthedocs.io/en/latest/methods/geometric_method_dev_pt2_170320_v140420.html)):
+
+\begin{eqnarray}
+\beta_{L,-M}^{\mu_{i},\mu_{f}}(E) & = & (-1)^{M}\sum_{P,R',R}(2P+1)^{\frac{1}{2}}{E_{P-R}(\hat{e};\mu_{0})}\sum_{l,m,\mu}\sum_{l',m',\mu'}(-1)^{(\mu'-\mu_{0})}{\Lambda_{R',R}(R_{\hat{n}};\mu,P,R,R')B_{L,-M}(l,l',m,m')}I_{l,m,\mu}^{p_{i}\mu_{i},p_{f}\mu_{f}}(E)I_{l',m',\mu'}^{p_{i}\mu_{i},p_{f}\mu_{f}*}(E)
+\end{eqnarray}
+
+For the AF, denoted $\bar{\beta}_{LM}$ ([full development notes here](https://epsproc.readthedocs.io/en/latest/methods/geometric_method_dev_pt3_AFBLM_090620_010920_dev_bk100920.html)):
+
+\begin{eqnarray}
+\bar{\beta}_{L,-M}^{\mu_{i},\mu_{f}}(E,t) & =(-1)^{M} & \sum_{P,R',R}{[P]^{\frac{1}{2}}}{E_{P-R}(\hat{e};\mu_{0})}\sum_{l,m,\mu}\sum_{l',m',\mu'}(-1)^{(\mu'-\mu_{0})}{\Lambda_{R'}(\mu,P,R')B_{L,S-R'}(l,l',m,m')}I_{l,m,\mu}^{p_{i}\mu_{i},p_{f}\mu_{f}}(E)I_{l',m',\mu'}^{p_{i}\mu_{i},p_{f}\mu_{f}*}(E)\sum_{K,Q,S}\Delta_{L,M}(K,Q,S)A_{Q,S}^{K}(t)\label{eq:BLM-tidy-prod-2}
+\end{eqnarray}
+
+Where $I_{l,m,\mu}^{p_{i}\mu_{i},p_{f}\mu_{f}}(E)$ are the (radial) dipole ionization matrix elements, as a function of energy $E$, obtained from an [ePolyScat (or other) calculation](https://epsproc.readthedocs.io/en/latest/ePS_ePSproc_tutorial/ePS_tutorial_080520.html#Theoretical-background), defined by a set of partial-waves $\{l,m\}$, for polarizations $\mu$ and channels (symmetries) labelled by initial and final state indexes ${p_{i}\mu_{i},p_{f}\mu_{f}}$.
+
+In both cases a set of geometric tensor terms are required, defined below. Note that, in this case, time-dependence arises purely from the $A_{Q,S}^{K}(t)$ terms in the AF case, and the electric field term currently describes only the photon angular momentum coupling, time-dependent/shaped fields are not yet supported (as of v1.3.0, but will be soon). Similarly, a time-dependent initial state (e.g. vibrational wavepacket) could also describe a time-dependent MF case, but is currently not included here.
+
+
+### Electric field term
+
+The [coupling of two 1-photon terms can be written as a tensor contraction](https://epsproc.readthedocs.io/en/latest/methods/geometric_method_dev_260220_090420_tidy.html#E_{P,R}-tensor):
+
+\begin{equation}
+E_{PR}(\hat{e})=[e\otimes e^{*}]_{R}^{P}=[P]^{\frac{1}{2}}\sum_{p}(-1)^{R}\left(\begin{array}{ccc}
+1 & 1 & P\\
+p & R-p & -R
+\end{array}\right)e_{p}e_{R-p}^{*}\label{eq:EPR-defn-1}
+\end{equation}
+
+Where $e_{p}$ and $e_{R-p}$ define the field strengths for the polarizations $p$ and $R-p$, which are coupled into the spherical tensor $E_{PR}$.
+
+Note this currently describes only the photon angular momentum coupling, time-dependent/shaped fields are not yet supported (as of v1.3.0, but will be soon).
+
+
+### $B_{L,M}$ term
+
+The coupling of the partial wave pairs, $|l,m\rangle$ and $|l',m'\rangle$, into the observable set of $\{L,M\}$ is [defined by a tensor contraction with two 3j terms](https://epsproc.readthedocs.io/en/latest/methods/geometric_method_dev_260220_090420_tidy.html#B_{L,M}-term).
+
+\begin{equation}
+B_{L,M}=(-1)^{m}\left(\frac{(2l+1)(2l'+1)(2L+1)}{4\pi}\right)^{1/2}\left(\begin{array}{ccc}
+l & l' & L\\
+0 & 0 & 0
+\end{array}\right)\left(\begin{array}{ccc}
+l & l' & L\\
+-m & m' & M
+\end{array}\right)
+\end{equation}
+
+Note for the AF case $B_{L,S-R'}(l,l',m,m')$ instead of $B_{L,-M}(l,l',m,m')$ for MF case. This allows for all MF projections to contribute (rather than a single specified polarization geometry).
+
+
+### $\Lambda$ Term
+
+Define [MF projection term](https://epsproc.readthedocs.io/en/latest/methods/geometric_method_dev_260220_090420_tidy.html#\Lambda-Term), $\Lambda_{R',R}(R_{\hat{n}})$:
+
+\begin{equation}
+\Lambda_{R',R}(R_{\hat{n}})=(-1)^{(R')}\left(\begin{array}{ccc}
+1 & 1 & P\\
+\mu & -\mu' & R'
+\end{array}\right)D_{-R',-R}^{P}(R_{\hat{n}})
+\end{equation}
+
+This is similar to the $E_{PR}$ term, and essentially rotates it into the MF by a set of rotations (Euler angles) defined by $R_{\hat{n}}$.
+
+For [the AF case](https://epsproc.readthedocs.io/en/latest/methods/geometric_method_dev_pt3_AFBLM_090620_010920_dev_bk100920.html#\beta_{L,M}^{AF}-rewrite), a simplified form is used (since there is no specific orientation/rotation into the MF, and the relations are defined by the molecular axis distribution):
+
+\begin{equation}
+\bar{\Lambda}_{R'}=(-1)^{(R')}\left(\begin{array}{ccc}
+1 & 1 & P\\
+\mu & -\mu' & R'
+\end{array}\right)\equiv\Lambda_{R',R'}(R_{\hat{n}}=0)
+\end{equation} 
+
+
+### Alignment term
+
+\begin{equation}
+\Delta_{L,M}(K,Q,S)=(2K+1)^{1/2}(-1)^{K+Q}\left(\begin{array}{ccc}
+P & K & L\\
+R & -Q & -M
+\end{array}\right)\left(\begin{array}{ccc}
+P & K & L\\
+R' & -S & S-R'
+\end{array}\right)
+\end{equation}
+
+The axis distribution moments (ADMs) define the LF in this case, and are given above as a set of parameters $A_{Q,S}^{K}(t)$; the coupling between the LF and MF is, effectively, defined by the final term in the AF:
+
+\begin{equation}
+\sum_{K,Q,S}\Delta_{L,M}(K,Q,S)A_{Q,S}^{K}(t)
+\end{equation}
+
+
+**Refs for the full AF-PAD formalism above:**
+
+1. Reid, Katharine L., and Jonathan G. Underwood. “Extracting Molecular Axis Alignment from Photoelectron Angular Distributions.” The Journal of Chemical Physics 112, no. 8 (2000): 3643. https://doi.org/10.1063/1.480517.
+2. Underwood, Jonathan G., and Katharine L. Reid. “Time-Resolved Photoelectron Angular Distributions as a Probe of Intramolecular Dynamics: Connecting the Molecular Frame and the Laboratory Frame.” The Journal of Chemical Physics 113, no. 3 (2000): 1067. https://doi.org/10.1063/1.481918.
+3. Stolow, Albert, and Jonathan G. Underwood. “Time-Resolved Photoelectron Spectroscopy of Non-Adiabatic Dynamics in Polyatomic Molecules.” In Advances in Chemical Physics, edited by Stuart A. Rice, 139:497–584. Advances in Chemical Physics. Hoboken, NJ, USA: John Wiley & Sons, Inc., 2008. https://doi.org/10.1002/9780470259498.ch6.
+
+
+Where [3] has the version as per the full form above (full asymmetric top alignment distribution expansion).
