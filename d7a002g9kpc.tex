@@ -88,3 +88,98 @@ The full forms are, therefore:
 \bar{\varUpsilon}_{L,M}^{u,\zeta\zeta'}=(-1)^{M}[P]^{\frac{1}{2}}E_{P-R}(\hat{e};\mu_{0})(-1)^{(\mu'-\mu_{0})}\bar{\Lambda}_{R'}(\mu,P,R')B_{L,S-R'}(l,l',m,m')\Delta_{L,M}(K,Q,S)A_{Q,S}^{K}(t)
 \end{equation}
 
+\section{Final state density matrix}
+
+Write the full final state as a density matrix:
+
+\begin{equation}
+\mathbf{\bar{\rho}}_{L,M}^{\zeta\zeta'}=\varUpsilon_{L,M}^{u,\zeta\zeta'}\mathbf{\rho}^{\zeta\zeta'}
+\end{equation}
+
+Here the density matrix can be interpreted as the final, LF/AF or
+MF density matrix, incorporating both the intrinsic and extrinsic
+effects (i.e. all channel couplings and radial matrix elements for
+the given measurement). The $L,M$notation indicates here that these
+dimensions should not be summed over, hence we can still write the
+tensor coupling into the $\beta_{L,M}^{u}$ parameters:
+
+\begin{equation}
+\beta_{L,M}^{u}=\sum_{\zeta,\zeta'}\mathbf{\bar{\rho}}_{L,M}^{\zeta\zeta'}
+\end{equation}
+
+
+\section{Matrix inversion formalism}
+
+Following Gregory et. al., the formalism can also be rewritten with
+the ADMs kept separate (see also Reid \& Underwood convolution form),
+with the LF/AF given as (eqn. 4):
+
+\begin{equation}
+\bar{\beta}_{L,M}(E,t)=\sum_{K,Q,S}C_{K,Q,S}^{L,M}(E)A_{Q,S}^{K}(t)
+\end{equation}
+
+($Q=0$ only in Gregory et. al., don't recall if this is general limitation
+however - may be symmetry and/or dimensionality related?)
+
+And the MF (eqn. 10):
+
+\begin{equation}
+\beta_{L,M}(E,\Omega)=\sum_{P,R,\Delta q}C_{P,R}^{L,M}(E,\Delta q)D_{R,\Delta q}^{P}(\Omega)
+\end{equation}
+
+And the transformation can be written as (eqn. 1, 28):
+
+\begin{equation}
+\mathbf{C}^{mol}=\mathbf{G}\mathbf{C}^{lab},\label{eq:basic}
+\end{equation}
+
+\begin{equation}
+C_{P,0}^{L,M}(E,\Delta q)=\hat{G}_{L'0KS}^{LMP\Delta q}\bar{C}_{K,0,S}^{L',0}(E)
+\end{equation}
+
+(Here $M'=Q=R=0$, again not sure if this is required.)
+
+And
+
+\begin{equation}
+\mathbf{G}_{L'M'KS}^{LMP\Delta q}=\mathbf{\Gamma}_{P0\Delta q}^{\zeta\zeta'LM}(\mathbf{\Gamma}_{K0S}^{\zeta\zeta'L^{\prime}M^{\prime}})^{+}
+\end{equation}
+
+Where $+$ denotes the Moore-Penrose inverse matrix.
+
+\begin{equation}
+\bar{C}_{KQS}^{LM}(\epsilon)=\sum_{\zeta\zeta'}d_{\zeta\zeta'}(\epsilon)\Gamma_{KQS}^{\zeta\zeta'LM}
+\end{equation}
+
+\begin{equation}
+C_{PR}^{LM}(\epsilon,\Delta q)=\sum_{\zeta\zeta'}d_{\zeta\zeta'}(\epsilon)\Gamma_{PR\Delta q}^{\zeta\zeta'LM}
+\end{equation}
+
+\begin{equation}
+D_{\zeta}(\epsilon)D_{\zeta'}^{*}(\epsilon)=d_{\zeta\zeta'}(\epsilon)
+\end{equation}
+
+In the current notation, we can rewrite...
+
+\begin{equation}
+\bar{C}_{KQS}^{LM}(\epsilon)=\sum_{\zeta\zeta'}\mathbb{I}_{\zeta\zeta'}^{\Gamma,\Gamma'}(\epsilon)\Gamma_{KQS}^{\zeta\zeta'LM}
+\end{equation}
+
+\begin{eqnarray}
+\Gamma_{KQS}^{\zeta\zeta'LM} & = & (-1)^{M}[P]^{\frac{1}{2}}E_{P-R}(\hat{e};\mu_{0})(-1)^{(\mu'-\mu_{0})}\bar{\Lambda}_{R'}(\mu,P,R')B_{L,S-R'}(l,l',m,m')\Delta_{L,M}(K,Q,S)\\
+ & = & \bar{\varUpsilon}_{L,M}^{u,\zeta\zeta'}/A_{Q,S}^{K}(t)
+\end{eqnarray}
+
+\begin{equation}
+C_{PR}^{LM}(\epsilon,\Delta q)=\sum_{\zeta\zeta'}\mathbb{I}_{\zeta\zeta'}^{\Gamma,\Gamma'}(\epsilon)\Gamma_{PR\Delta q}^{\zeta\zeta'LM}
+\end{equation}
+
+\begin{equation}
+\Gamma_{PR\Delta q}^{\zeta\zeta'LM}=(-1)^{M}(2P+1)^{\frac{1}{2}}E_{P-R}(\hat{e};\mu_{0})(-1)^{(\mu'-\mu_{0})}\bar{\Lambda}_{\Delta q}(\mu,P,\Delta q)B_{L,-M}(l,l',m,m')
+\end{equation}
+
+assuming $R'=\Delta q$, and that the rotational matrix element $D_{R,\Delta q}^{P}(\Omega)$
+is computed independently (the current numerical function $\Lambda_{R',R}(R_{\hat{n}};\mu,P,R,R')$
+could possibly used directly here, but this version keeps the angle-dependence
+separate as per the matrix inversion formalism; \textcolor{red}{alternatively
+a new function might be used here?}).
