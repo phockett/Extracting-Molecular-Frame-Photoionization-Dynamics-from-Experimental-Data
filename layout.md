@@ -23,6 +23,7 @@ ogqcphsg36g.tex
 6ien6hf9npg.tex
 p4qafv1c7oc.tex
 uj17o66ithg.tex
+figures/dataDump_1000fitTests_multiFit_noise_051021_BLMinput
 p4keivapgp8.tex
 figures/dataDump_1000fitTests_multiFit_noise_051021_fitHist
 hpipnk3ca9.tex
