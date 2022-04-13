@@ -24,6 +24,7 @@ ogqcphsg36g.tex
 p4qafv1c7oc.tex
 uj17o66ithg.tex
 p4keivapgp8.tex
+figures/dataDump_1000fitTests_multiFit_noise_051021_fitHist
 hpipnk3ca9.tex
 237m3nlpn84.tex
 urt5uueqn6c.tex
