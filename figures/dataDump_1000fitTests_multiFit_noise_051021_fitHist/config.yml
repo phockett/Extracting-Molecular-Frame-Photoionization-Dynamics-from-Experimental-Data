@@ -1,0 +1,19 @@
+---
+version: 2
+multicolumn: false
+web-width: 500px
+align: center
+float: h!
+grid:
+  rows: 1
+  columns: 1
+  grid_elements:
+  - path: figures/dataDump_1000fitTests_multiFit_noise_051021_fitHist/dataDump_1000fitTests_multiFit_noise_051021_fitHist.html
+    type: html
+    from:
+    - 1
+    - 1
+    to:
+    - 1
+    - 1
+    url: "/users/71114/articles/447808/master/file/figures/dataDump_1000fitTests_multiFit_noise_051021_fitHist/dataDump_1000fitTests_multiFit_noise_051021_fitHist.html"
