@@ -12,6 +12,8 @@ g2gprqiq8io.html
 3p72pd22vp8.tex
 nac5rkjtugg.tex
 asih5mrvk18.tex
+figures/concepts_fig_draft_010417-02-01
+a5f0j4ktrtg.tex
 7l33c029ckg.tex
 qi88tg0sgsg.html
 qj87lveem9.tex
