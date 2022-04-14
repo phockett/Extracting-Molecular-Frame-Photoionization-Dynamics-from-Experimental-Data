@@ -1,0 +1,33 @@
+% \item Not all fits that converged - as defined by the criteria above - provided the reference matrix elements. This illustrates the importance of statistical sample of the solution hyperspace, and/or the use of further tests of the fit results [REF] in order to determine their veracity in general.
+% \item In this case, the lowest $\chi^2$ does correspond to the reference matrix elements. Further, in the noise-free case, the minima found in these cases is orders of magnitude lower than the next best parameter set, although this may not hold in general depending on the quality of the data (see Sect. XX), and the complexity of the parameter-set.
+% \item For the free floating parameter case, the results are shown in both raw form and with a reference phase set in Figs. XX and XX. This illustrates the phase sensitivity of the fitting, and also that this is a \textit{relative} phase. In a similar fashion to statistically sampling the parameter space with the seed parameters, allowing unconstrained parameters also helps to ensure that the full hyperspace is probed; however, it is not apparent that a viable solution set (or sets) have been found until a reference phase is set. (Similar considerations may apply to the magnitudes, depending on whether these are chosen to be normalised and/or if $\beta_{0,0}$ values are included in the fitting.)
+% \item Uncertainties on the parameters here are estimated from the fit using a standard approach of testing the curvature of the $\chi^2$ hypersurface with respect to each parameter; in this case this routine is implemented by the lmfit library. Uncertainties may also be estimated by repeated fits to different sub-sets of the data - a statistical bootstrapping methodology - which is investigated in Sect. XX [TODO].
+\end{enumerate}
+
+% \subsubsection{Bootstrapping basics: 10-point fit}
+
+% As an initial test of the method, noise-free data was used, and 10 temporal points over the main revival feature were randomly selected. To fit the data, a set of fitting parameters were defined in (magnitude, phase) form. In this case, the parameter set was simply defined from the input matrix elements, including symmetry relations, resulting in 6 complex radial matrix elements defining the problem (this equates to 2n-1 parameters to determine in magnitude-phase form, where the -1 arises since the phases are relative, and one phase must be defined as a reference, either pre or post fit); in general this step in the protocol may require manual configuration for the problem at hand [MORE ON THIS? MATRIX METHOD TOO]. 
+
+% The PEMtk fitting matrix element fitting routine wraps the lmfit package [REF, https://lmfit.github.io/lmfit-py/, https://dx.doi.org/10.5281/zenodo.11813], in this case a standard Levenberg-Marquardt minimization was used, and all (12) parameters allowed to float freely. To gain insight into the efficiency of the fitting routine, and the uniqueness of the fit results [REF], 1000 fits were performed on the same dataset, each seeded with randomised parameter values. (This methodology amounts to a statistical sampling of the solution hyperspace, which may be expected to contain some local minima in general high-dimensional cases. [REF]) Convergence criteria were set as .... Running in parallel on 20 (logical) cores of an AMD Threadripper 2950X based workstation, this required ~5GB of RAM and took on the order of 20 minutes per 100 fits (albeit with large variance, since convergence time depends on the start parameters); further benchmarks for the current codebase can be found at [REF].
+
+
+
+% Results are summarised in Figs. XX. A few conclusions from this case study:
+
+% \begin{enumerate}
+% \item Not all fits that converged - as defined by the criteria above - provided the reference matrix elements. This illustrates the importance of statistical sample of the solution hyperspace, and/or the use of further tests of the fit results [REF] in order to determine their veracity in general.
+% \item In this case, the lowest $\chi^2$ does correspond to the reference matrix elements. Further, in the noise-free case, the minima found in these cases is orders of magnitude lower than the next best parameter set, although this may not hold in general depending on the quality of the data (see Sect. XX), and the complexity of the parameter-set.
+% \item For the free floating parameter case, the results are shown in both raw form and with a reference phase set in Figs. XX and XX. This illustrates the phase sensitivity of the fitting, and also that this is a \textit{relative} phase. In a similar fashion to statistically sampling the parameter space with the seed parameters, allowing unconstrained parameters also helps to ensure that the full hyperspace is probed; however, it is not apparent that a viable solution set (or sets) have been found until a reference phase is set. (Similar considerations may apply to the magnitudes, depending on whether these are chosen to be normalised and/or if $\beta_{0,0}$ values are included in the fitting.)
+% \item Uncertainties on the parameters here are estimated from the fit using a standard approach of testing the curvature of the $\chi^2$ hypersurface with respect to each parameter; in this case this routine is implemented by the lmfit library. Uncertainties may also be estimated by repeated fits to different sub-sets of the data - a statistical bootstrapping methodology - which is investigated in Sect. XX [TODO].
+% \end{enumerate}
+
+% TO CONSIDER:
+
+% - Level of detail here, words vs. just pointing at the notebook.
+% - Plot style, types and export, see notes below (commented out)
+
+% TODO: test HV HTML interactive export > Authorea, see https://holoviews.org/user_guide/Plots_and_Renderers.html
+
+% Bokeh: https://docs.bokeh.org/en/latest/docs/user_guide/embed.html
+
+% Authorea & Plotly: % https://support.authorea.com/en-us/article/inserting-an-interactive-figure-y32ne6/
