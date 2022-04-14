@@ -28,6 +28,8 @@ figures/dataDump_1000fitTests_multiFit_noise_051021_ADM-Pt-BLM_140422
 p4keivapgp8.tex
 figures/dataDump_1000fitTests_multiFit_noise_051021_fitHist
 hpipnk3ca9.tex
+figures/dataDump_1000fitTests_multiFit_noise_051021_paramsViolin_1404221
+gl6480s13us.tex
 237m3nlpn84.tex
 urt5uueqn6c.tex
 rr360td6bc8.html
