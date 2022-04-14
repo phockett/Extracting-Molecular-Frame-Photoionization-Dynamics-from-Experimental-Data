@@ -4,7 +4,7 @@ To fit the simulated data, a set of fitting parameters were defined in (magnitud
 
 The PEMtk fitting matrix element fitting routine makes use of the lmfit package [REF, https://lmfit.github.io/lmfit-py/, https://dx.doi.org/10.5281/zenodo.11813], which implements a range of fitting routines and options. In the current case a standard Levenberg-Marquardt minimization was used, and all (12) parameters were allowed to float freely. To gain insight into the efficiency of the fitting routine, and the uniqueness of the fit results [REF], 1000 fits were performed on the same dataset, each seeded with randomised parameter values. This methodology amounts to a statistical sampling of the solution hyperspace, which may be expected to contain some local minima in general high-dimensional cases [REF]. Convergence criteria were set as .... Running in parallel on 20 (logical) cores of an AMD Threadripper 2950X based workstation, this required ~5GB of RAM and took on the order of 2 hours (note that the time per fit cycle had large variance, since convergence time depends on the start parameters); further benchmarks for the current codebase can be found at [REF].
 
-Results are summarised broadly in Fig. \ref{509194}, which shows the. A few conclusions from this case study:
+Results are summarised broadly in Fig. \ref{509194}, which shows the b. A few conclusions from this case study:
 
 \begin{enumerate}
 \item Not all fits that converged - as defined by the criteria above - provided the reference matrix elements. This illustrates the importance of statistical sample of the solution hyperspace, and/or the use of further tests of the fit results [REF] in order to determine their veracity in general.
