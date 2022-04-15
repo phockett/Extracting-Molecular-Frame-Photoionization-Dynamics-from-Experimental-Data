@@ -31,6 +31,8 @@ figures/dataDump_1000fitTests_multiFit_noise_051021_paramsViolin_1404221
 figures/dataDump_1000fitTests_multiFit_noise_051021_BLM_allFits_150422
 hpipnk3ca9.tex
 gl6480s13us.tex
+figures/paramsComp_csv_150422
+d0656cckaso.tex
 figures/output_251_2
 237m3nlpn84.tex
 urt5uueqn6c.tex
