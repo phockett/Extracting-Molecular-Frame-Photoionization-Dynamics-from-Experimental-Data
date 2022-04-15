@@ -17,3 +17,5 @@ grid:
     - 1
     - 1
     url: "/users/71114/articles/447808/master/file/figures/dataDump_1000fitTests_multiFit_noise_051021_BLM_allFits_150422/dataDump_1000fitTests_multiFit_noise_051021_BLM_allFits_150422.html"
+    folder_url: "/users/71114/articles/447808/master/folder/figures/dataDump_1000fitTests_multiFit_noise_051021_BLM_allFits_150422"
+export-filename: dataDump_1000fitTests_multiFit_noise_051021_BLM_allFits_150422.png
