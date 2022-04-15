@@ -30,6 +30,7 @@ figures/dataDump_1000fitTests_multiFit_noise_051021_fitHist
 figures/dataDump_1000fitTests_multiFit_noise_051021_paramsViolin_1404221
 hpipnk3ca9.tex
 gl6480s13us.tex
+figures/output_251_2
 237m3nlpn84.tex
 urt5uueqn6c.tex
 rr360td6bc8.html
