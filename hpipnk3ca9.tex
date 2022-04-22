@@ -6,7 +6,7 @@ The PEMtk fitting matrix element fitting routine makes use of the lmfit package 
 
 \begin{itemize}
 \item A standard Levenberg-Marquardt minimization was used.
-\item 11 of the 12 parameters were allowed to float freely (i.e. no symmetry relations were imposed a priori), with phases bo
+\item 11 of the 12 parameters were allowed to float freely (i.e. no symmetry relations were imposed a priori), with phases bounded to $
 \item $\phi_{1,-1}$ was set as a reference phase. 
 \item To gain insight into the efficiency of the fitting routine, the validity of the methodology and the uniqueness of the fit results [REF], 1000 fits were performed on the same dataset, each seeded with randomised parameter values. 
 \item Convergence criteria were set as a minimum gradient reduction of $1e-2$ [TODO: check this], but fits were also capped by the total number of function evaluations to prevent run-away cases.
