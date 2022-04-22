@@ -9,7 +9,7 @@ The PEMtk fitting matrix element fitting routine makes use of the lmfit package 
 \item 11 of the 12 parameters were allowed to float freely (i.e. no symmetry relations were imposed a priori).
 \item $\phi_{1,-1}$ was set as a reference phase. 
 \item To gain insight into the efficiency of the fitting routine, the validity of the methodology and the uniqueness of the fit results [REF], 1000 fits were performed on the same dataset, each seeded with randomised parameter values. 
-\item Convergence criteria were set as a minimum gradient reduction of , but also capped by the total number of function evaluations to prevent run-away cases.
+\item Convergence criteria were set as a minimum gradient reduction of $1e-2, but also capped by the total number of function evaluations to prevent run-away cases.
 \item Results herein are categorized by reduced $\bar{\chi}^2$ values ($\bar{\chi}^2=\chi^2/(N-N_{vars})$, where $N$ is the number of data points, and $N_{vars}$ the number of parameters) unless otherwise noted.
 \end{itemize}
 
