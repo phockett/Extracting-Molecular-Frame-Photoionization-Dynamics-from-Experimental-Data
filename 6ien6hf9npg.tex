@@ -16,7 +16,7 @@ Furthermore, the tensors can readily be converted to a density matrix representa
 It should be emphasized, however, that the underlying physical quantities are essentially identical in all these approaches, with a set of coupled angular-momenta defining the geometrical part of the photoionization problem, despite these differences in the details of the theory and notation. The current tensorial numerical implementation is in contradistinction to standard numerical routines in which the requisite terms are usually computed from vectorial and/or nested summations, which can be somewhat opaque to detailed interpretation, and typically implement the full computation of the observables in one computational routine. The main cost of a tensor-based approach is that more RAM is required to store the full set of tensor variables.
 
 \begin{eqnarray}
-\beta_{L,-M}^{\mu_{i},\mu_{f}}(E) & = & (-1)^{M}\sum_{P,R',R}(2P+1)^{\frac{1}{2}}{E_{P-R}(\hat{e};\mu_{0})}
+\beta_{L,-M}^{\mu_{i},\mu_{f}}(E) & = & (-1)^{M}\sum_{P,R',R}(2P+1)^{\frac{1}{2}}{E_{P-R}(\hat{e};\mu_{0})}\\
  & = &\sum_{l,m,\mu}\sum_{l',m',\mu'}(-1)^{(\mu'-\mu_{0})}{\Lambda_{R',R}(R_{\hat{n}};\mu,P,R,R')B_{L,-M}(l,l',m,m')}I_{l,m,\mu}^{p_{i}\mu_{i},p_{f}\mu_{f}}(E)I_{l',m',\mu'}^{p_{i}\mu_{i},p_{f}\mu_{f}*}(E)
 \end{eqnarray}
 
