@@ -15,7 +15,7 @@ Furthermore, the tensors can readily be converted to a density matrix representa
 
 Within this treatment, the observables can be defined in a series of simplified forms, emphasizing the quantities of interest for a given problem. Some details are defined in the following subsections, and further detailed in Appendix \ref{appendix:formalism}.
 
-\subsubsection{Channel functionsdensity matrix representation}
+\subsubsection{Channel functions}
 
 A simple form of the equations, amenable to fitting, is to write the observables in terms of ``channel functions", which define the ionization continuum for a given case and set of parameters $u$ (e.g. defined for the MF, or defined for a specific experimental configuration),
 
@@ -35,6 +35,7 @@ Where $\zeta,\zeta'$ collect all the required quantum numbers, and define all (c
 This is effectively a convolution equation (cf. refs. \cite{Reid2000,gregory2021MolecularFramePhotoelectron}) with channel functions, for a given ``experiment'' $u$, summed over all terms $\zeta,\zeta'$. Aside from the change in notation (which is here chosen to match the formalism of refs. \cite{Gianturco1994, Lucchese1986, Natalense1999}), these matrix elements are essentially identical to the simplified forms $r_{k,l,m}$ defined in Eqn. \ref{eq:r-kllam}. 
 
 This tensorial form is numerically implemented in the ePSproc codebase \cite{ePSprocGithub}, and is in contradistinction to standard numerical routines in which the requisite terms are usually computed from vectorial and/or nested summations, which can be somewhat opaque to detailed interpretation, and typically implement the full computation of the observables in one computational routine. The PEMtk codebase \cite{hockett2021PhotoelectronMetrologyToolkit} implements matrix element retrieval based on this formalism, with pre-computation of all the geometric tensor components (channel functions) prior to a fitting protocol for matrix element analysis, essentially a fit to Eqn. \ref{eqn:channel-fns}, with terms $I^{\zeta}(\epsilon)$ as the unknowns. The main computational cost of a tensor-based approach is that more RAM is required to store the full set of tensor variables.
+
 
 Following this notation, it is also trivial to write the radial matrix elements in density matrix form in the $\zeta\zeta'$ representation:
 
