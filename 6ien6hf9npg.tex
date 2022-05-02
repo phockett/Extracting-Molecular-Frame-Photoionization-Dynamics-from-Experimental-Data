@@ -32,7 +32,7 @@ Where $\zeta,\zeta'$ collect all the required quantum numbers, and define all (c
 \mathbb{I}^{\zeta,\zeta'}=I^{\zeta}(\epsilon)I^{\zeta'*}(\epsilon)
 \end{equation}
 
-This is effectively a convolution equation (cf. refs. \cite{Reid2000,gregory2021MolecularFramePhotoelectron}) with channel functions, for a given ``experiment'' $u$, summed over all terms $\zeta,\zeta'$. AThese matrix elements are essentially identical to the simplified forms $r_{k,l,m}$ defined in Eqn. \ref{eq:r-kllam}.
+This is effectively a convolution equation (cf. refs. \cite{Reid2000,gregory2021MolecularFramePhotoelectron}) with channel functions, for a given ``experiment'' $u$, summed over all terms $\zeta,\zeta'$. Aside from the change in notation, these matrix elements are essentially identical to the simplified forms $r_{k,l,m}$ defined in Eqn. \ref{eq:r-kllam}.
 
 This tensorial form is numerically implemented in the ePSproc codebase \cite{ePSprocGithub}, and is in contradistinction to standard numerical routines in which the requisite terms are usually computed from vectorial and/or nested summations, which can be somewhat opaque to detailed interpretation, and typically implement the full computation of the observables in one computational routine. The PEMtk codebase \cite{hockett2021PhotoelectronMetrologyToolkit} implements matrix element retrieval based on this formalism, with pre-computation of all the geometric tensor components (channel functions) prior to a fitting protocol for matrix element analysis, essentially a fit to Eqn. \ref{eqn:channel-fns}, with terms $I^{\zeta}(\epsilon)$ as the unknowns. The main computational cost of a tensor-based approach is that more RAM is required to store the full set of tensor variables.
 
