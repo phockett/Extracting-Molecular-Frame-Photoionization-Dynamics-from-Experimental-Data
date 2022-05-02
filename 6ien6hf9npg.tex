@@ -110,6 +110,63 @@ It should be emphasized, however, that the underlying physical quantities are es
 As discussed in ref. \cite{hockett2018QMP2}, 
 
 
+In a very general sense, the information content of a single angular
+interferogram might be regarded as simply the number of contributing
+$\beta_{L,M}$ parameters (sects. \ref{subsec:Information-content}
+\& \ref{subsec:Matrix-element-retrieval}); in set notation:
+
+\begin{equation}
+M=\mathrm{n}\{\beta_{L,M}\}
+\end{equation}
+where $M$ is the information content of the measurement, defined
+as $\mathrm{n}\{...\}$ the cardinality (number of elements) of the
+set of contributing parameters. A set of measurements, made for some
+experimental variable $u$, will then have a total information content
+(cf. the related quantity $I_{expt}(\mathrm{v}{}_{m})$ defined in
+sect. \ref{subsec:Matrix-element-retrieval}):
+
+\begin{equation}
+M_{u}=\sum_{u}\mathrm{n}\{\beta_{L,M}^{u}\}
+\end{equation}
+
+In the case where a single measurement contains multiple $\beta_{L,M}$,
+e.g. as a function of energy $k$, the information content will naturally
+be larger:
+
+\begin{eqnarray}
+M_{u} & = & \sum_{u,k}\mathrm{n}\{\beta_{L,M}^{u}(k)\}\\
+ & = & M_{u}\times M
+\end{eqnarray}
+where the second line pertains if each measurement has the same native
+information content, independent of $u$. It may be that the variable
+$k$ is continuous (e.g. photoelectron energy), but in practice it
+will usually be discretized in some fashion by the measurement.
+
+In terms of purely experimental methodologies, this notion of information
+content is reasonable, and a larger $M_{u}$ clearly defines a richer
+experimental measurement which explores more of the total measurement
+space spanned by the full set of $\{\beta_{L,M}^{u}(k)\}$. However,
+in this basic definition a larger $M_{u}$ does not necessarily indicate
+a higher information content for quantum metrology and retrieval applications.
+The reason for this is simply down to the complexity of the problem
+(cf. eqn. \ref{eq:beta-gamma-general}), in which many couplings define
+the sensitivity of the observable to the underlying system properties
+of interest. In this sense, more measurements, and larger $M$, may
+only add redundancy, rather than new information.
+
+A more complete accounting of information content would, therefore,
+also include the sensitivity/dependence of the observable to a given
+ system property in some manner (cf. the measurement sensitivity,
+$\gamma(\mathrm{v}_{m})$, discussed in sect. \ref{subsec:Matrix-element-retrieval}).
+Following eqn. \ref{eq:beta-gamma-general}, this could be defined
+in terms of the geometric couplings of the system, vis.
+
+\begin{equation}
+M_{u}=\mathrm{n}\{\varUpsilon_{L,M}^{u}\}
+\end{equation}
+
+
+
 % [Formalism from 
 % \href{https://epsproc.readthedocs.io/en/dev/methods/ePSproc_geom_methods_summary_190821-v1-tidy.html}{ePSproc notes}
 
