@@ -1,0 +1,20 @@
+---
+version: 2
+multicolumn: false
+web-width: 500px
+align: center
+float: h!
+grid:
+  rows: 1
+  columns: 1
+  grid_elements:
+  - path: figures/matrix_inversion_flowchart_290822-gv1/matrix_inversion_flowchart_300822.gv.png
+    type: static
+    from:
+    - 1
+    - 1
+    to:
+    - 1
+    - 1
+    folder_url: "/users/71114/articles/447808/master/folder/figures/matrix_inversion_flowchart_290822-gv1"
+    url: "/users/71114/articles/447808/master/file/figures/matrix_inversion_flowchart_290822-gv1/matrix_inversion_flowchart_300822.gv.png"

@@ -1,0 +1,21 @@
+---
+version: 2
+multicolumn: false
+web-width: ''
+align: center
+float: h!
+grid:
+  rows: 1
+  columns: 1
+  grid_elements:
+  - path: figures/bootstrap_flowchart_030822-gv/bootstrap_flowchart_290822.gv.png
+    type: static
+    from:
+    - 1
+    - 1
+    to:
+    - 1
+    - 1
+    folder_url: "/users/71114/articles/447808/master/folder/figures/bootstrap_flowchart_030822-gv"
+    url: "/users/71114/articles/447808/master/file/figures/bootstrap_flowchart_030822-gv/bootstrap_flowchart_290822.gv.png"
+web-height: 800px

@@ -1,185 +1,95 @@
-14/09/21 - some additional formalism dev in progress (from local Lyx doc notes).
+% 02/08/22 - tidied up, most now in main text
 
-See \href{https://epsproc.readthedocs.io/en/dev/methods/ePSproc_geom_methods_summary_190821-v1-tidy.html}{https://epsproc.readthedocs.io/en/dev/methods/ePSproc\_geom\_methods\_summary\_190821-v1-tidy.html} 
+% 14/09/21 - some additional formalism dev in progress (from local Lyx doc notes).
 
-\section{Matrix elements}
+% See \href{https://epsproc.readthedocs.io/en/dev/methods/ePSproc_geom_methods_summary_190821-v1-tidy.html}{https://epsproc.readthedocs.io/en/dev/methods/ePSproc\_geom\_methods\_summary\_190821-v1-tidy.html} 
 
-Matrix element square (ePS notation):
+% \section{Matrix elements}
 
-\begin{equation}
-I_{l,m,\mu}^{p_{i}\mu_{i},p_{f}\mu_{f}}(E)I_{l',m',\mu'}^{p_{i}\mu_{i},p_{f}\mu_{f}*}(E)
-\end{equation}
+% Matrix element square (ePS notation):
 
-Rewrite as single (tensor) term:
+% \begin{equation}
+% I_{l,m,\mu}^{p_{i}\mu_{i},p_{f}\mu_{f}}(E)I_{l',m',\mu'}^{p_{i}\mu_{i},p_{f}\mu_{f}*}(E)
+% \end{equation}
 
-\begin{equation}
-\mathbb{I}_{lm\mu,l'm'\mu'}^{\Gamma,\Gamma'}=I_{l,m,\mu}^{\Gamma}(E)I_{l',m',\mu'}^{\Gamma'*}(E)
-\end{equation}
+% Rewrite as single (tensor) term:
 
-And the symmetry/channel indices are denoted by $\Gamma,\Gamma'$
-for brevity (in general, $\Gamma=\Gamma'$ since the continua are
-orthogonal).
+% \begin{equation}
+% \mathbb{I}_{lm\mu,l'm'\mu'}^{\Gamma,\Gamma'}=I_{l,m,\mu}^{\Gamma}(E)I_{l',m',\mu'}^{\Gamma'*}(E)
+% \end{equation}
 
-(TODO: decide on notation here - $I$ following ePS notation, $D$
-following old notation (+ Jon), or $R$ for radial...?)
+% And the symmetry/channel indices are denoted by $\Gamma,\Gamma'$
+% for brevity (in general, $\Gamma=\Gamma'$ since the continua are
+% orthogonal).
 
-This is effectively a density matrix (?) (see \href{https://epsproc.readthedocs.io/en/dev/methods/ePSproc_geom_methods_summary_190821-v1-tidy.html}{density mat dev notes}).
+% (TODO: decide on notation here - $I$ following ePS notation, $D$
+% following old notation (+ Jon), or $R$ for radial...?)
 
-\begin{equation}
-\mathbb{I}_{lm\mu,l'm'\mu'}^{\Gamma,\Gamma'}\equiv\mathbf{\rho}_{lm\mu,l'm'\mu'}^{\Gamma,\Gamma'}
-\end{equation}
+% This is effectively a density matrix (?) (see \href{https://epsproc.readthedocs.io/en/dev/methods/ePSproc_geom_methods_summary_190821-v1-tidy.html}{density mat dev notes}).
 
-Where the matrix elements are:
+% \begin{equation}
+% \mathbb{I}_{lm\mu,l'm'\mu'}^{\Gamma,\Gamma'}\equiv\mathbf{\rho}_{lm\mu,l'm'\mu'}^{\Gamma,\Gamma'}
+% \end{equation}
 
-\begin{equation}
-\mathbf{\rho}_{lm\mu,l'm'\mu'}^{\Gamma,\Gamma'}=I_{l,m,\mu}^{p_{i}\mu_{i},p_{f}\mu_{f}}(E)I_{l',m',\mu'}^{p_{i}\mu_{i},p_{f}\mu_{f}*}(E)
-\end{equation}
+% Where the matrix elements are:
 
-Rewrite MF eqn with new term:
+% \begin{equation}
+% \mathbf{\rho}_{lm\mu,l'm'\mu'}^{\Gamma,\Gamma'}=I_{l,m,\mu}^{p_{i}\mu_{i},p_{f}\mu_{f}}(E)I_{l',m',\mu'}^{p_{i}\mu_{i},p_{f}\mu_{f}*}(E)
+% \end{equation}
 
-\begin{equation}
-\beta_{L,-M}^{\Gamma,\Gamma'}(E)=(-1)^{M}\sum_{P,R',R}(2P+1)^{\frac{1}{2}}E_{P-R}(\hat{e};\mu_{0})\sum_{l,m,\mu}\sum_{l',m',\mu'}(-1)^{(\mu'-\mu_{0})}\Lambda_{R',R}(R_{\hat{n}};\mu,P,R,R')B_{L,-M}(l,l',m,m')\mathbb{I}_{lm\mu,l'm'\mu'}^{\Gamma,\Gamma'}(E)
-\end{equation}
+% Rewrite MF eqn with new term:
 
-And AF:
+% \begin{equation}
+% \beta_{L,-M}^{\Gamma,\Gamma'}(E)=(-1)^{M}\sum_{P,R',R}(2P+1)^{\frac{1}{2}}E_{P-R}(\hat{e};\mu_{0})\sum_{l,m,\mu}\sum_{l',m',\mu'}(-1)^{(\mu'-\mu_{0})}\Lambda_{R',R}(R_{\hat{n}};\mu,P,R,R')B_{L,-M}(l,l',m,m')\mathbb{I}_{lm\mu,l'm'\mu'}^{\Gamma,\Gamma'}(E)
+% \end{equation}
 
-\begin{equation}
-\bar{\beta}_{L,-M}^{\Gamma,\Gamma'}(E,t)=(-1)^{M}\sum_{P,R',R}[P]^{\frac{1}{2}}E_{P-R}(\hat{e};\mu_{0})\sum_{l,m,\mu}\sum_{l',m',\mu'}(-1)^{(\mu'-\mu_{0})}\bar{\Lambda}_{R'}(\mu,P,R')B_{L,S-R'}(l,l',m,m')\mathbb{I}_{lm\mu,l'm'\mu'}^{\Gamma,\Gamma'}(E)\sum_{K,Q,S}\Delta_{L,M}(K,Q,S)A_{Q,S}^{K}(t)
-\end{equation}
+% And AF:
 
-In this case, $F_{LS}(q,q')\approx\sum_{\Gamma,\Gamma'}\sum_{l,m,\mu}\sum_{l',m',\mu'}B_{L,S-R'}(l,l',m,m')\mathbb{I}_{lm\mu,l'm'\mu'}^{\Gamma,\Gamma'}(E)$,
-where $F_{LS}(q,q')$ is from Jon's derivation (eqn. 46), except his
-also includes $\varepsilon(\epsilon)$ field term (this is the field
-averaged FT/envelope). Note also that the $A_{Q,S}^{K}$ (ADMs) are
-generally defined by rotational state populations as per eqn. 47.
+% \begin{equation}
+% \bar{\beta}_{L,-M}^{\Gamma,\Gamma'}(E,t)=(-1)^{M}\sum_{P,R',R}[P]^{\frac{1}{2}}E_{P-R}(\hat{e};\mu_{0})\sum_{l,m,\mu}\sum_{l',m',\mu'}(-1)^{(\mu'-\mu_{0})}\bar{\Lambda}_{R'}(\mu,P,R')B_{L,S-R'}(l,l',m,m')\mathbb{I}_{lm\mu,l'm'\mu'}^{\Gamma,\Gamma'}(E)\sum_{K,Q,S}\Delta_{L,M}(K,Q,S)A_{Q,S}^{K}(t)
+% \end{equation}
 
-\section{Channel functions}
+% In this case, $F_{LS}(q,q')\approx\sum_{\Gamma,\Gamma'}\sum_{l,m,\mu}\sum_{l',m',\mu'}B_{L,S-R'}(l,l',m,m')\mathbb{I}_{lm\mu,l'm'\mu'}^{\Gamma,\Gamma'}(E)$,
+% where $F_{LS}(q,q')$ is from Jon's derivation (eqn. 46), except his
+% also includes $\varepsilon(\epsilon)$ field term (this is the field
+% averaged FT/envelope). Note also that the $A_{Q,S}^{K}$ (ADMs) are
+% generally defined by rotational state populations as per eqn. 47.
 
-From book, vol. 2, chpt. 12
+\subsection{Channel functions expansion\label{sec:channel-funs-full}}
 
-\begin{equation}
-\beta_{L,M}^{u}=\sum_{\zeta,\zeta'}\varUpsilon_{L,M}^{u,\zeta\zeta'}\Lambda^{\zeta\zeta'}
-\end{equation}
+Following the tensor components detailed above, the full form of the channel functions can be written as:
 
-and 
+% \begin{equation}
+% \beta_{L,M}^{u}=\sum_{\zeta,\zeta'}\varUpsilon_{L,M}^{u,\zeta\zeta'}\Lambda^{\zeta\zeta'}
+% \end{equation}
 
-\begin{equation}
-\Lambda^{\zeta\zeta'}=\sum_{\Gamma,\Gamma'}\sum_{\mu,\mu'}\sum_{h,h'}b_{hl\lambda}^{\Gamma\mu*}b_{h'l'\lambda'}^{\Gamma'\mu'}\boldsymbol{D}_{hl}^{\Gamma\mu*}(q,\,k)\boldsymbol{D}_{h'l'}^{\Gamma'\mu'}(q',\,k)
-\end{equation}
+% and 
 
-In the current notation, this can be written as:
+% \begin{equation}
+% \Lambda^{\zeta\zeta'}=\sum_{\Gamma,\Gamma'}\sum_{\mu,\mu'}\sum_{h,h'}b_{hl\lambda}^{\Gamma\mu*}b_{h'l'\lambda'}^{\Gamma'\mu'}\boldsymbol{D}_{hl}^{\Gamma\mu*}(q,\,k)\boldsymbol{D}_{h'l'}^{\Gamma'\mu'}(q',\,k)
+% \end{equation}
 
-\begin{equation}
-\beta_{L,M}^{u}=\sum_{\zeta,\zeta'}\varUpsilon_{L,M}^{u,\zeta\zeta'}\mathbb{I}_{\zeta\zeta'}^{\Gamma,\Gamma'}=\sum_{\zeta,\zeta'}\varUpsilon_{L,M}^{u,\zeta\zeta'}\mathbb{I}^{\zeta\zeta'}\equiv\sum_{\zeta,\zeta'}\varUpsilon_{L,M}^{u,\zeta\zeta'}\mathbf{\rho}^{\zeta\zeta'}
-\end{equation}
+% In the current notation, this can be written as:
 
-This is basically the convolution form with channel functions, for
-a given ``experiment'' $u$, summed over all terms $\zeta,\zeta'$
-(the 2nd form assumes that the symmetries are lost in here too, the
-3rd just rewrites as a density matrix).
+% \begin{equation}
+% \beta_{L,M}^{u}=\sum_{\zeta,\zeta'}\varUpsilon_{L,M}^{u,\zeta\zeta'}\mathbb{I}_{\zeta\zeta'}^{\Gamma,\Gamma'}=\sum_{\zeta,\zeta'}\varUpsilon_{L,M}^{u,\zeta\zeta'}\mathbb{I}^{\zeta\zeta'}\equiv\sum_{\zeta,\zeta'}\varUpsilon_{L,M}^{u,\zeta\zeta'}\mathbf{\rho}^{\zeta\zeta'}
+% \end{equation}
 
-The full forms are, therefore:
+% This is basically the convolution form with channel functions, for
+% a given ``experiment'' $u$, summed over all terms $\zeta,\zeta'$
+% (the 2nd form assumes that the symmetries are lost in here too, the
+% 3rd just rewrites as a density matrix).
+
+% The full forms are, therefore:
 
 \begin{equation}
 \varUpsilon_{L,M}^{u,\zeta\zeta'}=(-1)^{M}(2P+1)^{\frac{1}{2}}E_{P-R}(\hat{e};\mu_{0})(-1)^{(\mu'-\mu_{0})}\Lambda_{R',R}(R_{\hat{n}};\mu,P,R,R')B_{L,-M}(l,l',m,m')
+\label{eq:channel-func-defn-MF}
 \end{equation}
 
 \begin{equation}
 \bar{\varUpsilon}_{L,M}^{u,\zeta\zeta'}=(-1)^{M}[P]^{\frac{1}{2}}E_{P-R}(\hat{e};\mu_{0})(-1)^{(\mu'-\mu_{0})}\bar{\Lambda}_{R'}(\mu,P,R')B_{L,S-R'}(l,l',m,m')\Delta_{L,M}(K,Q,S)A_{Q,S}^{K}(t)
-\end{equation}
-
-\section{Final state density matrix}
-
-Write the full final state as a density matrix:
-
-\begin{equation}
-\mathbf{\bar{\rho}}_{L,M}^{\zeta\zeta'}=\varUpsilon_{L,M}^{u,\zeta\zeta'}\mathbf{\rho}^{\zeta\zeta'}
-\end{equation}
-
-Here the density matrix can be interpreted as the final, LF/AF or
-MF density matrix, incorporating both the intrinsic and extrinsic
-effects (i.e. all channel couplings and radial matrix elements for
-the given measurement). The $L,M$notation indicates here that these
-dimensions should not be summed over, hence we can still write the
-tensor coupling into the $\beta_{L,M}^{u}$ parameters:
-
-\begin{equation}
-\beta_{L,M}^{u}=\sum_{\zeta,\zeta'}\mathbf{\bar{\rho}}_{L,M}^{\zeta\zeta'}
+\label{eq:channel-func-defn-AF}
 \end{equation}
 
 
-\section{Matrix inversion formalism\label{app:mat-inversion}}
-
-Following Gregory et. al., the formalism can also be rewritten with
-the ADMs kept separate (see also Reid \& Underwood convolution form),
-with the LF/AF given as (eqn. 4):
-
-\begin{equation}
-\bar{\beta}_{L,M}(E,t)=\sum_{K,Q,S}C_{K,Q,S}^{L,M}(E)A_{Q,S}^{K}(t)
-\end{equation}
-
-($Q=0$ only in Gregory et. al., don't recall if this is general limitation
-however - may be symmetry and/or dimensionality related?)
-
-And the MF (eqn. 10):
-
-\begin{equation}
-\beta_{L,M}(E,\Omega)=\sum_{P,R,\Delta q}C_{P,R}^{L,M}(E,\Delta q)D_{R,\Delta q}^{P}(\Omega)
-\end{equation}
-
-And the transformation can be written as (eqn. 1, 28):
-
-\begin{equation}
-\mathbf{C}^{mol}=\mathbf{G}\mathbf{C}^{lab},\label{eq:basic}
-\end{equation}
-
-\begin{equation}
-C_{P,0}^{L,M}(E,\Delta q)=\hat{G}_{L'0KS}^{LMP\Delta q}\bar{C}_{K,0,S}^{L',0}(E)
-\end{equation}
-
-(Here $M'=Q=R=0$, again not sure if this is required.)
-
-And
-
-\begin{equation}
-\mathbf{G}_{L'M'KS}^{LMP\Delta q}=\mathbf{\Gamma}_{P0\Delta q}^{\zeta\zeta'LM}(\mathbf{\Gamma}_{K0S}^{\zeta\zeta'L^{\prime}M^{\prime}})^{+}
-\end{equation}
-
-Where $+$ denotes the Moore-Penrose inverse matrix.
-
-\begin{equation}
-\bar{C}_{KQS}^{LM}(\epsilon)=\sum_{\zeta\zeta'}d_{\zeta\zeta'}(\epsilon)\Gamma_{KQS}^{\zeta\zeta'LM}
-\end{equation}
-
-\begin{equation}
-C_{PR}^{LM}(\epsilon,\Delta q)=\sum_{\zeta\zeta'}d_{\zeta\zeta'}(\epsilon)\Gamma_{PR\Delta q}^{\zeta\zeta'LM}
-\end{equation}
-
-\begin{equation}
-D_{\zeta}(\epsilon)D_{\zeta'}^{*}(\epsilon)=d_{\zeta\zeta'}(\epsilon)
-\end{equation}
-
-In the current notation, we can rewrite...
-
-\begin{equation}
-\bar{C}_{KQS}^{LM}(\epsilon)=\sum_{\zeta\zeta'}\mathbb{I}_{\zeta\zeta'}^{\Gamma,\Gamma'}(\epsilon)\Gamma_{KQS}^{\zeta\zeta'LM}
-\end{equation}
-
-\begin{eqnarray}
-\Gamma_{KQS}^{\zeta\zeta'LM} & = & (-1)^{M}[P]^{\frac{1}{2}}E_{P-R}(\hat{e};\mu_{0})(-1)^{(\mu'-\mu_{0})}\bar{\Lambda}_{R'}(\mu,P,R')B_{L,S-R'}(l,l',m,m')\Delta_{L,M}(K,Q,S)\\
- & = & \bar{\varUpsilon}_{L,M}^{u,\zeta\zeta'}/A_{Q,S}^{K}(t)
-\end{eqnarray}
-
-\begin{equation}
-C_{PR}^{LM}(\epsilon,\Delta q)=\sum_{\zeta\zeta'}\mathbb{I}_{\zeta\zeta'}^{\Gamma,\Gamma'}(\epsilon)\Gamma_{PR\Delta q}^{\zeta\zeta'LM}
-\end{equation}
-
-\begin{equation}
-\Gamma_{PR\Delta q}^{\zeta\zeta'LM}=(-1)^{M}(2P+1)^{\frac{1}{2}}E_{P-R}(\hat{e};\mu_{0})(-1)^{(\mu'-\mu_{0})}\bar{\Lambda}_{\Delta q}(\mu,P,\Delta q)B_{L,-M}(l,l',m,m')
-\end{equation}
-
-assuming $R'=\Delta q$, and that the rotational matrix element $D_{R,\Delta q}^{P}(\Omega)$
-is computed independently (the current numerical function $\Lambda_{R',R}(R_{\hat{n}};\mu,P,R,R')$
-could possibly used directly here, but this version keeps the angle-dependence
-separate as per the matrix inversion formalism; \textcolor{red}{alternatively
-a new function might be used here?}).

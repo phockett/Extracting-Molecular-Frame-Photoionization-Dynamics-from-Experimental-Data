@@ -1,0 +1,133 @@
+\subsection{Photoionization dynamics\label{sec:dynamics-intro}} 
+
+% [Following is general-ish, but also quite similar to Sect. 4.1 - should make a more careful separation? Would make sense to have some key eqns. here, and elaborate in Sect. 4.]
+
+% [\textbf{PH 27/07/22: tidied to here. TODO: combine the text below with Sect. 4.1, whole section as 3.4: Photoionization dynamics and retrieval. Also move final para up above, and link to dimensionality discussion.}]
+
+% UPDATE: merge now in progress
+% UPDATE: now done, aside from some tidy-up.
+
+The core physics of photoionization has been covered extensively in the literature, and only a very brief overview is provided here with sufficient detail to introduce the MF reconstruction problem; the reader is referred to the literature listed in Appendix \ref{sec:theory-lit} for further details and general discussion. Technical details of the formalism applied for the reconstruction techniques discussed herein can be found in Sect. \ref{sec:tensor-formulation}.
+
+% As already outlined in Sect. \ref{sec:Photo-into}, 
+Photoionization can be described by the coupling of an initial state of the system to a particular final state (photoion(s) plus free photoelectron(s)), coupled by an electric field/photon. Very generically, this can be written as a matrix element $\langle\Psi_i|\hat{\Gamma}(\boldsymbol{\mathbf{E}})|\Psi_f\rangle$, where $\hat{\Gamma}(\boldsymbol{\mathbf{E}})$ defines the light-matter coupling operator (depending on the electric field $\boldsymbol{\mathbf{E}}$), and $\Psi_i$, $\Psi_f$ the total wavefunctions of the initial and final states respectively. 
+
+There are many flavours of this fundamental light-matter interaction, depending on system and coupling; the discussion here is confined to the simplest case of single-photon absorption, in the weak field (or purturbative), dipolar regime, resulting in a single photoelectron. (For more discussion of various approximations in photoionzation, see refs. \cite{Seideman2002,Seideman2001}.)
+% RENDERING ISSUES HERE? REFS in footnote seem to be this issue
+% \footnote{For more discussion of these various approximations in photoionzation, see refs. [see raw tex]}  %\cite{Seideman2002,Seideman2001} . } 
+
+% [29/07/22: the following still needs a bit of polishing for consistency in flow and notation]
+% [TODO: notation may be improved above, as per below? Change i and c?]
+
+Underlying the photoelecton observables is the photoelectron continuum state $\left|\mathbf{k}\right>$, prepared via photoionization.
+% , and assumed herein to be a 1-photon dipolar photoionization event. 
+The photoelectron momentum vector is denoted generally by $\boldsymbol{\mathbf{k}}=k\mathbf{\hat{k}}$, in the MF. %, which can be regarded as loosely interchangable with an $(\epsilon,\theta,\phi)$ spherical polar coordinate system in the MF. 
+The ionization matrix elements associated with this transition %\textbf{provide the set of quantum amplitudes} 
+provide the set of quantum amplitudes completely defining the final continuum scattering state,
+\begin{equation}
+\left|\Psi_f\right> = \sum{\int{\left|\Psi_{+};\bf{k}\right>\left<\Psi_{+};\mathbf{k}|\Psi_f\right> d\bf{k}}},
+\label{eq:cstate}
+\end{equation}
+% \textbf{where the sum is over states of the molecular ion $\left|\Psi_{+}\right>$. The number of these accessed depends on the nature of the ionizing pulse.} 
+where the sum is over states of the molecular ion $\left|\Psi_{+}\right>$. The number of ionic states accessed depends on the nature of the ionizing pulse and interaction. For the dipolar case,
+
+\begin{equation}
+\hat{\Gamma}(\boldsymbol{\mathbf{E}}) = \hat{\mathbf{\mu}}.\boldsymbol{\mathbf{E}}
+\end{equation}
+
+Hence,
+
+\begin{equation}
+\left<\Psi_{+};\mathbf{k}|\Psi_f\right> =\langle\Psi_{+};\,\mathbf{k}|\hat{\mathbf{\mu}}.\boldsymbol{\mathbf{E}}|\Psi_{i}\rangle
+\label{eq:matE-dipole}
+\end{equation}
+
+Where the notation implies a perturbative photoionization event from an initial state $i$ to a particular ion plus electron state following absorption of a photon $h\nu$, % $|\Psi_{i}\rangle\stackrel{h\nu}{\rightarrow}|\Psi_{+};\,\Psi_{e}(\boldsymbol{\mathbf{k}})\rangle$, 
+$|\Psi_{i}\rangle+h\nu{\rightarrow}|\Psi_{+};\boldsymbol{\mathbf{k}}\rangle$, and $\hat{\mu}.\boldsymbol{\mathbf{E}}$ is the usual dipole interaction term \cite{qOptics}, which includes a sum over all electrons $s$ defined in position space as $\mathbf{r_{s}}$:  
+%[Gerry \& Knight - may be older/better refs for this, although G\&K is quite thorough?]
+
+\begin{equation}
+\hat{\mu}=-e\sum_{s}\mathbf{r_{s}}
+\label{eq:dipole-operator}
+\end{equation}
+
+The position space photoelectron wavefunction is typically expressed in the ``partial waves" basis, expanded as (asymptotic) continuum eignstates of orbital angular momentum, with angular momentum components $(l,m)$ (note lower case notation for the partial wave components),  
+
+\begin{equation}
+\Psi_\mathbf{k}(\bm{r})\equiv\left<\bm{r}|\mathbf{k}\right> = \sum_{lm}Y_{lm}(\mathbf{\hat{k}})\psi_{lm}(\bm{r},k)
+\label{eq:elwf}
+\end{equation}
+
+where $\bm{r}$ are MF electronic coordinates and $Y_{lm}(\mathbf{\hat{k}})$ are the spherical harmonics.
+% \textbf{where $\mathbf{r}$ are MF electronic coordinates and $Y_{lm}(\mathbf{\hat{k}})$ are the spherical harmonics.} 
+
+Similarly, the ionization dipole matrix elements can be separated generally into radial (energy-dependent or `dynamical' terms) and geometric (angular momentum) parts (this separation is essentially the Wigner-Eckart Theorem, see Ref. \cite{zareAngMom} for general discussion), and written generally as (using notation similar to \cite{Reid1991}): 
+
+\begin{equation}
+\langle\Psi_{+};\,\mathbf{k}|\hat{\mathbf{\mu}}.\boldsymbol{\mathbf{E}}|\Psi_{i}\rangle = \sum_{lm}\gamma_{l,m}\mathbf{r}_{k,l,m}
+\label{eq:r-kllam}
+\end{equation}
+
+
+Provided that the geometric part of the matrix elements $\gamma_{l,m}$ - which includes the geometric rotations  into the LF arising from the dot product in Eq.~\ref{eq:r-kllam} and other angular-momentum coupling terms - are know, knowledge of the so-called radial (or reduced) dipole matrix elements, at a given 
+% $(\epsilon,t)$ 
+$k$ %(or $(k,t)$ for time-dependent cases) 
+thus equates to a full description of the system dynamics (and, hence, the observables).
+
+% \textbf{Provided that the matrix elements of the geometric rotations into the LF arising from the dot product in Eq.~\ref{eq:r-kllam} are known, which they are typically by the Wigner-Ekart Theorem, knowledge of the so-called radial dipole matrix elements $\mathbf{r}_{k,l,m}=\int\psi_{lm}(\bm{r},k)\mathbf{\mu}\Psi_{i}(\bm{r})d\bm{r}$} at a given 
+% $(\epsilon,t)$ 
+% $k$ (or $(k,t)$ for time-dependent cases) thus equates to a full description of the system (and, hence, the observables).}
+
+% PH 23/08/22: modified the above for generality. Wigner-Eckart is now mentioned above. Forgot to keep the old copy though, and I also don't want to ascribe much more that the geometric-radial separation to it, since most of the other geometric stuff requires additional derivations beyond just the separation into 3j + reduced mat element.
+
+
+For the simplest treatment, the radial matrix element can be approximated as a 1-electron integral involving the initial electronic state (orbital), and final continuum photoelectron wavefunction:
+
+\begin{equation}
+\mathbf{r}_{k,l,m}=\int\psi_{lm}(\bm{r},k)\bm{r}\Psi_{i}(\bm{r})d\bm{r}
+\label{eq:r-kllam-integral}
+\end{equation}
+
+
+As noted above, the geometric terms $\gamma_{l,m}$ are analytical functions which can be computed for a given case - minimally requiring knowledge of the molecular symmetry and polarization geometry, although other factors may also play a role (see Sect. \ref{sec:full-tensor-expansion} for details). 
+% (These, again, follow from application of the Wigner-Eckart theorem, plus further algebraic manipulations.)
+% and the former can be written generally as a (radial dipole) matrix element (using notation similar to \cite{Reid1991}):
+
+
+
+%\textbf{The photoelectron angular distribution (PAD) at a given $(\epsilon,t)$ can then be determined by the squared projection of $\left|\Psi_c\right>$ onto a specific state $\left|\Psi_{+};\bf{k}\right>$, and therefore the amplitudes in Eq.~\ref{eq:r-kllam} which then also determine the observable anisotropy parameters $\beta_{L,M}(\epsilon,t)$. If a number of ionic states are accessed, each state is treated independently.}
+
+
+
+The photoelectron angular distribution (PAD) at a given $(\epsilon,t)$ can then be determined by the squared projection of $\left|\Psi_f\right>$ onto a specific state $\left|\Psi_{+};\bf{k}\right>$ (see Sect. \ref{sec:theoretical-techniques}), and therefore the amplitudes in Eq.~\ref{eq:r-kllam} also determine the observable anisotropy parameters $\beta_{L,M}(\epsilon,t)$ (Eqn. \ref{eq:AF-PAD-general}). (Note that the photoelectron energy $\epsilon$ and momentum $k$ are used somewhat interchangeably herein, with the former usually preferred in reference to observables.) Note, also, that in the treatment above there is no time-dependence incorporated in the notation; however, a time-dependent treatment readily follows, and may be incorporated either as explicit time-dependent modulations in the expansion of the wavefunctions for a given case, or implicitly in the radial matrix elements. Examples of the former include, e.g. a rotational or vibrational wavepacket, or a time-dependent laser field. The rotational wavepacket case is discussed herein (see Sect. \ref{sec:full-tensor-expansion}). The radial matrix elements are a sensitive function of molecular geometry and electronic configuration in general, hence may be considered to be responsive to molecular dynamics, although they are formally time-independent in a Born-Oppenheimer basis - for further general discussion and examples see Ref. \cite{wu2011TimeresolvedPhotoelectronSpectroscopy}; discussions of more complex cases with electronic and nuclear dynamics can be found in Refs.  \cite{arasaki2000ProbingWavepacketDynamics,Seideman2001, Suzuki2001,Stolow2008}.
+
+Typically, for reconstruction experiments, a given measurement will be selected to simplify this as much as possible by, e.g., populating only a single ionic state (or states for which the corresponding observables are experimentally energetically-resolvable), and with a bandwidth $d\bf{k}$ which is small enough such that the matrix elements can be assumed constant. Importantly, the angle-resolved observables are sensitive to the magnitudes and (relative) phases of these matrix elements, and can be considered as angular interferograms (Fig. \ref{781808} top right).
+% If a number of ionic states are accessed, each state is treated independently. [THIS IS MISLEADING, possibly - it's dependent on too many things!]
+%by knowledge of the anisotropy parameters $\beta_{L,M}(\epsilon,t)$, and does not necessarily require knowledge of the matrix elements.
+
+
+\subsection{MF photoionization measurements and matrix element retrieval: approaching the problem and accounting for complexity\label{sec:MF-recon-basic-intro}}
+
+As discussed in Sect. \ref{sec:MF-intro}, MF observables may be sought via (1) direct or (2) indirect methods. Following Sect. \ref{sec:dynamics-intro} the difficulty of both methods may begin to become apparent - both require sophisticated measurements and data analysis, and the underlying photoionization dynamics may be very rich. For (1) the aim is to obtain highly-structured $\beta_{L,M}(\epsilon,t)$ from ``fixed-in-space" molecules, whilst for (2) sufficient measurements must be made to either reconstruct these observables and/or the underlying matrix elements from $\bar{\beta_{L,M}}(\epsilon,t)$ measurements. In both cases experimental measurements are designed, ideally, to avoid averaging over any correlated DOFs which map into the observables (or otherwise account for them in some manner) - specific methods are discussed further in Sect. \ref{sec:experimentalTechniques}.
+
+For indirect methods, the MF observables and/or matrix elements are reconstructed or retrieved from the LF measurements, via inversion or fitting methodologies, and these techniques are the main focus of Sect. \ref{sec:Recon}. The difficulty in matrix element reconstruction in general arises from the fact that there are typically many component partial waves (matrix elements) for even a simple system, and that determination of both magnitudes and phases is required. Hence this can be viewed as a form of quantum tomography, or a specific class of (quantum) phase-retrieval problems. In terms of the MF observable, these properties result in a quantity that may be highly structured and, hence, is (in general) particularly susceptible to orientational averaging (Fig. \ref{781808}). Furthermore, it may be particularly sensitive to averaging over other DOFs (e.g. vibronic states) and/or molecular dynamics, due to inherent sensitivity of the scattering process to molecular structure. Whilst a number of direct and indirect techniques have been used to obtain the relevant MF observables and/or dipole matrix elements, many outstanding questions remain, and this is an ongoing, interesting and challenging area of research \cite{hockett2018QuantumMetrologyPhotoelectrons,hockett2018QuantumMetrologyPhotoelectronsa}.
+
+Although the core physics is complicated, relatively high-dimensionality observables are possible for photoelectron measurements (Sect. \ref{sec:info-content}), hence experimental progress can be made to understand these light-matter interactions. The PAD is the key observable, which may be measured in the LF or MF (see Sect. \ref{sec:Photo-into}), and additionally interrogated as a function of other experimental parameters: of particular interest (and readily amenable to experimental control) are the ionizing field properties (polarization, intensity, wavelength, duration), the axis distribution of the molecular ensemble in the LF (alignment), and orientation in the MF. 
+
+As a reasonable first approximation, photoionization can be treated as a single active electron (SAE) problem, and one in which the remainder of the system is static during the photoionization process (impulsive, or sudden, approximation): this allows the problem to be defined in terms terms of three key components: 
+
+\begin{enumerate}
+\item the initial (ionizing) state (electronic) wavefunction $\Psi_i$ (and the final ion state is assumed to be identical in character, minus the ionizing electron $\Psi_+ = \Psi_i(N-1)$, hence the hole created has the same orbital structure as the ionizing electron),
+\item the structure of the continuum (free electron) wavefunction $\Psi_{k}(\bm{r})$,
+\item the dipole matrix elements coupling these (single electron) wavefunctions.
+\end{enumerate}
+
+% The corresponding photoionization matrix elements can be written as: $\langle\psi_i|\hat{\mu}.\boldsymbol{\mathbf{E}}|\psi_f\rangle$, where the wavefunctions pertain to the active (ionized) electron, and $\hat{\mu}.E$ is the usual dipole term.
+
+However, this problem still remains rather complicated (hence interesting), since the structure of the initial and continuum states depends sensitively on the molecular geometry (atomic positions and electron distribution, i.e. the full vibronic wavefunction) of the ionizing system. Nonetheless, significant progress can be made in both experimental analysis and \textit{ab initio} theory in this reduced case, and the approximations are valid for many interesting real cases (e.g. small, relatively rigid, polyatomics). Naturally, this zero-order treatment also provides a framework within which other effects can be recognised and understood, in terms of which physical assumptions are broken, and certain types of experiment may be sensitive to certain effects and DOFs - for instance, time-resolved observables may map the vibrational dependence, and pulse-intensity studies may indicate if and when the weak-field approximation breaks down.
+
+
+
+% [Below needs finishing with a corresponding appendix, may move to Sect. 4?]
+
+% Beyond the basic case, increasingly sophisticated experimental schemes are now routine for a number of labs \cite{Reid2012}, examples include: state-selected measurements; pump-probe schemes for time-resolved PADs (\cite{Seideman2002} [plus Wu, others?]); control schemes with shaped laser pulse(s), or multipulse schemes, controlling bound or continuum dynamics [Eliott refs, Baumert and related refs]; schemes coupling continuum states for energy-dependent phase measurements [rabbit refs.]; recoil frame (RF) and aligned frame (AF) measurements. These last cases are the focus herein, since they provide a relatively general route to MF observables and related properties.

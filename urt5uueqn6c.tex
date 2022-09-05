@@ -15,11 +15,23 @@
 
 % TODO
 
-\subsubsection{Further bootstrapping: sub-sample size \& fiedelity}
+\subsubsection{Further bootstrapping: sub-sample size \& fidelity}
 
 In cases with noisy data, and/or where uncertainties in fitted parameters remain large, fitting to larger and/or alternative sub-sets of the data may be pursued.
-An obvious route to improvement of the retrieved matrix elements is via the inclusion of additional data points. In the original demonstration \cite{marceau2017MolecularFrameReconstruction}, after an initial 10-point fit, further data was included up to 89 $\beta_{LM}(t)$ [CHECK] to minimise uncertainties in the retrieved matrix elements.\footnote{This procedure was only tested for the X-state in the experimental case, not for the A or B-state datasets, %see ref. \cite{marceau2017MolecularFrameReconstruction}
-and especially the supplementary materials for more details.} Another, similar, route is via traditional statistical bootstrapping, in which fitting is tested for various randomly-selected sub-sets of the data (but the size of the fitted data set is not varied). Additionally, if the channel functions (fitting basis set) are investigate (see Sect. XX below), additional data points may be selected to enhance the sensitivity to certain partial wave components.
+An obvious route to improvement of the retrieved matrix elements is via the inclusion of additional data points. In the original experimental demonstration \cite{marceau2017MolecularFrameReconstruction}, after an initial 10-point fit, further data was included up to 89 $\beta_{LM}(t)$ to minimise uncertainties in the retrieved matrix elements.\footnote{This procedure was only tested for the X-state in the experimental case, not for the A or B-state datasets. %See ref. \cite{marceau2017MolecularFrameReconstruction}
+and especially the supplementary materials for more details.} Another, similar, route is via traditional statistical bootstrapping, in which fitting is tested for various randomly-selected sub-sets of the data (but the size of the fitted data set is not varied). Additionally, if the channel functions (fitting basis set) are investigated (see Sect. \ref{sec:bootstrapping-info-sensitivity}), additional data points may be selected to enhance the sensitivity to certain partial wave components.
+
+In the current case, work is ongoing, %with the PEMtk codebase, 
+but some effort has been made to investigate sampling strategies. In particular, preliminary work using different sample sizes plus additional statistical weightings (statistical bootstrapping) has yielded very promising results. For example, a dataset of 30 t-points equally spaced over the range 3.5~-~4.5~ps (as compared to 4~-~5~ps in the previous demonstration above), with random (Poissionian) statistical weightings additionally applied, yielded:
+
+\begin{itemize}
+\item 30~\% convergence (best $\chi^2$) in 100 test fits.
+\item Standard deviations on the retrieved parameters of $<10^{-4}$ (cf. Table \ref{tab:matE}).
+\item Fideleities on retrieved parameters typically $<10\%$.
+\end{itemize}
+
+However, whilst this appears promising, it is of note that the trends in the fidelity of the retrieved matrix element remained similar to those shown in Table \ref{tab:matE}, with the $l=3$ cases less well-defined, indicating a more fundamental information-content limitation remained; additionally, other tests with the same initial dataset but different statistical weightings did not yield the same high percentage of converged fits with low standard deviation (hence retrieval quality), indicating that more careful and methodical work is required here, perhaps with more sophisticated statistical techniques applied.
+
 
 
 
@@ -29,8 +41,10 @@ and especially the supplementary materials for more details.} Another, similar, 
 In the current case, it is clear that the bootstrapping methodology for obtaining full photoionization matrix elements from time-domain, AF datasets, works well. The current numerical routines in the PEMtk package (and back-end libraries) are relatively stable and fast, and amenable to detailed inspection. However, a range of outstanding questions and routes of investigation remain, for instance:
 
 \begin{itemize}
-\item Scaling to larger problems (larger molecules, more matrix elements). This is currently under investigation, but - based on previous work [REF] - it is anticipated that small polyatomic molecules should be tractable to the basic approach. 
-\item More sophisticated approaches, for instance careful sub-selection of data based on the channel functions, data obtained for additional polarization geometries or with shaped laser pulses [REF]. Such approaches may be expected to yield higher fidelity reconstructions for small polyatomic systems, and may be required for more complex cases.
+\item Scaling to larger problems (larger molecules, more matrix elements). This is currently under investigation, but - based on previous work \cite{hockett2009RotationallyResolvedPhotoelectron, hockett2018QMP2} - it is anticipated that small polyatomic molecules should be tractable to the basic approach. 
+\item More sophisticated approaches, for instance careful sub-selection of data based on the channel functions, data obtained for additional polarization geometries or with shaped laser pulses \cite{hockett2014CompletePhotoionizationExperiments, hockett2015CoherentControlPhotoelectron, hockett2015CompletePhotoionizationExperiments,hockett2018QMP1}. Such approaches may be expected to yield higher fidelity reconstructions for small polyatomic systems, and may be required for more complex cases.
 \item Faster numerical routines, in particular via GPU-based numerics.
-\item Implementation of additional fitting routines, both from standard numerical methods (EG...), and also from related specialised domain problems, for example FROG-type retrieval methods and homotophy approaches. [REFS] 
+\item Implementation of additional fitting routines, both from standard numerical methods, and also from related specialised domain problems, for example phase-retrieval methods developed for optical interferograms and spectrograms (e.g. general FROG-type retrieval methods \cite{trebino2000FrequencyResolvedOpticalGating}, ptychography/holographic techniques \cite{Spangenberg2015b, Spangenberg2015c}) and homotopy \cite{Sommese2005} approaches may be applicable.
+\item Correlations and overlaps with other related/emerging photoionization techniques may also prove fruitful: for instance, photoionization matrix elements are of interest in high-harmonic spectroscopy schemes \cite{Lock2012}, angle-resolved RABBITT \cite{hockett2017AngleresolvedRABBITTTheory,villeneuve2017CoherentImagingAttosecond} and general attosecond ``clocking" and time-delay measurement techniques - in many cases these methods are also directly sensitive to the energy-dependence of the matrix elements, thus providing additional information relative to a basic 1-photon ionization study (albeit with additional complexity), and have recently been of great theoretical interest in the \textit{ab initio} photoionization community \cite{Feist2014,benda2022AnalysisRABITTTime}.
+
 \end{itemize}
