@@ -41,6 +41,8 @@ figures/output_166_1
 figures/output_169_1
 urt5uueqn6c.tex
 ash6n6fh56o.tex
+figures/GFinalplot
+figures/D2h1
 puent6iq4ns.tex
 ep33ka1g1ks.tex
 o16jd373dnc.tex
