@@ -136,6 +136,22 @@ Experimental Data}
 
 
 
+\selectlanguage{english}
+\begin{abstract}
+Methods for experimental reconstruction of molecular frame (MF)
+photoionization dynamics, and related properties - specifically MF
+photoelectron angular distributions (PADs) and continuum density
+matrices - are outlined and discussed. General concepts are introduced
+for the non-expert reader, and experimental and theoretical techniques
+are further outlined in some depth; particular focus is placed on a
+detailed example of numerical reconstruction techniques for
+matrix-element retrieval from time-domain experimental measurements
+making use of rotational-wavepackets (aligned frame measurements).
+Ongoing resources for interested researchers are also introduced,
+including sample data, reconstruction codes (written in python) and
+associated platform, and literature via online repositories; it is hoped
+these resources will be of ongoing use to the community.%
+\end{abstract}%
 
 
 
@@ -159,6 +175,10 @@ Experimental Data}
 % \let\endcenter\endflushleft
 % \maketitle
 % \endgroup
+
+% \section{Abstract}
+
+% Methods for experimental reconstruction of molecular frame (MF) photoionization dynamics, and related properties - specifically MF photoelectron angular distributions (PADs) and continuum density matrices - are outlined and discussed. General concepts are introduced for the non-expert reader, and experimental and theoretical techniques are further outlined in some depth; particular focus is placed on a detailed example of numerical reconstruction techniques for matrix-element retrieval from time-domain experimental measurements making use of rotational-wavepackets (aligned frame measurements). Ongoing resources for interested researchers are also introduced, including sample data, reconstruction codes (written in python) and associated platform, and literature via online repositories; it is hoped these resources will be of ongoing use to the community.
 
 
 % \section*{Document history}
@@ -193,9 +213,7 @@ Experimental Data}
 % \item [{03/05/20}] Outline/rough draft begun on Authorea, based on notes Dec. 2019.
 % \end{description}
 
-\section{Abstract}
 
-Methods for experimental reconstruction of molecular frame (MF) photoionization dynamics, and related properties - specifically MF photoelectron angular distributions (PADs) and continuum density matrices - are outlined and discussed. General concepts are introduced for the non-expert reader, and experimental and theoretical techniques are further outlined in some depth; particular focus is placed on a detailed example of numerical reconstruction techniques for matrix-element retrieval from time-domain experimental measurements making use of rotational-wavepackets (aligned frame measurements). Ongoing resources for interested researchers are also introduced, including sample data, reconstruction codes (written in python) and associated platform, and literature via online repositories; it is hoped these resources will be of ongoing use to the community.
 
 \section{Overview}
 
@@ -271,12 +289,12 @@ In terms of photoionization studies, the aims can be viewed both in terms of con
 A very general issue, of fundamental interest, which falls in the latter categories - and lacks a general solution - is the measurement of observables which depend on the orientation of the molecular frame (MF). In general, this can be regarded as a geometric problem in the spatial (rotational) degrees of freedom, in which the intrinsic MF properties are averaged (or smeared out) in a given measurement. For instance, in a typical gas phase molecular spectroscopy measurement, the observables in the molecular frame  are averaged over all possible molecular orientations in a laboratory frame (LF) measurement. The inverse problem is also difficult, i.e. simulating specific experimental observables starting from \textit{ab initio} calculations in the molecular frame. In this case, to simulate LF results, knowledge of the degree and type of geometric averaging is required, and in some cases \textit{ab initio} calculations need to be carried out for various molecular orientations.
 %\textbf{, or in some cases ab initio calculations need to be carried out for various molecular orientations }. 
 
-Despite, or perhaps because of, the inherent difficulties, obtaining  MF measurements remains a topic of great interest, and much progress in experimental methodologies has been made in recent decades \textsuperscript{\hyperref[csl:14]{14},\hyperref[csl:15]{15},\hyperref[csl:13]{13},\hyperref[csl:12]{12},\hyperref[csl:16]{16},\hyperref[csl:17]{17}}. %[JPB MFPADs special, check book refs.]. 
+Despite, or perhaps because of, the inherent difficulties, obtaining  MF measurements remains a topic of great interest, and much progress in experimental methodologies has been made in recent decades \textsuperscript{\hyperref[csl:14]{14},\hyperref[csl:15]{15},\hyperref[csl:13]{13},\hyperref[csl:12]{12},\hyperref[csl:16]{16},\hyperref[csl:11]{11}}. %[JPB MFPADs special, check book refs.]. 
 These methodologies can be classified, approximately, as (1) relatively direct, meaning that the methodologies seek to control or reconstruct the MF, hence measure MF observables, (somewhat) directly, with minimal data processing requirements. Another avenue to MF observables is via what may be called (2) indirect methodologies. In the current context, this can be defined as techniques which make use of detailed theory and analysis procedures to reconstruct MF properties from LF measurements. Broadly speaking, one can also consider indirect methods as a post-processing or analysis-based approach, with a significant theoretical and computational requirement (akin to computational imaging techniques, as well as many traditional energy-domain spectroscopy techniques), while direct methods are, conceptually, closer to purely experimental methods, with more emphasis placed on detection techniques and capabilities, although significant numerical data analysis may still be required. 
 
-There is, naturally, significant overlap between these extreme case definitions, and most methodologies and extant demonstrations fall somewhere on the spectrum between direct (``purely" experimental) and indirect. In particular, indirect approaches will typically still require some degree of (potentially sophisticated) experimental control, and a set of associated measurements, to be useful - for example, LF measurements with different polarization geometries or with an optically-prepared ensemble; direct measurements usually require specific molecular behaviour(s) and/or preparation in order to measure suitable observables, due to experimental restrictions. Historically these methods have typically been pursued by experimental communities making use of either laser-based (LF, AF and control) or synchrotron-based (MF measurements) experimental methods; whilst the underlying physics is shared, the different classes of experiment typically suit soft (valence photoionization and multi-photon techniques) or hard (core ionization and dissociative photoionization based techniques) photon energies, although the split is not rigourous. However, there is increasingly overlap between the communities, particularly in the last decade or two, with the advent of time-resolved hard photon sources, strong-field laser techniques, and the availability of lasers at synchrotrons and FELs, thus enabling multi-source experiments in the time or frequency domain spanning optical and X-ray wavelengths and methods (for recent perspectives see, for instance, Refs. \textsuperscript{\hyperref[csl:18]{18},\hyperref[csl:19]{19}}).
+There is, naturally, significant overlap between these extreme case definitions, and most methodologies and extant demonstrations fall somewhere on the spectrum between direct (``purely" experimental) and indirect. In particular, indirect approaches will typically still require some degree of (potentially sophisticated) experimental control, and a set of associated measurements, to be useful - for example, LF measurements with different polarization geometries or with an optically-prepared ensemble; direct measurements usually require specific molecular behaviour(s) and/or preparation in order to measure suitable observables, due to experimental restrictions. Historically these methods have typically been pursued by experimental communities making use of either laser-based (LF, AF and control) or synchrotron-based (MF measurements) experimental methods; whilst the underlying physics is shared, the different classes of experiment typically suit soft (valence photoionization and multi-photon techniques) or hard (core ionization and dissociative photoionization based techniques) photon energies, although the split is not rigourous. However, there is increasingly overlap between the communities, particularly in the last decade or two, with the advent of time-resolved hard photon sources, strong-field laser techniques, and the availability of lasers at synchrotrons and FELs, thus enabling multi-source experiments in the time or frequency domain spanning optical and X-ray wavelengths and methods (for recent perspectives see, for instance, Refs. \textsuperscript{\hyperref[csl:17]{17},\hyperref[csl:18]{18}}).
 
-It is also noteworthy that in the context of ultracold physics a number of sophisticated techniques have been developed to coherently populate individual molecular eigenstates \textsuperscript{\hyperref[csl:20]{20}}. While these techniques have yet to be applied to molecular photoionization, recent examples exists of similar techniques applied to atomic photoionization \textsuperscript{\hyperref[csl:21]{21}}.
+It is also noteworthy that in the context of ultracold physics a number of sophisticated techniques have been developed to coherently populate individual molecular eigenstates \textsuperscript{\hyperref[csl:19]{19}}. While these techniques have yet to be applied to molecular photoionization, recent examples exists of similar techniques applied to atomic photoionization \textsuperscript{\hyperref[csl:20]{20}}.
 
 % PH 27/07/22 added this to main text above
 % \textbf{Maybe this goes here, maybe it doesn't, but we should probably mention it somewhere: It is noteworthy that in the context of ultracold physics a number of sophisticated techniques have been developed to coherently populate individual molecular eigenstates} \textsuperscript{(missing citation)}. \textbf{While these techniques have yet to be applied to molecular photoionization, recent examples exists of similar techniques applied to atomic photoionization.} \textsuperscript{(missing citation)}\selectlanguage{english}
@@ -284,7 +302,7 @@ It is also noteworthy that in the context of ultracold physics a number of sophi
 \begin{center}
 \includegraphics[width=1.00\columnwidth]{figures/concepts-fig-draft-010417-02-01/concepts-fig-draft-010417-withAxes}
 \caption{{Conceptual outline for retrieval of MF properties for ``bootstrapping to
-the MF'', via a set of time-resolved measurements and suitable
+the MF``, via a set of time-resolved measurements and suitable
 post-processing scheme. In the LF, a set of laser pulses creates and
 probes an aligned distribution of molecules, and photoelectron images
 are measured. The experimental data is analyzed through a multi-step
@@ -318,9 +336,9 @@ A basic, traditional, example - at least for simple molecules - is the determina
 More generally, one can regard a hierarchy of difficulty in the determination of molecular properties, based on the complexity or dimensionality of the system and observable(s).
 \begin{itemize}
 \item Simple systems, ``1D" methods, where a dataset of a single variable (e.g. rotational energy spectrum) is measured. For simple cases, e.g. rigid diatomic molecules, the determination of molecular properties - the rotational energy levels and, hence, the bond length - is relatively direct. (See, for example, Chpt. 5 in ref. \textsuperscript{\hyperref[csl:6]{6}}.) % [Illustration?]   
-\item Intermediate cases, e.g. larger, but fairly rigid, molecules (for instance, formaldehyde $H_2CO$ and aniline, $C_6NH_7$, as discussed in ref. \textsuperscript{\hyperref[csl:6]{6}}), possibly with congested spectra, the ``direct" determination of molecular properties may not be possible without more sophisticated modelling and ab initio computations, and/or additional information from higher-dimensionality observables (e.g. polarization-dependent energy spectra). An interesting example, and relevant to latter discussion herein, is the use of rotational coherence spectroscopy (RCS) in such cases \textsuperscript{\hyperref[csl:24]{24}} - this can be considered as the narrow-wavepacket limit of more general (non-adiabatic) rotational wavepacket based methods (Sect. \ref{sec:MF-control}).
+\item Intermediate cases, e.g. larger, but fairly rigid, molecules (for instance, formaldehyde $H_2CO$ and aniline, $C_6NH_7$, as discussed in ref. \textsuperscript{\hyperref[csl:6]{6}}), possibly with congested spectra, the ``direct" determination of molecular properties may not be possible without more sophisticated modelling and ab initio computations, and/or additional information from higher-dimensionality observables (e.g. polarization-dependent energy spectra). An interesting example, and relevant to latter discussion herein, is the use of rotational coherence spectroscopy (RCS) in such cases \textsuperscript{\hyperref[csl:23]{23}} - this can be considered as the narrow-wavepacket limit of more general (non-adiabatic) rotational wavepacket based methods (Sect. \ref{sec:MF-control}).
 % \textbf{I think RCS is also used for such systems. Should probably cite something from Fleker.}
-\item For the most complex cases, e.g. large, floppy molecules or complexes \textsuperscript{\hyperref[csl:4]{4},\hyperref[csl:25]{25}}, determination of molecular properties in an absolute sense may be impossible (or, rather, may be a poorly posed question); high level computational results (if possible/tractable) may be required to understand the spectrum, and associated dynamics, along with multi-dimensional observables (e.g. temperature dependent spectra, dependence on isotopically-substituted species and so on).
+\item For the most complex cases, e.g. large, floppy molecules or complexes \textsuperscript{\hyperref[csl:4]{4},\hyperref[csl:24]{24}}, determination of molecular properties in an absolute sense may be impossible (or, rather, may be a poorly posed question); high level computational results (if possible/tractable) may be required to understand the spectrum, and associated dynamics, along with multi-dimensional observables (e.g. temperature dependent spectra, dependence on isotopically-substituted species and so on).
 \end{itemize}    
 
 Whilst this discussion may seem a little arbitrary initially, there is a strong link between traditional rotational spectroscopy and modern molecular alignment techniques (as will be discussed later), and averaging over rotational (geometric) DOFs is key to stepping into the MF in time-domain experiments.
@@ -333,7 +351,7 @@ A (generally) more complicated example is the topic of this article, i.e. the de
 \bar{I}(\epsilon,t,\theta,\phi)=\sum_{L=0}^{2n}\sum_{M=-L}^{L}\bar{\beta}_{L,M}(\epsilon,t)Y_{L,M}(\theta,\phi)\label{eq:AF-PAD-general}
 \end{equation}
 
-Here the flux in the laboratory frame (LF) or aligned frame (AF) is denoted $\bar{I}(\epsilon,t,\theta,\phi)$, with the bar signifying ensemble averaging, and the molecular frame flux by $I(\epsilon,t,\theta,\phi)$.  Similarly, the expansion parameters $\bar{\beta}_{L,M}(\epsilon,t)$ include a bar for the LF/AF case. These observables are generally termed photoelectron angular distributions (PADs), often with a prefix denoting the reference frame, e.g. LFPADs, MFPADs, and the associated expansion parameters $\bar{\beta}_{L,M}(\epsilon,t)$ are generically termed ``anisotropy" parameters. The polar coordinate system $(\theta,\phi)$ is referenced to an experimentally-defined axis in the LF/AF case (usually defined by the laser polarization), and the molecular symmetry axis in the MF (see Fig. \ref{781808}). The spherical harmonic rank and order $(L,M)$ are constrained by experimental factors in the LF/AF, and $n$ is effectively limited by the molecular alignment (which is correlated with the photon-order for gas phase experiments, or conservation of angular momentum in the LF more generally \textsuperscript{\hyperref[csl:26]{26}}), but in the MF is defined by the maximum continuum angular momentum $n=l_{max}$ imparted by the scattering event \textsuperscript{\hyperref[csl:27]{27}}. 
+Here the flux in the laboratory frame (LF) or aligned frame (AF) is denoted $\bar{I}(\epsilon,t,\theta,\phi)$, with the bar signifying ensemble averaging, and the molecular frame flux by $I(\epsilon,t,\theta,\phi)$.  Similarly, the expansion parameters $\bar{\beta}_{L,M}(\epsilon,t)$ include a bar for the LF/AF case. These observables are generally termed photoelectron angular distributions (PADs), often with a prefix denoting the reference frame, e.g. LFPADs, MFPADs, and the associated expansion parameters $\bar{\beta}_{L,M}(\epsilon,t)$ are generically termed ``anisotropy" parameters. The polar coordinate system $(\theta,\phi)$ is referenced to an experimentally-defined axis in the LF/AF case (usually defined by the laser polarization), and the molecular symmetry axis in the MF (see Fig. \ref{781808}). The spherical harmonic rank and order $(L,M)$ are constrained by experimental factors in the LF/AF, and $n$ is effectively limited by the molecular alignment (which is correlated with the photon-order for gas phase experiments, or conservation of angular momentum in the LF more generally \textsuperscript{\hyperref[csl:25]{25}}), but in the MF is defined by the maximum continuum angular momentum $n=l_{max}$ imparted by the scattering event \textsuperscript{\hyperref[csl:26]{26}}. 
 % VM: \textbf{Is the largest value of L necessarily even? I guess maybe so.} PH: yes, has to be from the 3js, i.e. always have Lmax = lmax + l'max = 2lmax.
 
 For basic cases these limits may be low: for instance, a simple 1-photon photoionization event ($n=1$) from an isotropic ensemble (zero net ensemble angular momentum) defines $L_{max}=2$; for cylindrically symmetric cases (i.e. $D_{\infty h}$ symmetry) $M=0$ only. For MF cases, $l_{max}=4$ is often given as a reasonable rule-of-thumb for the continuum - hence $L_{max}=8$ - although in practice higher-$l$ may be populated. For a realistic example see Sect. \ref{sec:bootstrapping}, and ref. \textsuperscript{\hyperref[csl:11]{11}} for more discussion and complex examples.
@@ -368,7 +386,7 @@ A broad conceptual overview for a time-dependent measurement scheme and associat
 
 % A broad conceptual overview for a time-dependent measurement scheme and associated observables is illustrated in Fig. \ref{781808}; although the figure shows a specific experimental scheme, the concepts are general. Note, in particular that the LF measurements involve averaging over an ensemble of molecules with different orientations, leading to averaging over the molecular frame observables, which are highly structured. Compare, in particular, the full MFPADs ($I(\theta,\phi)$ shown in the bottom left panel, with the relatively unstructured - but time-dependent - LFPADs ($\bar{I}(\theta,t)$) shown in the bottom right panel. In this particular example, each time-dependent measurement involves averaging over a different alignment of the ensemble, and represent a rich dataset for retrieving matrix elements and reconstruction of the MFPADs. In cases - such as this example - where the time-dependence is purely geometric, and is separable from the ionization matrix elements, the total information content can be broadly viewed as the number of sets of $\{L,M\}$ at a given $\epsilon$.
 
-% The difficulty in reconstruction in general arises from the fact that there are typically many component partial waves (matrix elements) for even a simple system, and that determination of both magnitudes and phases is required. Hence this can be viewed as a form of quantum tomography, or a specific class of (quantum) phase-retrieval problems. In terms of the MF observable, these properties result in a quantity that may be highly structured and, hence, is (in general) particularly susceptible to orientational averaging. Furthermore, it may be particularly sensitive to averaging over other DOFs (e.g. vibronic states) and/or molecular dynamics, due to inherent sensitivity of the scattering process to molecular structure. Whilst a number of direct and indirect techniques have been used to obtain the relevant MF observables and/or dipole matrix elements, many outstanding questions remain, and this is an ongoing, interesting and challenging area of research \textsuperscript{\hyperref[csl:17]{17},\hyperref[csl:28]{28}}.
+% The difficulty in reconstruction in general arises from the fact that there are typically many component partial waves (matrix elements) for even a simple system, and that determination of both magnitudes and phases is required. Hence this can be viewed as a form of quantum tomography, or a specific class of (quantum) phase-retrieval problems. In terms of the MF observable, these properties result in a quantity that may be highly structured and, hence, is (in general) particularly susceptible to orientational averaging. Furthermore, it may be particularly sensitive to averaging over other DOFs (e.g. vibronic states) and/or molecular dynamics, due to inherent sensitivity of the scattering process to molecular structure. Whilst a number of direct and indirect techniques have been used to obtain the relevant MF observables and/or dipole matrix elements, many outstanding questions remain, and this is an ongoing, interesting and challenging area of research \textsuperscript{\hyperref[csl:27]{27},\hyperref[csl:28]{28}}.
 
 
 \subsection{Photoionization dynamics\label{sec:dynamics-intro}} 
@@ -483,7 +501,7 @@ Typically, for reconstruction experiments, a given measurement will be selected 
 
 As discussed in Sect. \ref{sec:MF-intro}, MF observables may be sought via (1) direct or (2) indirect methods. Following Sect. \ref{sec:dynamics-intro} the difficulty of both methods may begin to become apparent - both require sophisticated measurements and data analysis, and the underlying photoionization dynamics may be very rich. For (1) the aim is to obtain highly-structured $\beta_{L,M}(\epsilon,t)$ from ``fixed-in-space" molecules, whilst for (2) sufficient measurements must be made to either reconstruct these observables and/or the underlying matrix elements from $\bar{\beta_{L,M}}(\epsilon,t)$ measurements. In both cases experimental measurements are designed, ideally, to avoid averaging over any correlated DOFs which map into the observables (or otherwise account for them in some manner) - specific methods are discussed further in Sect. \ref{sec:experimentalTechniques}.
 
-For indirect methods, the MF observables and/or matrix elements are reconstructed or retrieved from the LF measurements, via inversion or fitting methodologies, and these techniques are the main focus of Sect. \ref{sec:Recon}. The difficulty in matrix element reconstruction in general arises from the fact that there are typically many component partial waves (matrix elements) for even a simple system, and that determination of both magnitudes and phases is required. Hence this can be viewed as a form of quantum tomography, or a specific class of (quantum) phase-retrieval problems. In terms of the MF observable, these properties result in a quantity that may be highly structured and, hence, is (in general) particularly susceptible to orientational averaging (Fig. \ref{781808}). Furthermore, it may be particularly sensitive to averaging over other DOFs (e.g. vibronic states) and/or molecular dynamics, due to inherent sensitivity of the scattering process to molecular structure. Whilst a number of direct and indirect techniques have been used to obtain the relevant MF observables and/or dipole matrix elements, many outstanding questions remain, and this is an ongoing, interesting and challenging area of research \textsuperscript{\hyperref[csl:17]{17},\hyperref[csl:28]{28}}.
+For indirect methods, the MF observables and/or matrix elements are reconstructed or retrieved from the LF measurements, via inversion or fitting methodologies, and these techniques are the main focus of Sect. \ref{sec:Recon}. The difficulty in matrix element reconstruction in general arises from the fact that there are typically many component partial waves (matrix elements) for even a simple system, and that determination of both magnitudes and phases is required. Hence this can be viewed as a form of quantum tomography, or a specific class of (quantum) phase-retrieval problems. In terms of the MF observable, these properties result in a quantity that may be highly structured and, hence, is (in general) particularly susceptible to orientational averaging (Fig. \ref{781808}). Furthermore, it may be particularly sensitive to averaging over other DOFs (e.g. vibronic states) and/or molecular dynamics, due to inherent sensitivity of the scattering process to molecular structure. Whilst a number of direct and indirect techniques have been used to obtain the relevant MF observables and/or dipole matrix elements, many outstanding questions remain, and this is an ongoing, interesting and challenging area of research \textsuperscript{\hyperref[csl:11]{11},\hyperref[csl:36]{36}}.
 
 Although the core physics is complicated, relatively high-dimensionality observables are possible for photoelectron measurements (Sect. \ref{sec:info-content}), hence experimental progress can be made to understand these light-matter interactions. The PAD is the key observable, which may be measured in the LF or MF (see Sect. \ref{sec:Photo-into}), and additionally interrogated as a function of other experimental parameters: of particular interest (and readily amenable to experimental control) are the ionizing field properties (polarization, intensity, wavelength, duration), the axis distribution of the molecular ensemble in the LF (alignment), and orientation in the MF. 
 
@@ -566,17 +584,17 @@ in the gas phase molecular ensemble, which defines a relationship between the LF
 % \textbf{classical} 
 classical limit of perfect orientation, the AF and MF are conformal/indistinguishable. 
 
-Perhaps the simplest AF technique is the creation of alignment via a single-photon pump process (as used in many resonance-enhanced mulit-photon ionization (REMPI) type experimental schemes, which may even be rotational-state selected); in this case a parallel or perpendicular transition moment will create a $\cos^2(\theta)$ or $\sin^2(\theta)$ distribution, respectively, of the corresponding molecular axis. Any such axis distribution, in which there is a defined arrangement of axes created in the LF, can be discussed, and characterised, in terms of the axis distribution moments (ADMs), typically expressed as an expansion in Wigner D-Matrix Elements (see Sect. \ref{sec:full-tensor-expansion}). These are spherical multipole tensors, and can be equivalently described by a density matrix \textsuperscript{\hyperref[csl:36]{36}}. Many authors have address aspects of this problem in the past in frequency-domain work, see, for instance, the textbooks of Zare \textsuperscript{\hyperref[csl:32]{32}} and Blum \textsuperscript{\hyperref[csl:36]{36}}, treatments for various experimental cases in Refs. \textsuperscript{\hyperref[csl:37]{37},\hyperref[csl:38]{38},\hyperref[csl:39]{39}}, and application in complete photoionization experiments in Refs. \textsuperscript{\hyperref[csl:40]{40},\hyperref[csl:41]{41}}.
+Perhaps the simplest AF technique is the creation of alignment via a single-photon pump process (as used in many resonance-enhanced mulit-photon ionization (REMPI) type experimental schemes, which may even be rotational-state selected); in this case a parallel or perpendicular transition moment will create a $\cos^2(\theta)$ or $\sin^2(\theta)$ distribution, respectively, of the corresponding molecular axis. Any such axis distribution, in which there is a defined arrangement of axes created in the LF, can be discussed, and characterised, in terms of the axis distribution moments (ADMs), typically expressed as an expansion in Wigner D-Matrix Elements (see Sect. \ref{sec:full-tensor-expansion}). These are spherical multipole tensors, and can be equivalently described by a density matrix \textsuperscript{\hyperref[csl:37]{37}}. Many authors have address aspects of this problem in the past in frequency-domain work, see, for instance, the textbooks of Zare \textsuperscript{\hyperref[csl:32]{32}} and Blum \textsuperscript{\hyperref[csl:37]{37}}, treatments for various experimental cases in Refs. \textsuperscript{\hyperref[csl:38]{38},\hyperref[csl:39]{39},\hyperref[csl:40]{40}}, and application in complete photoionization experiments in Refs. \textsuperscript{\hyperref[csl:41]{41},\hyperref[csl:42]{42}}.
 % \textbf{Wigner D-Matrix Elements}.)
 
 Further control can be gained via a single, or sequence of, N-photon transitions, or strong-field mediated techniques. Of the latter, adiabatic and non-adiabatic alignment methods are particularly powerful, and make use of a strong, slowly-varying or impulsive laser field respectively. (Here the ``slow" and ``impulsive" time-scales are defined in relation to molecular rotations, roughly on the ps time-scale, with ns and fs laser fields corresponding to the typical slow and fast control fields.) In the former case, the molecular axis, or axes, will gradually align along the electric-field vector(s) while the field is present; in the latter a broad rotational wavepacket (RWP) can be created, initiating complex rotational dynamics including field-free revivals of ensemble alignment. Both techniques are powerful, but multiple laser fields are typically required in order to control more than one molecular axis, leading to relatively complex experimental requirements. The absolute degree of alignment obtained in a given case is also dependent on a number of intrinsic and experimental properties, including the molecular polarisability 
 % \textbf{and moment of inertia} 
-and moment of inertia tensors, rotational temperature and separability of the rotational degrees of freedom from other DOFs (loosely speaking, this can be considered in terms of the stiffness of the molecule). Therefore, although general in principle, in practice not all molecular targets are amenable to ``good" (i.e. a high degree of) alignment. For more general details, see, for example, Refs. \textsuperscript{\hyperref[csl:42]{42},\hyperref[csl:43]{43}}, and for applications in photoionization see Sect. \ref{sec:theory-lit}.
+and moment of inertia tensors, rotational temperature and separability of the rotational degrees of freedom from other DOFs (loosely speaking, this can be considered in terms of the stiffness of the molecule). Therefore, although general in principle, in practice not all molecular targets are amenable to ``good" (i.e. a high degree of) alignment. For more general details, see, for example, Refs. \textsuperscript{\hyperref[csl:43]{43},\hyperref[csl:44]{44}}, and for applications in photoionization see Sect. \ref{sec:theory-lit}.
 
-Whilst gas phase alignment experiments can become rather complex, multi-pulse affairs, they are increasingly popular in the AMO community for a number of possible reasons - conceptually and experimentally, they are a relatively tractable extension to existing techniques, they are interesting experiments in their own right, and, practically, they are usually feasible with existing high-power pulsed laser sources in the ns to fs regime. Alignment techiques have been combined with a range of different probes, including non-linear and high-harmonic optical probes, as well as photoionization-based methods - for recent reviews see \textsuperscript{\hyperref[csl:44]{44},\hyperref[csl:42]{42}}. 
+Whilst gas phase alignment experiments can become rather complex, multi-pulse affairs, they are increasingly popular in the AMO community for a number of possible reasons - conceptually and experimentally, they are a relatively tractable extension to existing techniques, they are interesting experiments in their own right, and, practically, they are usually feasible with existing high-power pulsed laser sources in the ns to fs regime. Alignment techiques have been combined with a range of different probes, including non-linear and high-harmonic optical probes, as well as photoionization-based methods - for recent reviews see \textsuperscript{\hyperref[csl:45]{45},\hyperref[csl:43]{43}}. 
 
 An alternative, very different, technique of orientational control is via embedding the target species in a matrix, or via deposition on a surface, which defines a spatial orientation. This approach has been taken primarily by the surface science community, and the required methods may often be readily applied to a range of targets using existing experimental apparatus and techniques (hence their ready adoption, analogous to the ready adoption of multi-pulse laser schemes in the gas phase community), combined with suitably-prepared surfaces. Although not the topic of this manuscript, there is certainly work in this vein conceptually related to the discussions herein, including ARPES (angle-resolved photoemission spectroscopy) and SERS (surface-enhanced, coherent anti-Stokes Raman scattering) studies. In these techniques, molecular orientation is well-defined, but at the expense of interactions with the bulk - although the latter may also be of interest and/or probed by the measurement. 
-Examples include ARPES studies in which orbital densities of adsorbed species are reconstructed (``orbital tomography") \textsuperscript{\hyperref[csl:45]{45},\hyperref[csl:46]{46}}, and SERS work making use of functionalised nano-particles for ``single molecule" fluorescence studies of vibrational wavepackets \textsuperscript{\hyperref[csl:47]{47}}. 
+Examples include ARPES studies in which orbital densities of adsorbed species are reconstructed (``orbital tomography") \textsuperscript{\hyperref[csl:46]{46},\hyperref[csl:47]{47}}, and SERS work making use of functionalised nano-particles for ``single molecule" fluorescence studies of vibrational wavepackets \textsuperscript{\hyperref[csl:48]{48}}. 
 % [more to say on ARPES?] \textbf{ Don't know enough about this stuff, so will refrain from commenting.}
 
 % [Anything on cold molecules?] \textbf{ I think the single sentence in 3.2 referring to the review article is sufficient. We can move it here if that works better.} Agreed!
@@ -606,19 +624,19 @@ Examples include ARPES studies in which orbital densities of adsorbed species ar
 
 The second category covers methodologies which make use of experimental information to reconstruct, post-facto, molecular alignment at the time of a light-matter interaction. This usually involves making a ``kinematically complete" class of measurement, which provides the full energy or momentum partitioning of the products of a light-matter interaction. In order for the alignment of a given axis to be defined in this case, there must be a clear energy partitioning defining it - typically dissociation is required, although some axes in a given problem may be inferred from related or proxy measurements. The simplest example is the dissociation of a diatomic molecule, in this case measuring the momentum of just one product atom/ion will enable the original orientation of the molecule to be determined 
 % \textbf{provided the molecule does not rotate while dissociating}. 
-provided the molecule does not rotate while dissociating (i.e. photodisociation is also sudden/impulsive, or equivalently geometrically-uncoupled - otherwise this remains a DOF to be averaged over, resulting in ``recoil-frame" (RF) measurements!). Combined with measurement of an electron, in coincidence, the MF photoelectron distribution can be recovered from a set of such measurements. Recent discussions and reviews of this area can be found in refs. \textsuperscript{\hyperref[csl:48]{48},\hyperref[csl:13]{13},\hyperref[csl:49]{49},\hyperref[csl:16]{16},\hyperref[csl:50]{50}}, and some (representative) examples from the literature are given in Sect. \ref{appendix:MF-expt}.
+provided the molecule does not rotate while dissociating (i.e. photodisociation is also sudden/impulsive, or equivalently geometrically-uncoupled - otherwise this remains a DOF to be averaged over, resulting in ``recoil-frame" (RF) measurements!). Combined with measurement of an electron, in coincidence, the MF photoelectron distribution can be recovered from a set of such measurements. Recent discussions and reviews of this area can be found in refs. \textsuperscript{\hyperref[csl:49]{49},\hyperref[csl:13]{13},\hyperref[csl:50]{50},\hyperref[csl:16]{16},\hyperref[csl:51]{51}}, and some (representative) examples from the literature are given in Sect. \ref{appendix:MF-expt}.
 
 
-Further extensions to such a measurement can probe additional dynamics in the MF, for instance electron-electron correlation effects in double ionization \textsuperscript{\hyperref[csl:51]{51}}. %or bond-length dependence of the observable when recoil energy of the ion is measured [ref. multiple early 2000 Dorner papers. \textbf{Also Dowek and Lucchese should be cited somewhere here.} ]. 
-For larger molecules this becomes more complicated, and additionally requires that axial-recoil conditions are fulfilled (i.e. energy is not partitioned into other DOFs during dissociation). Such measurements are, therefore, well-suited to diatomics, and small polyatomics, and light-matter interactions involving core-ionization(s) events. For valence studies these techniques are less directly applicable, since dissociative events are less common (and may be slow/complex), although potentially can be applied in Coulomb-explosion imaging (CEI) type scenarios. In CEI methods, intense fields are used to strip multiple electrons from the target system, causing the molecule to (Coulombically) explode. Provided the intense pulse is short (relative to time-scales of atomic motion), measurement of multiple ionic fragments yields a map of the geometry of the system at the instant of the interaction \textsuperscript{\hyperref[csl:52]{52},\hyperref[csl:53]{53},\hyperref[csl:54]{54}}. 
+Further extensions to such a measurement can probe additional dynamics in the MF, for instance electron-electron correlation effects in double ionization \textsuperscript{\hyperref[csl:52]{52}}. %or bond-length dependence of the observable when recoil energy of the ion is measured [ref. multiple early 2000 Dorner papers. \textbf{Also Dowek and Lucchese should be cited somewhere here.} ]. 
+For larger molecules this becomes more complicated, and additionally requires that axial-recoil conditions are fulfilled (i.e. energy is not partitioned into other DOFs during dissociation). Such measurements are, therefore, well-suited to diatomics, and small polyatomics, and light-matter interactions involving core-ionization(s) events. For valence studies these techniques are less directly applicable, since dissociative events are less common (and may be slow/complex), although potentially can be applied in Coulomb-explosion imaging (CEI) type scenarios. In CEI methods, intense fields are used to strip multiple electrons from the target system, causing the molecule to (Coulombically) explode. Provided the intense pulse is short (relative to time-scales of atomic motion), measurement of multiple ionic fragments yields a map of the geometry of the system at the instant of the interaction \textsuperscript{\hyperref[csl:53]{53},\hyperref[csl:54]{54},\hyperref[csl:55]{55}}. 
 
 Another caveat for this class of measurement is the requirement for coincidence (or covariance) data collection, which typically limits count rates significantly, as well as the total number of products which may be feasibly measured - although the requirements may be somewhat relaxed for covariance studies. For these various reasons, amongst others, these experiments have typically been performed at synchrotons (and, recently, at FELs) with high repetition rates (high KHz, MHz) and at hard photon energies - although laser-based experiments are also relatively common, particularly in the strong-field community, and may become more so as sources with high-repetition rates and high peak intensities become commercially available. 
 
 Recent state-of-the-art MF measurements have successfully measured 4-fold coincidences, and 5-particle covariance maps, in order to map polyatomic molecules and vibrational dynamics; %[Dorner and Boll refs]
-for a recent example, illustrating the power of such a technique for CEI imaging of iodopyridine and iodopyrazine, see Ref.   \textsuperscript{\hyperref[csl:55]{55}}. However, to date these techniques have mainly been used as structural (nuclear) probes; in terms of MFPAD measurements, these techniques remain very challenging, since the CEI schemes required produce many secondary electrons which cannot typically be distinguished. 
+for a recent example, illustrating the power of such a technique for CEI imaging of iodopyridine and iodopyrazine, see Ref.   \textsuperscript{\hyperref[csl:56]{56}}. However, to date these techniques have mainly been used as structural (nuclear) probes; in terms of MFPAD measurements, these techniques remain very challenging, since the CEI schemes required produce many secondary electrons which cannot typically be distinguished. 
 
 
-% [somethign about detector tech...?][COLTRIMS \textsuperscript{\hyperref[csl:56]{56},\hyperref[csl:57]{57},\hyperref[csl:58]{58}}, x-ray diffraction] \textsuperscript{\hyperref[csl:51]{51}}
+% [somethign about detector tech...?][COLTRIMS \textsuperscript{\hyperref[csl:57]{57},\hyperref[csl:58]{58},\hyperref[csl:59]{59}}, x-ray diffraction] \textsuperscript{\hyperref[csl:52]{52}}
 
 \subsubsection{Post-processing \& ``complete" photoionization studies: MF via reconstruction\label{sec:MF-recon-expt}}
 
@@ -627,11 +645,11 @@ for a recent example, illustrating the power of such a technique for CEI imaging
 A significant issue with ``direct" experimental approaches to the MF is the difficulty of the measurement, and the degree of MF fidelity obtained, particularly in more complex systems. (Related to this is the issue of whether the free system is measured, or whether it is purturbed in some way, e.g. by an alignment laser field or a coupled system.) A complementary approach is to employ a post-processing approach in which underlying MF properties, possibly even the full set of photoionization matrix elements, are sought from LF or AF measurements, as already introduced in Sect. \ref{sec:MF-recon-basic-intro}. Such schemes are potentially demanding and complex in terms of the computational effort required to post-process the experimental data, but may also be significantly less demanding experimentally than direct MF measurements; such schemes additionally have the potential to provide more fundamental information on photoionization dynamics.
 
 Experimental techniques to generate suitable datasets for analysis are many and varied, and include the direct analysis of MF measurements to obtain the underlying photoionization dynamics, the use of frequency- resolved methods, and the use of molecular alignment techniques. Some representative examples of such ``complete" photoionization studies from the literature are given in Sect. \ref{sec:CompleteLit}. %, and it is also of note that other fields have approached similar . 
-The main focus of Sect. \ref{sec:Recon} is the analysis of time-resolved data from an aligned system with a prepared RWP, although retrieval from the MF is also investigated herein (Sect. \ref{sec:recon-from-MFPADs}). Whilst the RWP case is experimentally similar to the ``direct" MF measurement case outlined above, the requirements on the degree of alignment are much reduced, since the fidelity arises from the analysis, rather than the absolute maximum degree of alignment obtained. Specifically, the fidelity of the reconstruction can be considered as a result of the total information content of the time-domain measurement (related to the number of distinct molecular axis distributions probed), as distinct from the ``direct" case which is constrained by a single measurement at the best alignment or orientation obtained - in practice this needs to be extremely good to truly approach MF information in general, and this may not be possible in many cases; it will also be constrained in general by the symmetry of the problem. For an example case study, see Ref. \textsuperscript{\hyperref[csl:59]{59}}, which suggests $\langle\cos^2(\theta)\rangle>0.9$ as a \textit{minimum} requirement, for measurements of relatively simple, cylindrically-symmetric, MFPADs; another illustrative example of the loss of information in the MF to LF transformation can be found in Ref. \textsuperscript{\hyperref[csl:60]{60}}.
-%[Refs \textsuperscript{\hyperref[csl:60]{60}} plus Seidemann works and Reid gaussian wavepacket - could cite some specific numbers from these. Big RWP paper too?]
+The main focus of Sect. \ref{sec:Recon} is the analysis of time-resolved data from an aligned system with a prepared RWP, although retrieval from the MF is also investigated herein (Sect. \ref{sec:recon-from-MFPADs}). Whilst the RWP case is experimentally similar to the ``direct" MF measurement case outlined above, the requirements on the degree of alignment are much reduced, since the fidelity arises from the analysis, rather than the absolute maximum degree of alignment obtained. Specifically, the fidelity of the reconstruction can be considered as a result of the total information content of the time-domain measurement (related to the number of distinct molecular axis distributions probed), as distinct from the ``direct" case which is constrained by a single measurement at the best alignment or orientation obtained - in practice this needs to be extremely good to truly approach MF information in general, and this may not be possible in many cases; it will also be constrained in general by the symmetry of the problem. For an example case study, see Ref. \textsuperscript{\hyperref[csl:60]{60}}, which suggests $\langle\cos^2(\theta)\rangle>0.9$ as a \textit{minimum} requirement, for measurements of relatively simple, cylindrically-symmetric, MFPADs; another illustrative example of the loss of information in the MF to LF transformation can be found in Ref. \textsuperscript{\hyperref[csl:61]{61}}.
+%[Refs \textsuperscript{\hyperref[csl:61]{61}} plus Seidemann works and Reid gaussian wavepacket - could cite some specific numbers from these. Big RWP paper too?]
 % (see Sect. \ref{sec:bootstrapping-info-sensitivity})
 
-This implies that reconstruction methods may be rather more general, and the RWP case in particular is expected to be applicable to any molecular system, although outstanding questions on the required and obtainable information content remain (see Sect. \ref{sec:info-content}). Questions of fidelity of reconstruction are also a matter of ongoing research, since this will, again, depend on both the type and nature of the experimental measurements, and the reconstruction methodology, both of which may involve or assume certain additional DOFs or physical behaviours which are required for tractable theory but may not hold in practice. Examples include cases with multiple conformers, floppy systems and the presence of additional (e.g. vibrational) dynamics. In all cases progress may be possible, but will require additional experimental and/or computational effort to control, isolate, simulate or reconstruct the additional DOFs. (See Ref. \textsuperscript{\hyperref[csl:61]{61}} for a ``basic" theoretical vibrational wavepacket example in $Na_2$, and for a more complex case in $CS_2$ Ref. \textsuperscript{\hyperref[csl:62]{62}}.)
+This implies that reconstruction methods may be rather more general, and the RWP case in particular is expected to be applicable to any molecular system, although outstanding questions on the required and obtainable information content remain (see Sect. \ref{sec:info-content}). Questions of fidelity of reconstruction are also a matter of ongoing research, since this will, again, depend on both the type and nature of the experimental measurements, and the reconstruction methodology, both of which may involve or assume certain additional DOFs or physical behaviours which are required for tractable theory but may not hold in practice. Examples include cases with multiple conformers, floppy systems and the presence of additional (e.g. vibrational) dynamics. In all cases progress may be possible, but will require additional experimental and/or computational effort to control, isolate, simulate or reconstruct the additional DOFs. (See Ref. \textsuperscript{\hyperref[csl:62]{62}} for a ``basic" theoretical vibrational wavepacket example in $Na_2$, and for a more complex case in $CS_2$ Ref. \textsuperscript{\hyperref[csl:63]{63}}.)
 
 A benchmark example is the retrieval of the photoionization dynamics of $N_2$, since this is a simple, fairly rigid, system amenable to experimental control ($NO$ has also been investigated by a number of authors, see Sect. \ref{sec:CompleteLit}). The authors of this manuscript, with a number of collaborators, demonstrated that photoionization matrix elements can be retrieved for one-photon ionisation of $N_2$ by time resolved measurements of LFPADs from a rotational wavepacket. The experiments did achieve a relatively high degree of alignment via a two-pulse pump scheme, with a maximum $\langle\cos^2(\theta)\rangle$ of $\sim 0.8$, and 11 temporal data-points (obtained over the half and full RWP revivals) were found to be sufficient for full matrix element retrieval and MFPAD reconstruction. This methodology, ``bootstrapping to the molecular frame", is the focus of Sect. \ref{sec:bootstrapping} below, with additional details and results provided for the case of radial matrix element extraction for N$_2$.  In follow up work, it was shown that for molecules with $D_{nh}$ point group symmetry the retrieval of the MFPAD is possible directly via a matrix inversion methodology, bypassing the difficulty of extracting the radial matrix elements, and this is discussed in Sect. \ref{sec:Matrix-inversion-example}.
 
@@ -644,9 +662,9 @@ A benchmark example is the retrieval of the photoionization dynamics of $N_2$, s
 
 A final note on experimental methods is the possibilities afforded by technological (rather than conceptual) developments. Naturally, the techniques above rely on a certain degree of experimental and technological sophistication, and this, of course, generally increases over time as a technique matures and ``enabling" technologies develop. Examples, in this context, are the development of, and gradual improvements in, particle imaging detectors. Such progress allows for more sophisticated experiments with, e.g. multi-particle coincidence detection, higher detection rates, energy-multiplexed measurements and so on. In short, the experimental dimensionality or information content can be increased. For developing general methods, which can be applied in complex cases, this becomes increasingly important (as do related technological capabilities, such as data storage and processing, to handle the enhanced complexity). 
 
-Historically, photoionization measurement capabilities have gone from 1D (flux) and 2D (flux and kinetic energy) in the early days, advanced to sequential or parallel measurements at different angles for various flavours of angle-resolved studies, and to full 3D or 4D capabilities in modern ``imaging" type systems (flux and 2D or 3D kinetic energy vector resolution), with the possibility of additional experimental measurement dimensions such as time, polarisation, laser power, wavelength and so forth. Advances in experimental methods, in particular the development of high count-rate 3D detectors, is ongoing (see, for examples and historical context, \textsuperscript{\hyperref[csl:63]{63},\hyperref[csl:57]{57},\hyperref[csl:64]{64},\hyperref[csl:65]{65},\hyperref[csl:66]{66}}). 
+Historically, photoionization measurement capabilities have gone from 1D (flux) and 2D (flux and kinetic energy) in the early days, advanced to sequential or parallel measurements at different angles for various flavours of angle-resolved studies, and to full 3D or 4D capabilities in modern ``imaging" type systems (flux and 2D or 3D kinetic energy vector resolution), with the possibility of additional experimental measurement dimensions such as time, polarisation, laser power, wavelength and so forth. Advances in experimental methods, in particular the development of high count-rate 3D detectors, is ongoing (see, for examples and historical context, \textsuperscript{\hyperref[csl:64]{64},\hyperref[csl:58]{58},\hyperref[csl:65]{65},\hyperref[csl:66]{66},\hyperref[csl:67]{67}}). 
 
-As well as detector technology, general developments in experimental methods, system integration, computational power and so forth further enable novel techniques and/or fusion of existing methodologies. For instance, it is of note that with the advent of more sophisticated laser-based techniques, and short-pulse FELs, the combination of laser alignment techniques with dissociative photoionization measurements is also now increasingly common; other examples include increasingly sophisticated multi-pulse measurements and measurements with shaped laser pulses. An illustrative example of the rich data available from a modern, sophisticated, experimental scheme - CEI with a pixel-imaging mass-spectroscopy (PImMS) camera and covariance analysis - see \textsuperscript{\hyperref[csl:54]{54}}. Further examples of experimental developments from the literature, with respect to matrix element retrieval, can be found in Sect. \ref{sec:CompleteLit}.
+As well as detector technology, general developments in experimental methods, system integration, computational power and so forth further enable novel techniques and/or fusion of existing methodologies. For instance, it is of note that with the advent of more sophisticated laser-based techniques, and short-pulse FELs, the combination of laser alignment techniques with dissociative photoionization measurements is also now increasingly common; other examples include increasingly sophisticated multi-pulse measurements and measurements with shaped laser pulses. An illustrative example of the rich data available from a modern, sophisticated, experimental scheme - CEI with a pixel-imaging mass-spectroscopy (PImMS) camera and covariance analysis - see \textsuperscript{\hyperref[csl:55]{55}}. Further examples of experimental developments from the literature, with respect to matrix element retrieval, can be found in Sect. \ref{sec:CompleteLit}.
 
 
 % Integrate this part above?
@@ -660,7 +678,7 @@ As well as detector technology, general developments in experimental methods, sy
 % 09/09/21 now moved, use this style generally to allow organic growth... easy way to link it?
 
 % ADDITIONAL MFPAD notes...
-% Complete expts from MFPADS: \textsuperscript{\hyperref[csl:67]{67},\hyperref[csl:68]{68},\hyperref[csl:69]{69},\hyperref[csl:48]{48}}
+% Complete expts from MFPADS: \textsuperscript{\hyperref[csl:68]{68},\hyperref[csl:69]{69},\hyperref[csl:70]{70},\hyperref[csl:49]{49}}
 % NOTES to add on RF vs. MF?
 
 
@@ -679,8 +697,8 @@ As well as detector technology, general developments in experimental methods, sy
 
 \subsubsection{Tensor formulation of photoionization\label{sec:tensor-formulation}}
 
-A number of authors have treated MFPADs and related problems, see Appendix \ref{sec:theory-lit} for some examples. Herein, a geometric tensor based formalism is developed, which is close in spirit to the treatments given by Underwood and co-workers \textsuperscript{\hyperref[csl:70]{70},\hyperref[csl:8]{8},\hyperref[csl:60]{60}}, but further separates various sets of physical parameters into dedicated tensors; this allows for a unified theoretical and numerical treatment, where the latter computes properties as tensor variables which can be further manipulated and investigated.%\footnote{It should be emphasized, however, that the underlying physical quantities are essentially identical in all these approaches, with a set of coupled angular-momenta defining the geometrical part of the photoionization problem, despite these differences in the details of the theory and notation. The current tensorial numerical implementation is in contradistinction to standard numerical routines in which the requisite terms are usually computed from vectorial and/or nested summations, which can be somewhat opaque to detailed interpretation, and typically implement the full computation of the observables in one computational routine. The main cost of a tensor-based approach is that more RAM is required to store the full set of tensor variables.} 
-Furthermore, the tensors can readily be converted to a density matrix representation \textsuperscript{\hyperref[csl:36]{36},\hyperref[csl:32]{32}}, which is more natural for some quantities, and also emphasizes the link to quantum state tomography and other quantum information techniques. Much of the theoretical background, as well as application to aspects of the current problem, can be found in the textbooks of Blum \textsuperscript{\hyperref[csl:36]{36}} and Zare \textsuperscript{\hyperref[csl:32]{32}}.
+A number of authors have treated MFPADs and related problems, see Appendix \ref{sec:theory-lit} for some examples. Herein, a geometric tensor based formalism is developed, which is close in spirit to the treatments given by Underwood and co-workers \textsuperscript{\hyperref[csl:71]{71},\hyperref[csl:8]{8},\hyperref[csl:61]{61}}, but further separates various sets of physical parameters into dedicated tensors; this allows for a unified theoretical and numerical treatment, where the latter computes properties as tensor variables which can be further manipulated and investigated.%\footnote{It should be emphasized, however, that the underlying physical quantities are essentially identical in all these approaches, with a set of coupled angular-momenta defining the geometrical part of the photoionization problem, despite these differences in the details of the theory and notation. The current tensorial numerical implementation is in contradistinction to standard numerical routines in which the requisite terms are usually computed from vectorial and/or nested summations, which can be somewhat opaque to detailed interpretation, and typically implement the full computation of the observables in one computational routine. The main cost of a tensor-based approach is that more RAM is required to store the full set of tensor variables.} 
+Furthermore, the tensors can readily be converted to a density matrix representation \textsuperscript{\hyperref[csl:37]{37},\hyperref[csl:32]{32}}, which is more natural for some quantities, and also emphasizes the link to quantum state tomography and other quantum information techniques. Much of the theoretical background, as well as application to aspects of the current problem, can be found in the textbooks of Blum \textsuperscript{\hyperref[csl:37]{37}} and Zare \textsuperscript{\hyperref[csl:32]{32}}.
 
 Within this treatment, the observables can be defined in a series of simplified forms, emphasizing the quantities of interest for a given problem. Some details are defined in the following subsections, and further detailed in Appendix \ref{appendix:formalism}.
 
@@ -703,14 +721,14 @@ Where $\zeta,\zeta'$ collect all the required quantum numbers, and define all (c
 \label{eqn:I-zeta}
 \end{equation}
 
-This is effectively a convolution equation (cf. refs. \textsuperscript{\hyperref[csl:70]{70},\hyperref[csl:71]{71}}) with channel functions, for a given ``experiment'' $u$, summed over all terms $\zeta,\zeta'$. Aside from the change in notation (which is here chosen to match the formalism of Refs. \textsuperscript{\hyperref[csl:72]{72},\hyperref[csl:73]{73},\hyperref[csl:74]{74}}), see also Sect. \ref{sec:mat-ele-conventions}), these matrix elements are essentially identical to the simplified (radial) forms $\mathbf{r}_{k,l,m}$ defined in Eqn. \ref{eq:r-kllam}, in the case where $\zeta=k,l,m$. These complex matrix elements can also be equivalently defined in a magnitude, phase form:
+This is effectively a convolution equation (cf. refs. \textsuperscript{\hyperref[csl:71]{71},\hyperref[csl:72]{72}}) with channel functions, for a given ``experiment'' $u$, summed over all terms $\zeta,\zeta'$. Aside from the change in notation (which is here chosen to match the formalism of Refs. \textsuperscript{\hyperref[csl:73]{73},\hyperref[csl:74]{74},\hyperref[csl:75]{75}}), see also Sect. \ref{sec:mat-ele-conventions}), these matrix elements are essentially identical to the simplified (radial) forms $\mathbf{r}_{k,l,m}$ defined in Eqn. \ref{eq:r-kllam}, in the case where $\zeta=k,l,m$. These complex matrix elements can also be equivalently defined in a magnitude, phase form:
 
 \begin{equation}
 I^{\zeta}(\epsilon)\equiv\mathbf{r}_{\zeta}\equiv r_{\zeta}e^{i\phi_{\zeta}}
 \end{equation}
 
 
-This tensorial form is numerically implemented in the ePSproc codebase \textsuperscript{\hyperref[csl:75]{75}}, and is in contradistinction to standard numerical routines in which the requisite terms are usually computed from vectorial and/or nested summations, which can be somewhat opaque to detailed interpretation, and typically implement the full computation of the observables in one computational routine. The PEMtk codebase \textsuperscript{\hyperref[csl:76]{76}} implements matrix element retrieval based on this formalism, with pre-computation of all the geometric tensor components (channel functions) prior to a fitting protocol for matrix element analysis, essentially a fit to Eqn. \ref{eqn:channel-fns}, with terms $I^{\zeta}(\epsilon)$ as the unknowns (in magnitude, phase form). The main computational cost of a tensor-based approach is that more RAM is required to store the full set of tensor variables.
+This tensorial form is numerically implemented in the ePSproc codebase \textsuperscript{\hyperref[csl:76]{76}}, and is in contradistinction to standard numerical routines in which the requisite terms are usually computed from vectorial and/or nested summations, which can be somewhat opaque to detailed interpretation, and typically implement the full computation of the observables in one computational routine. The PEMtk codebase \textsuperscript{\hyperref[csl:77]{77}} implements matrix element retrieval based on this formalism, with pre-computation of all the geometric tensor components (channel functions) prior to a fitting protocol for matrix element analysis, essentially a fit to Eqn. \ref{eqn:channel-fns}, with terms $I^{\zeta}(\epsilon)$ as the unknowns (in magnitude, phase form). The main computational cost of a tensor-based approach is that more RAM is required to store the full set of tensor variables.
 
 \subsubsection{Density matrix representation\label{sec:density-mat-basic}}
 The density operator associated with the continuum state in Eq.~\ref{eq:cstate} is easily written as $\hat{\rho}=|\Psi_c\rangle\langle\Psi_c|$. In the channel function basis, this leads to a density matrix given by the radial matrix elements:
@@ -721,7 +739,7 @@ The density operator associated with the continuum state in Eq.~\ref{eq:cstate} 
 \end{equation}
 
 Since the matrix elements characterise the scattering event, the density matrix provides an equivalent characterisation of the scattering event.
-An example case is discussed in Sect. \ref{sec:den-mat-N2} (see Fig. \ref{998904}); for more details, and further discussion, see Sect. \ref{sec:density-mat-full}. Further discussion can also be found in the literature, see, e.g., Ref. \textsuperscript{\hyperref[csl:36]{36}} for general discussion, Ref. \textsuperscript{\hyperref[csl:33]{33}} for application in pump-probe schemes.
+An example case is discussed in Sect. \ref{sec:den-mat-N2} (see Fig. \ref{998904}); for more details, and further discussion, see Sect. \ref{sec:density-mat-full}. Further discussion can also be found in the literature, see, e.g., Ref. \textsuperscript{\hyperref[csl:37]{37}} for general discussion, Ref. \textsuperscript{\hyperref[csl:33]{33}} for application in pump-probe schemes.
 
 % \textbf{I don't think I fully understand this section. In the partial wave basis, wouldn't the density operator be,}
 % \begin{equation}
@@ -749,7 +767,7 @@ An example case is discussed in Sect. \ref{sec:den-mat-N2} (see Fig. \ref{998904
 % \beta_{L,M}^{u}=\sum_{\zeta,\zeta'}\mathbf{\rho}_{L,M}^{u,\zeta\zeta'}
 % \end{equation}
 
-% In fact, this form arises naturally since the $\beta_{L,M}^{u}$ terms are the state multipoles (geometric tensors) defining the system, which can be thought of as a coupled basis equivalent of the density matrix representations (see, e.g., ref. \textsuperscript{\hyperref[csl:36]{36}}, Chpt. 4.).
+% In fact, this form arises naturally since the $\beta_{L,M}^{u}$ terms are the state multipoles (geometric tensors) defining the system, which can be thought of as a coupled basis equivalent of the density matrix representations (see, e.g., ref. \textsuperscript{\hyperref[csl:37]{37}}, Chpt. 4.).
 
 % TODO: confirm notation here, may want to include more discussion from Blum? (See Fig. \ref{998904} for results, should also confirm representation here from outer product case, maybe plot LM representation too - see \href{https://epsproc.readthedocs.io/en/dev/methods/density_mat_notes_demo_300821.html}{ePSproc density matrix notes} esp. \href{https://epsproc.readthedocs.io/en/dev/methods/density_mat_notes_demo_300821.html#Density-matrix-from-geometric-tensors}{Density matrix from geometric tensors section}.)
 
@@ -786,7 +804,7 @@ In both cases a set of geometric tensor terms are required, which are fully defi
 \end{itemize}
 
 And \(I_{l,m,\mu}^{p_{i}\mu_{i},p_{f}\mu_{f}}(\epsilon)\) are the (radial) dipole ionization matrix elements, as a function of energy \(\epsilon\). These matrix elements are essentially identical to the simplified forms $r_{k,l,m}$ defined in Eqn. \ref{eq:r-kllam}, except with additional indices to label symmetry and polarization components
-defined by a set of partial-waves \(\{l,m\}\), for polarization component \(\mu\) (denoting the photon angular momentum components) and channels (symmetries) labelled by initial and final state indexes \({p_{i}\mu_{i},p_{f}\mu_{f}}\). The notation here follows that used by ePolyScat \textsuperscript{\hyperref[csl:72]{72},\hyperref[csl:73]{73},\hyperref[csl:74]{74}}, and these matrix elements again represent the quantities  to be obtained numerically from data analysis, or from an \href{https://epsproc.readthedocs.io/en/latest/ePS_ePSproc_tutorial/ePS_tutorial_080520.html\#Theoretical-background}{ePolyScat (or similar) calculation}. 
+defined by a set of partial-waves \(\{l,m\}\), for polarization component \(\mu\) (denoting the photon angular momentum components) and channels (symmetries) labelled by initial and final state indexes \({p_{i}\mu_{i},p_{f}\mu_{f}}\). The notation here follows that used by ePolyScat \textsuperscript{\hyperref[csl:73]{73},\hyperref[csl:74]{74},\hyperref[csl:75]{75}}, and these matrix elements again represent the quantities  to be obtained numerically from data analysis, or from an \href{https://epsproc.readthedocs.io/en/latest/ePS_ePSproc_tutorial/ePS_tutorial_080520.html\#Theoretical-background}{ePolyScat (or similar) calculation}. 
 
 Note that, in this case as given, time-dependence arises purely from the \(A_{Q,S}^{K}(t)\) terms in the AF case, and the electric field term currently describes only the photon angular momentum coupling,
 although can in principle also describe time-dependent/shaped fields. Similarly, a time-dependent initial state (e.g. a vibrational wavepacket) could also describe a time-dependent MF case.
@@ -798,7 +816,7 @@ It should be emphasized, however, that the underlying physical quantities are es
 
 \subsubsection{Information content\label{sec:info-content}}
 
-As discussed in ref. \textsuperscript{\hyperref[csl:77]{77}}, the information content of a single observable might be regarded as simply the number of contributing $\beta_{L,M}$ parameters. In set notation:
+As discussed in ref. \textsuperscript{\hyperref[csl:36]{36}}, the information content of a single observable might be regarded as simply the number of contributing $\beta_{L,M}$ parameters. In set notation:
 
 \begin{equation}
 M=\mathrm{n}\{\beta_{L,M}\}
@@ -827,7 +845,7 @@ will usually be discretized in some fashion by the measurement.
 
 In terms of purely experimental methodologies, a larger $M_{u}$ clearly defines a richer experimental measurement which explores more of the total measurement space spanned by the full set of $\{\beta_{L,M}^{u}(k,t)\}$. However, in this basic definition a larger $M_{u}$ does not necessarily indicate a higher information content for quantum retrieval applications.
 The reason for this is simply down to the complexity of the problem
-(cf. eqn. \ref{eq:beta-gamma-general}), in which many couplings define
+(cf. Eqn. \ref{eqn:channel-fns}), in which many couplings define
 the sensitivity of the observable to the underlying system properties
 of interest. In this sense, more measurements, and larger $M$, may
 only add redundancy, rather than new information.
@@ -860,7 +878,7 @@ In this case, each $(\epsilon,t)$ is treated as an independent measurement with 
 % Very generally, the problem of retrieval can be considered in terms of completeness, i.e. the degree to which the full quantum state of the system is know. In photoionization, ``complete" experiments, in which the full system wavefunction (matrix elements), denote the class of measurements in which full matrix element retrieval is the goal, as distinct from measurements which aim at specific observables
 % This is currently briefly in Sect. 3.1, but probably should be expanded!
 
-Following the tensor notation presented above, a ``complete" photoionization experiment can be characterized as recovery of the matrix elements $I^{\zeta}(\epsilon)$ from the experimental measurements or, equivalently, the density matrix $\mathbf{\rho}^{\zeta\zeta'}$. (For further discussion, see refs. \textsuperscript{\hyperref[csl:15]{15},\hyperref[csl:12]{12},\hyperref[csl:11]{11}}.) This may be possible provided the channel functions are known, and the information content of the measurements is sufficient. (Note here that the matrix elements are assumed to be time-independent, although that may not be the case for the most complicated examples including vibronic dynamics \textsuperscript{\hyperref[csl:77]{77}}.) 
+Following the tensor notation presented above, a ``complete" photoionization experiment can be characterized as recovery of the matrix elements $I^{\zeta}(\epsilon)$ from the experimental measurements or, equivalently, the density matrix $\mathbf{\rho}^{\zeta\zeta'}$. (For further discussion, see refs. \textsuperscript{\hyperref[csl:15]{15},\hyperref[csl:12]{12},\hyperref[csl:11]{11}}.) This may be possible provided the channel functions are known, and the information content of the measurements is sufficient. (Note here that the matrix elements are assumed to be time-independent, although that may not be the case for the most complicated examples including vibronic dynamics \textsuperscript{\hyperref[csl:36]{36}}.) 
 
 Additionally, for schemes making use of molecular alignment, the molecular axis distributions must also be characterised. For the rotational wavepacket case, this is discussed in Sect. \ref{sec:RWPs}; this can actually be considered as a reduced-dimensionality MF signal retrieval problem, and also forms the first step in both the generalised ``bootstrapping" method (Sect. \ref{sec:bootstrapping}) and matrix inversion techniques (Sect. \ref{sec:matrix-inv-intro}).
 
@@ -887,7 +905,7 @@ Since the rotational wavepacket can be accurately simulated, the $\langle D^{j}_
 
 % The case of PADs is a more challenging one, since they are not generally described by Eq.~\ref{eq:mfrealsig}. Instead, both LFPADs and MFPADs are determined by the radial dipole matrix elements as described above (\textbf{refer to section 3 here!}). The authors of this manuscript, with a number of collaborators, demonstrated that these matrix elements can also be retrieved for one-photon ionisation of N$_2$ by time resolved measurements of LFPADs from a rotational wavepacket. This method is focus of sections X and Y (\textbf{refer to apprpriate section(s)!}) below, with additional details and results provided on the case of radial matrix element extraction for N$_2$.   In follow up work, it was shown that for molecules with $D_{nh}$ point group symmetry the retrieval of the MFPAD is possible directly, bypassing the radial matrix elements. 
 
-The case of PADs is a more challenging one, since they are not generally described by Eq.~\ref{eq:mfrealsig}. Instead, both LFPADs and MFPADs are determined by the radial dipole matrix elements as described above (Sects. \ref{sec:dynamics-intro}, \ref{sec:channel-funcs}). However, the correspondence of the problem with an equation of the form of Eqn. \ref{eq:St-Cjk} - essentially a convolution - can be made. This is discussed in detail in Ref. \textsuperscript{\hyperref[csl:60]{60}}; in the current case Eqns. \ref{eqn:channel-fns}, \ref{eq:BLM-tensor-AF} can be rewritten in a similar form to Eqn. \ref{eq:St-Cjk} by explicitly separating out the axis distribution moments $A_{Q,S}^{K}(t)$ and collapsing all other terms. The case of photoionization from a time-dependent ensemble can then be reparametrized as:
+The case of PADs is a more challenging one, since they are not generally described by Eq.~\ref{eq:mfrealsig}. Instead, both LFPADs and MFPADs are determined by the radial dipole matrix elements as described above (Sects. \ref{sec:dynamics-intro}, \ref{sec:channel-funcs}). However, the correspondence of the problem with an equation of the form of Eqn. \ref{eq:St-Cjk} - essentially a convolution - can be made. This is discussed in detail in Ref. \textsuperscript{\hyperref[csl:61]{61}}; in the current case Eqns. \ref{eqn:channel-fns}, \ref{eq:BLM-tensor-AF} can be rewritten in a similar form to Eqn. \ref{eq:St-Cjk} by explicitly separating out the axis distribution moments $A_{Q,S}^{K}(t)$ and collapsing all other terms. The case of photoionization from a time-dependent ensemble can then be reparametrized as:
 % (cf. also Eqn. \ref{eq:BLM-tensor-AF}):
 
 % \begin{equation}
@@ -926,15 +944,15 @@ The nature of the photoionization problem suggests that a fitting approach can w
 \end{equation}
 
 Where $\beta^{u}_{L,M}(\epsilon,t;\mathbb{I}^{\zeta\zeta'})$ denotes  the values from a model function, computed for a given set of (complex) matrix elements $\mathbb{I}^{\zeta\zeta'}$, and $\beta^{u}_{L,M}(\epsilon,t)$ the experimentally-measured parameters, for a given configuration $u$. Implicit in the notation is that the matrix elements are independent of $u$ (or otherwise averaged over $u$). Once the matrix elements are obtained in this manner then MF observables, for any arbitrary $u$, can be calculated. An example of such a protocol - specifically one based on time-domain measurements and making use of a rotational wavepacket - is shown in Fig. \ref{781808}, %, as previously discussed, 
-and the practical realisation of such a methodology is the topic of Sect. \ref{sec:bootstrapping} (see also refs. \textsuperscript{\hyperref[csl:77]{77},\hyperref[csl:83]{83}} for further discussion). As discussed in Sect. \ref{sec:MF-recon-expt}, other choices of experimental measurements may also be made, for instance direct MF measurements or frequency-domain measurements, some representative examples from the literature are given in Sect. \ref{sec:CompleteLit}. 
+and the practical realisation of such a methodology is the topic of Sect. \ref{sec:bootstrapping} (see also refs. \textsuperscript{\hyperref[csl:36]{36},\hyperref[csl:83]{83}} for further discussion). As discussed in Sect. \ref{sec:MF-recon-expt}, other choices of experimental measurements may also be made, for instance direct MF measurements or frequency-domain measurements, some representative examples from the literature are given in Sect. \ref{sec:CompleteLit}. 
 % [23/08/22 HERE - move to expt section? Also intro complete expts better elsewhere?]
 
-Although in principle a very general approach, outstanding questions with such protocols remain, in particular fit uniqueness and reproducibility, the optimal measurement space $u$ - or associated information content $M_u$ - for any given case or measurement schema, and how well they will scale to larger problems (more matrix elements/partial waves). (Again, see refs. \textsuperscript{\hyperref[csl:77]{77},\hyperref[csl:83]{83}} for further discussion.)
+Although in principle a very general approach, outstanding questions with such protocols remain, in particular fit uniqueness and reproducibility, the optimal measurement space $u$ - or associated information content $M_u$ - for any given case or measurement schema, and how well they will scale to larger problems (more matrix elements/partial waves). (Again, see refs. \textsuperscript{\hyperref[csl:36]{36},\hyperref[csl:83]{83}} for further discussion.)
 
 
 \subsubsection{Matrix inversion methodologies\label{sec:matrix-inv-intro}}
 
-An alternative methodology has recently been demonstrated, in which the MF observables are determined via a matrix inversion protocol \textsuperscript{\hyperref[csl:71]{71}}. This method does not require - potentially time-consuming - numerical fitting, although still requires knowledge of the channel functions. A full outline of the matrix inversion method is given in Appendix \ref{app:mat-inversion}, and a brief overview below.
+An alternative methodology has recently been demonstrated, in which the MF observables are determined via a matrix inversion protocol \textsuperscript{\hyperref[csl:72]{72}}. This method does not require - potentially time-consuming - numerical fitting, although still requires knowledge of the channel functions. A full outline of the matrix inversion method is given in Appendix \ref{app:mat-inversion}, and a brief overview below.
 
 For the matrix-inversion approach, the relationship between the LF/AF and MF is considered in terms of a matrix transform:
 
@@ -961,6 +979,7 @@ for the LF ($\mathbf{C}^{lab}$). We refer to $\mathbf{\Gamma}$ as the ``reduced"
 
 \begin{equation}
 \mathbf{G}_{L'M'KS}^{LMP\Delta q}=\mathbf{\Gamma}_{P0\Delta q}^{\zeta\zeta'LM}(\mathbf{\Gamma}_{K0S}^{\zeta\zeta'L^{\prime}M^{\prime}})^{+}
+\label{eq:MPinversion}
 \end{equation}
 
 Here $()^{+}$ indicates the Moore-Penrose inverse matrix of a reduced channel function, which can be computed numerically. Significantly, the matrix elements are not required for inversion, provided that $\mathbf{C}^{lab}$ is known (e.g. from a measurement), and that the reduced channel functions are computed. Therefore, this method does not provide a route to reconstruction of a full set of matrix elements, but can be used to obtain MFPADs, and has been demonstrated to work for linear ($N_2$, $D_{\infty h}$ symmetry) and 
@@ -977,8 +996,8 @@ The two main components of the platform used herein are:
 % (see also Sects. \ref{sec:resources} for more tools, and \ref{sec:numerical-notes} for additional implementation details):
 
 \begin{itemize}
-\item The Photoelectron Metrology Toolkit (PEMtk) codebase \textsuperscript{\hyperref[csl:84]{84},\hyperref[csl:76]{76}} aims to provide various general data handling routines for photoionization problems. At the time of writing, simulation of observables and fitting routines are implemented, along with some basic utility functions. Further implementation details can be found in Sect. \ref{sec:numerical-notes}, and the \href{https://pemtk.readthedocs.io/en/latest/about.html}{PEMtk documentation} \textsuperscript{\hyperref[csl:84]{84}}.
-\item The ePSproc codebase \textsuperscript{\hyperref[csl:85]{85},\hyperref[csl:75]{75},\hyperref[csl:86]{86}} aims to provide methods for post-processing with \textit{ab initio} radial dipole matrix elements from ePolyScat \textsuperscript{\hyperref[csl:73]{73},\hyperref[csl:72]{72},\hyperref[csl:74]{74},\hyperref[csl:87]{87}}, or equivalent matrix elements from other sources, including computation of AF and MF observables. Manual computation without known matrix elements is also possible, e.g. for investigating limiting cases, or data analysis and fitting. These routines also provide the backend functionality for PEMtk fitting routines. See Sect. \ref{sec:numerical-notes} for additional notes.
+\item The Photoelectron Metrology Toolkit (PEMtk) codebase \textsuperscript{\hyperref[csl:84]{84},\hyperref[csl:77]{77}} aims to provide various general data handling routines for photoionization problems. At the time of writing, simulation of observables and fitting routines are implemented, along with some basic utility functions. Further implementation details can be found in Sect. \ref{sec:numerical-notes}, and the \href{https://pemtk.readthedocs.io/en/latest/about.html}{PEMtk documentation} \textsuperscript{\hyperref[csl:84]{84}}.
+\item The ePSproc codebase \textsuperscript{\hyperref[csl:85]{85},\hyperref[csl:76]{76},\hyperref[csl:86]{86}} aims to provide methods for post-processing with \textit{ab initio} radial dipole matrix elements from ePolyScat \textsuperscript{\hyperref[csl:74]{74},\hyperref[csl:73]{73},\hyperref[csl:75]{75},\hyperref[csl:87]{87}}, or equivalent matrix elements from other sources, including computation of AF and MF observables. Manual computation without known matrix elements is also possible, e.g. for investigating limiting cases, or data analysis and fitting. These routines also provide the backend functionality for PEMtk fitting routines. See Sect. \ref{sec:numerical-notes} for additional notes.
 \end{itemize}
 
 Note that, at the time of writing, rotational wavepacket simulation is not yet implemented in the PEMtk suite, and these must be obtained via other codes. %The example wavepacket used in Sect. \ref{sec:bootstrapping}
@@ -995,7 +1014,7 @@ A Docker-based distribution of various codes for tackling photoionization proble
 
 
 
-% The PEMtk python package [REF] currently implements the bootstrapping routines, and full computational notebooks, including source data and numerics, for these examples are available online [REFS]. The matrix inversion technique will be implemented soon, examples shown herein are reproduced from ref. \textsuperscript{\hyperref[csl:71]{71}}. It is hoped that interested readers will make use of these materials, and that this presentation will encourage other readers to try (and build upon) what has - up until quite recently - been a rather challenging and involved numerical analysis task.
+% The PEMtk python package [REF] currently implements the bootstrapping routines, and full computational notebooks, including source data and numerics, for these examples are available online [REFS]. The matrix inversion technique will be implemented soon, examples shown herein are reproduced from ref. \textsuperscript{\hyperref[csl:72]{72}}. It is hoped that interested readers will make use of these materials, and that this presentation will encourage other readers to try (and build upon) what has - up until quite recently - been a rather challenging and involved numerical analysis task.
 
 % - General notes on fitting? Some already below, and may stay there.
 % - Matrix inversion method overview?\selectlanguage{english}
@@ -1013,11 +1032,11 @@ A Docker-based distribution of various codes for tackling photoionization proble
 In this section/the remainder of the manuscript, reconstruction of MFPADs from time-domain measurements are considered using two methodologies:
 
 \begin{enumerate}
-\item ``Bootstrapping" to the MF \textsuperscript{\hyperref[csl:11]{11},\hyperref[csl:77]{77},\hyperref[csl:83]{83}}. The protocol outline is shown in Fig. \ref{807606}, and discussed in Sect. \ref{sec:bootstrapping}.
-\item Matrix reconstruction with Moore-Penrose inversion \textsuperscript{\hyperref[csl:71]{71}}. The protocol outline is shown in Fig. \ref{731792}, and discussed in Sect. \ref{sec:Matrix-inversion-example}.
+\item ``Bootstrapping" to the MF \textsuperscript{\hyperref[csl:11]{11},\hyperref[csl:36]{36},\hyperref[csl:83]{83}}. The protocol outline is shown in Fig. \ref{807606}, and discussed in Sect. \ref{sec:bootstrapping}.
+\item Matrix reconstruction with Moore-Penrose inversion \textsuperscript{\hyperref[csl:72]{72}}. The protocol outline is shown in Fig. \ref{731792}, and discussed in Sect. \ref{sec:Matrix-inversion-example}.
 \end{enumerate}
 
-The techniques are closely related, and both make use of rotational wavepackets (geometrical coherences) to mediate the LF/AF information content of a set of measurements in the time-domain, but differ in the ``directness" of the reconstruction: in the former case, the aim is full matrix element retrieval (Sect. \ref{sec:bootstrap-fidelity}) or, equivalently, continuum density matrix reconstruction (Sect. \ref{sec:den-mat-N2}), and the MFPADs can then be computed from these ``complete" results (Sect. \ref{sec:bootstrap-MFPADs}); in the latter the MFPADs are determined, essentially, via a transformation matrix (Sect. \ref{sec:Matrix-inversion-example}), and full matrix element retrieval is not necessary. The former is therefore a full quantum state retrieval or quantum tomography, whilst the latter represents a reconstruction of the MF observables which is more akin to classical tomographic methods, albeit with some phase information retained. %\textsuperscript{\hyperref[csl:71]{71}}. %[TBD-\textbf{This is a complicated discussion which we can have, or just cite}~\textsuperscript{\hyperref[csl:71]{71}}.\textbf{It's in there, and I'm not sure it will add much to this review.}]. UPDATE: now partly addressed in main sect.
+The techniques are closely related, and both make use of rotational wavepackets (geometrical coherences) to mediate the LF/AF information content of a set of measurements in the time-domain, but differ in the ``directness" of the reconstruction: in the former case, the aim is full matrix element retrieval (Sect. \ref{sec:bootstrap-fidelity}) or, equivalently, continuum density matrix reconstruction (Sect. \ref{sec:den-mat-N2}), and the MFPADs can then be computed from these ``complete" results (Sect. \ref{sec:bootstrap-MFPADs}); in the latter the MFPADs are determined, essentially, via a transformation matrix (Sect. \ref{sec:Matrix-inversion-example}), and full matrix element retrieval is not necessary. The former is therefore a full quantum state retrieval or quantum tomography, whilst the latter represents a reconstruction of the MF observables which is more akin to classical tomographic methods, albeit with some phase information retained. %\textsuperscript{\hyperref[csl:72]{72}}. %[TBD-\textbf{This is a complicated discussion which we can have, or just cite}~\textsuperscript{\hyperref[csl:72]{72}}.\textbf{It's in there, and I'm not sure it will add much to this review.}]. UPDATE: now partly addressed in main sect.
 However, the matrix reconstruction method does not require time-consuming data fitting, and should also scale more readily to larger systems (with some caveats), so should be advantageous in problems where only the MFPADs are sought.
 
 Additionally, matrix element retrieval from MF observables is briefly addressed, the protocol is outlined in Fig. \ref{671760}, and discussed in Sect. \ref{sec:recon-from-MFPADs}. This protocol is essentially identical to the level 2 bootstrapping case, but with different geometric parameters and input dataset. This provides a route to quantum state reconstruction from direct MF measurements, \textit{or reconstructed MF observables}, hence provides a protocol which can be used to extend the matrix inversion method if desired, albeit with associated information content restrictions.
@@ -1026,7 +1045,7 @@ Finally, it is of note that the MF matrix element retrieval protocol of Fig. \re
 
 % The PEMtk python package [REF] implements both routines [TODO], and full computational notebooks and numerics for these examples are available online [REFS].
 
-The PEMtk python package \textsuperscript{\hyperref[csl:84]{84},\hyperref[csl:76]{76}} currently implements the level 2 bootstrapping routines (Fig. \ref{807606}), and MF retrieval (Fig. \ref{671760}), and full computational notebooks, including source data and numerics, for these examples are available online \textsuperscript{\hyperref[csl:3]{3}}. The matrix inversion technique will be implemented soon, examples shown herein are reproduced from ref. \textsuperscript{\hyperref[csl:71]{71}}. It is hoped that interested readers will make use of these materials, and that this presentation will encourage other readers to try (and build upon) what has - up until quite recently - been a rather challenging and involved numerical analysis task. A full list of resources is given in Sect. \ref{sec:resources}, and additional numerical notes in Sect. \ref{sec:numerical-notes}.\selectlanguage{english}
+The PEMtk python package \textsuperscript{\hyperref[csl:84]{84},\hyperref[csl:77]{77}} currently implements the level 2 bootstrapping routines (Fig. \ref{807606}), and MF retrieval (Fig. \ref{671760}), and full computational notebooks, including source data and numerics, for these examples are available online \textsuperscript{\hyperref[csl:3]{3}}. The matrix inversion technique will be implemented soon, examples shown herein are reproduced from ref. \textsuperscript{\hyperref[csl:72]{72}}. It is hoped that interested readers will make use of these materials, and that this presentation will encourage other readers to try (and build upon) what has - up until quite recently - been a rather challenging and involved numerical analysis task. A full list of resources is given in Sect. \ref{sec:resources}, and additional numerical notes in Sect. \ref{sec:numerical-notes}.\selectlanguage{english}
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.70\columnwidth]{figures/bootstrap-flowchart-030822-gv/bootstrap-flowchart-290822.gv}
@@ -1074,7 +1093,7 @@ channel functions.
 
 % [TODO: outline figure for methods]
 
-The ``generalised bootstrapping" methodology proceeds via a multi-stage fitting protocol to obtain both the AF axis distribution (level 1 of the bootstrap, linear fit), and the photoionization matrix elements (level 2 of the bootstrap, non-linear fit). A general overview is given in Fig. \ref{781808}, and a more detailed schematic overview is given in Fig. \ref{807606}. In the simplest case (as illustrated), this proceeds in a direct manner, and a final set of results are obtained. However, further bootstrapping - in the statistical sense - can also be employed to probe the fidelity of the reconstruction with different samples from the source data (typically sub-sets from the measured time-steps and/or $\beta_{LM}$ parameter sub-sets), to further test the robustness of the results, and estimate uncertainties and/or improve upon them. Some of these possibilities are explored below, and further details may also be found in Refs. \textsuperscript{\hyperref[csl:11]{11},\hyperref[csl:77]{77},\hyperref[csl:83]{83}} (and references therein).
+The ``generalised bootstrapping" methodology proceeds via a multi-stage fitting protocol to obtain both the AF axis distribution (level 1 of the bootstrap, linear fit), and the photoionization matrix elements (level 2 of the bootstrap, non-linear fit). A general overview is given in Fig. \ref{781808}, and a more detailed schematic overview is given in Fig. \ref{807606}. In the simplest case (as illustrated), this proceeds in a direct manner, and a final set of results are obtained. However, further bootstrapping - in the statistical sense - can also be employed to probe the fidelity of the reconstruction with different samples from the source data (typically sub-sets from the measured time-steps and/or $\beta_{LM}$ parameter sub-sets), to further test the robustness of the results, and estimate uncertainties and/or improve upon them. Some of these possibilities are explored below, and further details may also be found in Refs. \textsuperscript{\hyperref[csl:11]{11},\hyperref[csl:36]{36},\hyperref[csl:83]{83}} (and references therein).
 
 
 
@@ -1088,7 +1107,7 @@ For the example case, synthetic data was used, although the dataset was inspired
 \begin{enumerate}
 \item The same rotational wavepacket \& molecular axis distribution as obtained experimentally is assumed. Consequently, the 1st (linear) stage of the bootstrapping protocol is not investigated herein. Although this may seem like a drastic omission, in general this stage of the methodology is expected to be quite robust, and this has been demonstrated in various investigations of rotational wavepackets and molecular alignment techniques, see discussion in Sect. \ref{sec:RWPs}.
 % \footnote{Although this may seem like a drastic omission, in general this stage of the methodology is expected to be quite robust, and this has been demonstrated in various investigations of rotational wavepackets and molecular alignment techniques. [REFS]}
-\item To simulate the observables, photoionization matrix elements from ePolyScat \textsuperscript{\hyperref[csl:73]{73},\hyperref[csl:72]{72},\hyperref[csl:74]{74},\hyperref[csl:87]{87}} calculations were used. The calculations made use of $N_2$ electronic structure input, computed with Gamess \textsuperscript{\hyperref[csl:90]{90},\hyperref[csl:91]{91}} (RHF/MP2/6-311G, bond length $1.07$~\AA). In the example illustated herein, matrix elements for $E_{ke}=1~eV$ were used, and are given explicitly in Table \ref{tab:inputMatE}. This, naturally, also provides a means for direct comparison and fidelity analysis of the retrieval protocol (Sect. \ref{sec:bootstrap-fidelity}); the density matrix can also be used for analysis (Sect. \ref{sec:den-mat-N2}). In the current study only ionization of the $3\sigma_g$ orbital (HOMO) is investigated, corresponding to formation of  $X^2\Sigma_{g}^{+}$ ionic ground-state, i.e. $N_2(X^{1}\Sigma^{+}_{g}) \rightarrow N^+_2(X^{2}\Sigma^{+}_{g})$, generically denoted as the $X$-channel, or via the ionizing orbital as $N_2(3\sigma_g^{-1})$, for a more compact notation. 
+\item To simulate the observables, photoionization matrix elements from ePolyScat \textsuperscript{\hyperref[csl:74]{74},\hyperref[csl:73]{73},\hyperref[csl:75]{75},\hyperref[csl:87]{87}} calculations were used. The calculations made use of $N_2$ electronic structure input, computed with Gamess \textsuperscript{\hyperref[csl:90]{90},\hyperref[csl:91]{91}} (RHF/MP2/6-311G, bond length $1.07$~\AA). In the example illustated herein, matrix elements for $E_{ke}=1~eV$ were used, and are given explicitly in Table \ref{tab:inputMatE}. This, naturally, also provides a means for direct comparison and fidelity analysis of the retrieval protocol (Sect. \ref{sec:bootstrap-fidelity}); the density matrix can also be used for analysis (Sect. \ref{sec:den-mat-N2}). In the current study only ionization of the $3\sigma_g$ orbital (HOMO) is investigated, corresponding to formation of  $X^2\Sigma_{g}^{+}$ ionic ground-state, i.e. $N_2(X^{1}\Sigma^{+}_{g}) \rightarrow N^+_2(X^{2}\Sigma^{+}_{g})$, generically denoted as the $X$-channel, or via the ionizing orbital as $N_2(3\sigma_g^{-1})$, for a more compact notation. 
 \item To investigate limitations of the numerical routines, noise and other artiefacts can be added to the simulated data; different sub-sets of the data can also be readily analysed and compared.
 \item Finally, it is of note that the numerical implementations are structured as a set of tensors, as close as possible to the formalism given above (Sect. \ref{sec:tensor-formulation}). This provides a means to further investigate the information content of various parts of the problem, and investigate their influence on the retrieval - in particular, these can indicate aspects of the data which may be most sensitive to particular matrix elements, most susceptible to noise and so forth. This is explored in Sect. \ref{sec:bootstrapping-info-sensitivity}
 % The numerics are currently implemented using the Xarray python library [REFS].
@@ -1136,12 +1155,12 @@ reference.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=1.00\columnwidth]{figures/dataDump-1000fitTests-multiFit-noise-051021-BLM-allFits-150422/dataDump-1000fitTests-multiFit-noise-051021-BLM-allFits-150422}
-\caption{{Best fit results (minimum \(\bar{\chi}^2\) only) with uncertainty
+\caption{{Best fit results (minimum~\(\bar{\chi}^2\) only) with uncertainty
 estimation. Plots show original simulation (solid lines), simulation
 with noise used for fitting (dashed lines with `+' markers) and mean
-values~\(\pm1\sigma\) (filled bands). Note that (spurious)
-\(\beta_{3,0}\) data is present in the input noisy data, but not in
-the outputs, as defined by symmetry.
+values~\(\pm1\sigma\) (filled bands). Note that
+(spurious)~\(\beta_{3,0}\) data is present in the input noisy data,
+but not in the outputs, as defined by symmetry.
 {\label{743962}}%
 }}
 \end{center}
@@ -1259,7 +1278,7 @@ To investigate the fidelity of the results in this test case the best parameter 
 % From Pandas Latex export + added caption & label wrapper
 % TODO: update with Styled table (PD>1.3)\selectlanguage{english}
 \begin{table}
-
+\centering
 % Version paramsInputRelabelled_latex_210422.tex
 \begin{tabular}{llllrrrl}
 \toprule
@@ -1281,7 +1300,7 @@ SU & 1 &  0 &  0 & -2.317+1.359j & 2.686 &  2.611 &    1,0 \\
 % From Pandas Latex export + added caption & label wrapper
 % TODO: update with Styled table (PD>1.3)\selectlanguage{english}
 \begin{table}
-
+\centering
 % Version paramsAggRelabelled_latex_210422.tex
 \begin{tabular}{lllrrrl}
 \toprule
@@ -1297,12 +1316,13 @@ SU & 1 &  0 & 2.653 &  2.357 & 2.987 &    1,0 \\
 \bottomrule
 \end{tabular}
 
-\caption{{\label{tab:aggMatE}Retrieved values for (m)agnitudes, (p)hases and "corrected" phases (pc).}}
+\caption{{\label{tab:aggMatE}Retrieved values for (m)agnitudes, (p)hases and ``corrected" phases (pc).}}
 \end{table}
 
 % From Pandas Latex export + added caption & label wrapper
 % TODO: update with Styled table (PD>1.3)\selectlanguage{english}
 \begin{table}
+\centering
 
 % \begin{tabular}{lllrrrrrr}
 % \toprule
@@ -1363,7 +1383,7 @@ pc & mean & num &    0.000 &    0.005 &     2.059 &     2.059 &     2.987 &     
 \bottomrule
 \end{tabular}
 
-\caption{{\label{tab:matE}Retrieved values and statistics for (m)agnitudes, (p)hases and "corrected" phases (pc). For each type and parameter the mean result from the fits is given, along with the standard deviation, and a comparison to the (ref)erence computational data, with absolute and percentage differences. Finally, the value of the difference/standard deviation is given as a rough metric for veracity. [TODO update labels and style. FIX MEAN - currently averaging over +/- pairs]}}
+\caption{{\label{tab:matE}Retrieved values and statistics for (m)agnitudes, (p)hases and ``corrected" phases (pc). For each type and parameter the mean result from the fits is given, along with the standard deviation, and a comparison to the (ref)erence computational data, with absolute numeric (`num') and percentage differences as defined by the `dType' column. Finally, the value of the difference/standard deviation is given as a rough metric for veracity.}}
 \end{table}\selectlanguage{english}
 \begin{figure}[H]
 \begin{center}
@@ -1402,7 +1422,7 @@ An alternative test of fidelity can be investigated via a density matrix represe
 can result in inverted patterns visible in the imaginary part of the density matrix. However, as discussed elsewhere (e.g. Sect. \ref{sec:bootstrap-fidelity}), symmetry constraints may render the continuum insensitive to the sign of the phases, and the retrieved matrix elements may therefore still present a high-fidelity reconstruction of the continuum.
 %The absolute value plots do not indicate the sign difference directly, but it is reflected in larger differences observed in these plots (differences $>>10~\%$), although the absolute values and observed pattern for the retrieved matrix elements compares well with the reference case. (In this case, the differences were obtained from the complex-valued density matrices, rather than the individual components.) TODO: better language here.
 
-Perhaps more interesting/useful in the density matrix representation is the visualisation of the phase relations between the photoionization matrix elements (the off-diagonal density matrix elements), and the ability to quickly check the overall pattern of the elements, hence confirm that no phase-relations are missing and orthogonality relations are fulfilled, or that very different patterns/sets of matrix elements were retrieved. Furthermore, the density matrix elements also provide a complete description of the photoionization event, and makes clear the equivalence of the ``complete" photoionization experiments (and associated continuum reconstruction methods) with quantum tomography schemes \textsuperscript{\hyperref[csl:82]{82}}; it can be used as the starting point for further analysis based on density matrix techniques - this is discussed, for instance, in Ref. \textsuperscript{\hyperref[csl:36]{36}}, and can also be viewed as a bridge between traditional methods in spectroscopy and AMO physics, and more recent concepts in the quantum information sciences (e.g. Refs.  \textsuperscript{\hyperref[csl:95]{95},\hyperref[csl:96]{96}}).
+Perhaps more interesting/useful in the density matrix representation is the visualisation of the phase relations between the photoionization matrix elements (the off-diagonal density matrix elements), and the ability to quickly check the overall pattern of the elements, hence confirm that no phase-relations are missing and orthogonality relations are fulfilled, or that very different patterns/sets of matrix elements were retrieved. Furthermore, the density matrix elements also provide a complete description of the photoionization event, and makes clear the equivalence of the ``complete" photoionization experiments (and associated continuum reconstruction methods) with quantum tomography schemes \textsuperscript{\hyperref[csl:82]{82}}; it can be used as the starting point for further analysis based on density matrix techniques - this is discussed, for instance, in Ref. \textsuperscript{\hyperref[csl:37]{37}}, and can also be viewed as a bridge between traditional methods in spectroscopy and AMO physics, and more recent concepts in the quantum information sciences (e.g. Refs.  \textsuperscript{\hyperref[csl:95]{95},\hyperref[csl:96]{96}}).
 
 % TODO: more to say, other metrics for fidelity?
 
@@ -1428,8 +1448,8 @@ Overall, with careful treatment of the phases, it is clear that high-fidelity MF
 \begin{center}
 \includegraphics[width=1.00\columnwidth]{figures/dataDump-1000fitTests-multiFit-noise-051021-MFPADs-250422/dataDump-1000fitTests-multiFit-noise-051021-MFPADs-250422}
 \caption{{Reconstructed MFPADs for N2. Columns show results for polarization
-geometries (z,x,y,d) and rows the results for difference sets of matrix
-elements: retrieved mean case, phase-corrected case, reference
+geometries~\((z,x,y,d)\) and rows the results for difference sets
+of matrix elements: retrieved mean case, phase-corrected case, reference
 (computational) results and difference between phase-correct and
 reference case. See main text for details.
 {\label{454268}}%
@@ -1546,7 +1566,7 @@ However, whilst this appears promising, it is of note that the trends in the fid
 In the current case, it is clear that the bootstrapping methodology for obtaining full photoionization matrix elements from time-domain, AF datasets, works well. The current numerical routines in the PEMtk package (and back-end libraries) are relatively stable and fast, and amenable to detailed inspection. However, a range of outstanding questions and routes of investigation remain, for instance:
 
 \begin{itemize}
-\item Scaling to larger problems (larger molecules, more matrix elements). This is currently under investigation, but - based on previous work \textsuperscript{\hyperref[csl:41]{41},\hyperref[csl:77]{77}} - it is anticipated that small polyatomic molecules should be tractable to the basic approach. 
+\item Scaling to larger problems (larger molecules, more matrix elements). This is currently under investigation, but - based on previous work \textsuperscript{\hyperref[csl:42]{42},\hyperref[csl:36]{36}} - it is anticipated that small polyatomic molecules should be tractable to the basic approach. 
 \item More sophisticated approaches, for instance careful sub-selection of data based on the channel functions, data obtained for additional polarization geometries or with shaped laser pulses \textsuperscript{\hyperref[csl:78]{78},\hyperref[csl:80]{80},\hyperref[csl:79]{79},\hyperref[csl:11]{11}}. Such approaches may be expected to yield higher fidelity reconstructions for small polyatomic systems, and may be required for more complex cases.
 \item Faster numerical routines, in particular via GPU-based numerics.
 \item Implementation of additional fitting routines, both from standard numerical methods, and also from related specialised domain problems, for example phase-retrieval methods developed for optical interferograms and spectrograms (e.g. general FROG-type retrieval methods \textsuperscript{\hyperref[csl:81]{81}}, ptychography/holographic techniques \textsuperscript{\hyperref[csl:99]{99},\hyperref[csl:100]{100}}) and homotopy \textsuperscript{\hyperref[csl:101]{101}} approaches may be applicable.
@@ -1557,15 +1577,16 @@ In the current case, it is clear that the bootstrapping methodology for obtainin
 
 \subsection{MF reconstruction via matrix inversion\label{sec:Matrix-inversion-example}}
 
-The key aspects of this method involve first fitting out the ADMs $A^K_{QS}(t)$ from measured $\bar{\beta}^u_{LM}(t)$ in Eq.~\ref{eqn:beta-convolution-C} to retrieve the $\bar{C}^{LM}_{KQS}$ (the vector $\mathbf{C}^{lab}$), and construction of the matrix $\mathbf{{G}}^{LMP\Delta q }_{L'M'KS}$ which facilitates the extraction of the molecular frame coefficients $C^{LM}_{P\Delta q}$ (the vector $\mathbf{C}^{mol}$). The steps in the process are depicted in Fig.~\ref{731792}, which label's primary inputs as the `AF/LF measurements', referring to the $\bar{\beta}^u_{LM}(t)$, and the ADMs $A^K_{QS}(t)$ calculated for a grid of fluence and temperature values by solving the TDSE using the appropriate Hamiltonian for impulsive alignment~\cite{}. The `Alignment Retrieval' process requires solving the linear equations Eq.~\ref{eqn:beta-convolution-C} for the $C^{LM}_{P\Delta q}$ using these primary inputs over the entire gird of ADMs, and comparing to the measured data to find the bets fit solution. This provides the vector $\mathbf{C}^{lab}$ needed for the next step - solving the linear equations Eq.~\ref{eq:basic}. This also requires that the matrix $\mathbf{{G}}^{LMP\Delta q }_{L'M'KS}$ be invertable. This matrix therefore encodes the uniquely accessible MF information in the experiment. Specifically, rows in the matrix link the LF parameter $\bar{\beta}^u_{LM}(t)$  to an MF beta parameter $\beta_{LM}(\theta,\chi)$ that can be used to construct the MFPADs, $\theta$ and $\chi$ being polar and azimuthal angles of the laser polarization in the MF. Specifically, a particular row, or set of rows, being entirely zero may indicate that certain MF $\beta_{LM}$ are inaccessible by the set of LF measurements. For instance, in~\textsuperscript{\hyperref[csl:71]{71}} the $\mathbf{{G}}^{LMP\Delta q }_{L'M'KS}$ matrix for the $N_2(X^{1}\Sigma^{+}_{g}) \rightarrow N^+_2(X^{2}\Sigma^{+}_{g})$ ionization of N$_2$ with a single photon, from a RWP excited by a linearly polarized pulse was computed. The results are reproduced herein for reference, see Fig. \ref{931809}, and this can be considered as an indicator of sensitivity in a somewhat analogous fashion to the channel functions shown in Figs. \ref{776753} - \ref{676540}. Rows with $M = 1$ were all determined to be identically zero, therefore only allowing the retrieval of MFPADs with the ionizing field parallel and perpendicular to the molecular axis. In this case, the partial wave analysis involved in the previously described method, along with the non-linear fitting necessarry to retireve the radial dipole matrix elements is avoided. However, only two of the MFPADs shown in Fig.~\ref{731792} extracted by bootstrapping are retrieved by this method.\\
+The key aspects of this method involve first fitting out the ADMs $A^K_{QS}(t)$ from measured $\bar{\beta}^u_{LM}(t)$ in Eq.~\ref{eqn:beta-convolution-C} to retrieve the $\bar{C}^{LM}_{KQS}$ (the vector $\mathbf{C}^{lab}$), and construction of the matrix $\mathbf{{G}}^{LMP\Delta q }_{L'M'KS}$ which facilitates the extraction of the molecular frame coefficients $C^{LM}_{P\Delta q}$ (the vector $\mathbf{C}^{mol}$). The steps in the process are depicted in Fig.~\ref{731792}, which label's primary inputs as the `AF/LF measurements', referring to the $\bar{\beta}^u_{LM}(t)$, and the ADMs $A^K_{QS}(t)$ calculated for a grid of fluence and temperature values by solving the TDSE using the appropriate Hamiltonian for impulsive alignment~\textsuperscript{\hyperref[csl:45]{45},\hyperref[csl:43]{43}}. 
+The `Alignment Retrieval' process requires solving the linear equations Eq.~\ref{eqn:beta-convolution-C} for the $C^{LM}_{P\Delta q}$ using these primary inputs over the entire gird of ADMs, and comparing to the measured data to find the bets fit solution. This provides the vector $\mathbf{C}^{lab}$ needed for the next step - solving the linear equations Eq.~\ref{eq:basic}. This also requires that the matrix $\mathbf{{G}}^{LMP\Delta q }_{L'M'KS}$ be invertable. This matrix therefore encodes the uniquely accessible MF information in the experiment. Specifically, rows in the matrix link the LF parameter $\bar{\beta}^u_{LM}(t)$  to an MF beta parameter $\beta_{LM}(\theta,\chi)$ that can be used to construct the MFPADs, $\theta$ and $\chi$ being polar and azimuthal angles of the laser polarization in the MF. Specifically, a particular row, or set of rows, being entirely zero may indicate that certain MF $\beta_{LM}$ are inaccessible by the set of LF measurements. For instance, in~\textsuperscript{\hyperref[csl:72]{72}} the $\mathbf{{G}}^{LMP\Delta q }_{L'M'KS}$ matrix for the $N_2(X^{1}\Sigma^{+}_{g}) \rightarrow N^+_2(X^{2}\Sigma^{+}_{g})$ ionization of N$_2$ with a single photon, from a RWP excited by a linearly polarized pulse was computed. The results are reproduced herein for reference, see Fig. \ref{931809}, and this can be considered as an indicator of sensitivity in a somewhat analogous fashion to the channel functions shown in Figs. \ref{776753} - \ref{676540}. Rows with $M = 1$ were all determined to be identically zero, therefore only allowing the retrieval of MFPADs with the ionizing field parallel and perpendicular to the molecular axis. In this case, the partial wave analysis involved in the previously described method, along with the non-linear fitting necessarry to retireve the radial dipole matrix elements is avoided. However, only two of the MFPADs shown in Fig.~\ref{731792} extracted by bootstrapping are retrieved by this method.\\
 
-The utility of this method is better demonstrated by application to a polyatomic molecule of $D_{nh}$ symmetry. Gregory et al.~\textsuperscript{\hyperref[csl:71]{71}} also compute the $\mathbf{{G}}^{LMP\Delta q }_{L'M'KS}$ matrix for $C_2H_4(^1A_g) \rightarrow C_2H_4^+(^2B_{3u})$ ionization of $C_2H_4$, with $D_{2h}$ symmetry, from a RWP excited by linearly polarized light. In contrast with $N_2$, all rows of the $\mathbf{{G}}^{LMP\Delta q }_{L'M'KS}$ are non-zero for $C_2H_4$, but the system of linear equations is inconsistent since there are more MF parameters (in the vector $\mathbf{C}^{mol}$) than LF measurements (in the vector $\mathbf{C}^{lab}$). Nonetheless, the solution selected by Gregory et al. minimizes the retrieved vector $\mathbf{C}^{mol}$ and correctly reproduce the MFPADs for any orientation. The basic $(x,y,z)$ cases are reproduced herein as Fig. \ref{584598}, indicating the high fidelity of the reconstructions (for arbitrary polarization geometries see Fig. 5 of Ref. \textsuperscript{\hyperref[csl:71]{71}}). This `extra' information available in the LF measurement for $C_2H_4$ compared to $N_2$ can be traced back to the fact that the RWP is 2D for an asymmetric top excited by linearly polaized light(cf Eq.~\ref{eq:mfrealsig}). While this method does not directly provide radial dipole matrix elements, the MFPADs produced can potentially be used as a constraint, along with additional experimental data, to determine these from a non-linear fit (see Sect. \ref{sec:recon-from-MFPADs}).\selectlanguage{english}
+The utility of this method is better demonstrated by application to a polyatomic molecule of $D_{nh}$ symmetry. Gregory et al.~\textsuperscript{\hyperref[csl:72]{72}} also compute the $\mathbf{{G}}^{LMP\Delta q }_{L'M'KS}$ matrix for $C_2H_4(^1A_g) \rightarrow C_2H_4^+(^2B_{3u})$ ionization of $C_2H_4$, with $D_{2h}$ symmetry, from a RWP excited by linearly polarized light. In contrast with $N_2$, all rows of the $\mathbf{{G}}^{LMP\Delta q }_{L'M'KS}$ are non-zero for $C_2H_4$, but the system of linear equations is inconsistent since there are more MF parameters (in the vector $\mathbf{C}^{mol}$) than LF measurements (in the vector $\mathbf{C}^{lab}$). Nonetheless, the solution selected by Gregory et al. minimizes the retrieved vector $\mathbf{C}^{mol}$ and correctly reproduce the MFPADs for any orientation. The basic $(x,y,z)$ cases are reproduced herein as Fig. \ref{584598}, indicating the high fidelity of the reconstructions (for arbitrary polarization geometries see Fig. 5 of Ref. \textsuperscript{\hyperref[csl:72]{72}}). This `extra' information available in the LF measurement for $C_2H_4$ compared to $N_2$ can be traced back to the fact that the RWP is 2D for an asymmetric top excited by linearly polaized light(cf. Eq.~\ref{eq:mfrealsig}). While this method does not directly provide radial dipole matrix elements, the MFPADs produced can potentially be used as a constraint, along with additional experimental data, to determine these from a non-linear fit (see Sect. \ref{sec:recon-from-MFPADs}).\selectlanguage{english}
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.70\columnwidth]{figures/GFinalplot/GFinalplot}
 \caption{{~\(\)Values of~\(\mathbf{G}^{LMP\Delta q }_{L'M'KS}\) for~\(N_2(X^{1}\Sigma^{+}_{g}) \rightarrow N^+_2(X^{2}\Sigma^{+}_{g})\).
 Figure reproduced from Ref.
-\protect\textsuperscript{\hyperref[csl:71]{71}}.
+\protect\textsuperscript{\hyperref[csl:72]{72}}.
 {\label{931809}}{\label{931809}}%
 }}
 \end{center}
@@ -1575,7 +1596,7 @@ Figure reproduced from Ref.
 \includegraphics[width=1.00\columnwidth]{figures/D2h1/D2h1}
 \caption{{Calculated (a,b,c) and Retrieved (d,e,f) MFPADs for \(C_2 H_4(^1A_g) \rightarrow C_2H_4^+(^2B_{3u})\)
 for \((x,y,z)\) polarization geometries. Figure reproduced from
-Ref. \protect\textsuperscript{\hyperref[csl:71]{71}}.
+Ref. \protect\textsuperscript{\hyperref[csl:72]{72}}.
 {\label{584598}}%
 }}
 \end{center}
@@ -1583,7 +1604,7 @@ Ref. \protect\textsuperscript{\hyperref[csl:71]{71}}.
 
 \subsection{Matrix element retrieval from MFPADs\label{sec:recon-from-MFPADs}}
 
-To complete the circle, one can also consider whether MFPADs - either directly measured or reconstructed via matrix inversion - contain sufficient information to retrieve the underlying matrix elements.  The former case has already been the subject of several studies, for instance refs. \textsuperscript{\hyperref[csl:107]{107},\hyperref[csl:108]{108},\hyperref[csl:109]{109},\hyperref[csl:48]{48}}, and shown to work well for at least homo and hetero nuclear diatomics. In a sense the latter case can be considered as (yet another) bootstrapping-type scheme - MFPADs are obtained via a minimum effort/information route, then leveraged to obtain underlying properties. 
+To complete the circle, one can also consider whether MFPADs - either directly measured or reconstructed via matrix inversion - contain sufficient information to retrieve the underlying matrix elements.  The former case has already been the subject of several studies, for instance refs. \textsuperscript{\hyperref[csl:107]{107},\hyperref[csl:108]{108},\hyperref[csl:109]{109},\hyperref[csl:49]{49}}, and shown to work well for at least homo and hetero nuclear diatomics. In a sense the latter case can be considered as (yet another) bootstrapping-type scheme - MFPADs are obtained via a minimum effort/information route, then leveraged to obtain underlying properties. 
 
 Fitting for MFPADs is currently implemented in the PEMtk suite in a similar manner to the AF fitting detailed in Sect. \ref{sec:bootstrapping}, based on the tensor formalism detailed in Sect. \ref{sec:tensor-formulation}. An extensive numerical example is not presented herein, but in testing for the $N_{2}$ example case, e.g. using MFPADs as shown in Fig. \ref{454268}, matrix element retrieval was found to be possible in general. However, in line with previous observations for other methods (and the underlying physics), the fidelity and retrievable relations again depend on the exact nature and quality - generally the information content - of the MFPAD dataset (or, equivalently, the set of measured $\beta_{L,M}$). In testing, a number of different datasets were trialed, and some notes and observations are given below.
 
@@ -1604,7 +1625,7 @@ Fitting for MFPADs is currently implemented in the PEMtk suite in a similar mann
 \item Incorporating additional suitable interferences, e.g. diagonal polarization (cf. Fig. \ref{454268}), in the dataset allows for additional relative phase relationships to be determined, e.g. between the $\sigma_u$ and $\pi_u$ continua.
 % \item Use of circular polarization further provides information on the sign of the phases. [cf. Reid 1991? Discussed previously. HAVEN'T TESTED THIS]
 \end{itemize}
-\item Retrieval of matrix elements vs. $\epsilon$ is also possible; however, it is again constrained by the presence (or otherwise) of interferences. In the basic case, each energy is treated independently, and relative phases as a function of energy are undefined. However, these may be approximately defined by imposing an energy constraint, e.g. defining that the phases are smooth vs. energy or follow a certain functional form (see, for an example, Ref. \textsuperscript{\hyperref[csl:48]{48}}). % DIDN'T TEST THIS AS YET, is discussed above somewhere.
+\item Retrieval of matrix elements vs. $\epsilon$ is also possible; however, it is again constrained by the presence (or otherwise) of interferences. In the basic case, each energy is treated independently, and relative phases as a function of energy are undefined. However, these may be approximately defined by imposing an energy constraint, e.g. defining that the phases are smooth vs. energy or follow a certain functional form (see, for an example, Ref. \textsuperscript{\hyperref[csl:49]{49}}). % DIDN'T TEST THIS AS YET, is discussed above somewhere.
 \end{itemize}
 
 In general, an MF fitting procedure, whether from directly measured MFPADs, or reconstructed MFPADs, may be expected to work generally in principle, with similar caveats to the full AF-bootstrapping methodology of Sect. \ref{sec:bootstrapping} (and the existing literature, see Sect. \ref{sec:CompleteLit}). Both methodologies are constrained by the symmetry of the system, and general information content. Notable differences are the implicit presence of cross-terms between continua in the AF case (Eqn. \ref{eq:BLM-tensor-AF}), which may be missing in the MF case (Eqn. \ref{eq:BLM-tensor-MF}), depending on the choice of polarization geometries.
@@ -1636,7 +1657,7 @@ Meanwhile, experimental methodologies continue to improve and grow in sophistica
 
 % [Something on recent pubs/demonstrations here?]
 
-Recent work in this vein from the current authors and coworkers includes (atomic) matrix element retrieval from photoelectron imaging measurements with polarization multiplexing (via shaped laser pulses) \textsuperscript{\hyperref[csl:78]{78},\hyperref[csl:110]{110},\hyperref[csl:80]{80},\hyperref[csl:79]{79}}, (hyperfine) quantum beat spectroscopy from time-resolved photoelectron imaging experiments \textsuperscript{\hyperref[csl:111]{111}}, and quantum tomographic determination of (LF) density matrices including electronic dynamics - theory \textsuperscript{\hyperref[csl:112]{112}} and application to $NH_3$ (manuscript in preparation). These types of investigations indicate the potential for further general developments, and the utility of the MF retrieval and reconstruction techniques discussed herein as a foundation for a broader range of problems in molecular photoionization and dynamics, ultimately building to a class of molecular quantum state retrieval methods from photoelectron measurements \textsuperscript{\hyperref[csl:11]{11},\hyperref[csl:77]{77}}. 
+Recent work in this vein from the current authors and coworkers includes (atomic) matrix element retrieval from photoelectron imaging measurements with polarization multiplexing (via shaped laser pulses) \textsuperscript{\hyperref[csl:78]{78},\hyperref[csl:110]{110},\hyperref[csl:80]{80},\hyperref[csl:79]{79}}, (hyperfine) quantum beat spectroscopy from time-resolved photoelectron imaging experiments \textsuperscript{\hyperref[csl:111]{111}}, and quantum tomographic determination of (LF) density matrices including electronic dynamics - theory \textsuperscript{\hyperref[csl:112]{112}} and application to $NH_3$ (manuscript in preparation). These types of investigations indicate the potential for further general developments, and the utility of the MF retrieval and reconstruction techniques discussed herein as a foundation for a broader range of problems in molecular photoionization and dynamics, ultimately building to a class of molecular quantum state retrieval methods from photoelectron measurements \textsuperscript{\hyperref[csl:11]{11},\hyperref[csl:36]{36}}. 
 
 
 
@@ -1652,12 +1673,12 @@ The authors would like to thank the JPB editors - particularly A. Stolow - for i
 The following online resources are available, and it is hoped that interested readers will find these useful, and contribute.
 
 \begin{itemize}
-\item Manuscipt text, live (\href{https://www.authorea.com/users/71114/articles/447808-extracting-molecular-frame-photoionization-dynamics-from-experimental-data}{on Authorea (includes interactive figures)}) and \href{https://github.com/phockett/Extracting-Molecular-Frame-Photoionization-Dynamics-from-Experimental-Data}{Github}. Post-publication reader comments \& suggestions can be added directly via the web.
+\item Manuscipt text, live \href{https://www.authorea.com/users/71114/articles/447808-extracting-molecular-frame-photoionization-dynamics-from-experimental-data}{on Authorea (includes interactive figures)} and \href{https://github.com/phockett/Extracting-Molecular-Frame-Photoionization-Dynamics-from-Experimental-Data}{Github}. Post-publication reader comments \& suggestions can be added directly via the web.
 \item \href{https://www.zotero.org/groups/4733878/molecular_frame_pads_measurements_and_reconstruction}{Full bibliography, via a Zotero group \textit{``Molecular Frame PADs Measurements and Reconstruction"}} \textsuperscript{\hyperref[csl:2]{2}}. Additional references and suggestions can be added to the group, and it is hoped that this will grow to provide a useful community resource.
 \item Code for AF computation and matrix element retrieval, as illustrated in Sect. \ref{sec:Recon}. 
 \begin{itemize}
 \item Full Jupyter notebooks and source data are \href{http://dx.doi.org/10.6084/m9.figshare.20293782}{available on Figshare, DOI: 10.6084/m9.figshare.20293782}. This also includes a complete archive of the python software releases and environment used during this work \textsuperscript{\hyperref[csl:3]{3}}.
-\item The open-source python libraries \href{https://epsproc.readthedocs.io}{ePSproc} \textsuperscript{\hyperref[csl:85]{85},\hyperref[csl:75]{75},\hyperref[csl:86]{86}} and \href{https://pemtk.readthedocs.io}{PEMtk} \textsuperscript{\hyperref[csl:84]{84},\hyperref[csl:76]{76}} developed for these problems. (See Sects. \ref{sec:numerics-intro}, \ref{sec:numerical-notes} for further discussion.)
+\item The open-source python libraries \href{https://epsproc.readthedocs.io}{ePSproc} \textsuperscript{\hyperref[csl:85]{85},\hyperref[csl:76]{76},\hyperref[csl:86]{86}} and \href{https://pemtk.readthedocs.io}{PEMtk} \textsuperscript{\hyperref[csl:84]{84},\hyperref[csl:77]{77}} developed for these problems. (See Sects. \ref{sec:numerics-intro}, \ref{sec:numerical-notes} for further discussion.)
 \end{itemize}
 \item Discussion forum at \href{https://amoopenscience.femtolab.ca/}{AMO Open Science}. We hope interested readers will use this forum for general discussion on the topic, if only to suggest other venues for discussion.
 \item A Docker-based distribution of various codes for tackling photoionization problems is also available from the \href{https://github.com/phockett/open-photoionization-docker-stacks}{Open Photoionization Docker Stacks} project, which aims to make these tools more accessible to interested researchers \textsuperscript{\hyperref[csl:88]{88}}.
@@ -1673,18 +1694,18 @@ The following sections provide further reading on specific topics for interested
 
 \subsection{MF experimental literature sample\label{appendix:MF-expt}}
 
-Reviews covering this class of experiment can be found in  \textsuperscript{\hyperref[csl:48]{48},\hyperref[csl:13]{13},\hyperref[csl:49]{49},\hyperref[csl:16]{16},\hyperref[csl:50]{50}}; some (representative) examples from the literature include:
+Reviews covering this class of experiment can be found in  \textsuperscript{\hyperref[csl:49]{49},\hyperref[csl:13]{13},\hyperref[csl:50]{50},\hyperref[csl:16]{16},\hyperref[csl:51]{51}}; some (representative) examples from the literature include:
 
 \begin{itemize}
-\item MFPADs for N2 core ionization \textsuperscript{\hyperref[csl:67]{67}}
-\item MFPADs from various diatomics with coincidence velocity-map imaging \textsuperscript{\hyperref[csl:113]{113}} \textsuperscript{\hyperref[csl:69]{69}}
-\item MFPADs from CO K-shell photoionization \textsuperscript{\hyperref[csl:114]{114}} and matrix element retrieval \textsuperscript{\hyperref[csl:68]{68}}.
+\item MFPADs for N2 core ionization \textsuperscript{\hyperref[csl:68]{68}}
+\item MFPADs from various diatomics with coincidence velocity-map imaging \textsuperscript{\hyperref[csl:113]{113}} \textsuperscript{\hyperref[csl:70]{70}}
+\item MFPADs from CO K-shell photoionization \textsuperscript{\hyperref[csl:114]{114}} and matrix element retrieval \textsuperscript{\hyperref[csl:69]{69}}.
 \item MFPADs and matrix element retrieval for N2 \textsuperscript{\hyperref[csl:107]{107}}
 \item MFPADs and matrix element retrieval for NO inner-valence ionization \textsuperscript{\hyperref[csl:115]{115},\hyperref[csl:108]{108}} (this makes use of a general $F_{LN}(\theta_e)$ parametrized treatment of the MFPADs (see also ref. \textsuperscript{\hyperref[csl:116]{116}}), which provides a suitable reduction method for experimental data analysis for RF and MFPADs, and the potential for matrix element retrieval, in a somewhat similar manner to the tensor approach discussed herein). % TO consider futher - just a reparametrization of the usual stuff, plus some special cases.
-% \item MFPADs review \textsuperscript{\hyperref[csl:48]{48}} % \textsuperscript{\hyperref[csl:109]{109},\hyperref[csl:48]{48}}
+% \item MFPADs review \textsuperscript{\hyperref[csl:49]{49}} % \textsuperscript{\hyperref[csl:109]{109},\hyperref[csl:49]{49}}
 \item NO2 RFPADs \textsuperscript{\hyperref[csl:117]{117}}.
 \item NO MFPADs (1s channels) \textsuperscript{\hyperref[csl:118]{118}}.
-\item Interference and entanglement in H2 double ionization in the MF \textsuperscript{\hyperref[csl:51]{51}}.
+\item Interference and entanglement in H2 double ionization in the MF \textsuperscript{\hyperref[csl:52]{52}}.
 \item General discussion of multi-particle imaging with COLTRIMS \textsuperscript{\hyperref[csl:119]{119}}.
 \item Imaging methane MFPADs with electron-ion-ion coincidences \textsuperscript{\hyperref[csl:120]{120},\hyperref[csl:121]{121}}.
 \item MFPADs from naphthalene ($C_{10}H_{8}$) via alignment and tomographic imaging \textsuperscript{\hyperref[csl:122]{122}}.
@@ -1707,15 +1728,15 @@ A number of authors have developed relevant theory for photoionization problems.
 \item Early derivations for atomic PADs \textsuperscript{\hyperref[csl:128]{128},\hyperref[csl:129]{129},\hyperref[csl:130]{130}}
 \item Early derivations for molecular (LF)PADs \textsuperscript{\hyperref[csl:131]{131}}, rotationally-resolved cases \textsuperscript{\hyperref[csl:132]{132}}, and optically-active cases \textsuperscript{\hyperref[csl:133]{133}}
 \item Angular momentum transfer in LF and MFPADs \textsuperscript{\hyperref[csl:134]{134}} 
-\item General MFPAD (``fixed-molecule") derivation \textsuperscript{\hyperref[csl:27]{27}}
+\item General MFPAD (``fixed-molecule") derivation \textsuperscript{\hyperref[csl:26]{26}}
 \item Atomic PADs and spin polarization \textsuperscript{\hyperref[csl:135]{135}}
 \item Resonant multiphoton PADs \textsuperscript{\hyperref[csl:136]{136}}
 \item Molecular orbital continuum decomposition \textsuperscript{\hyperref[csl:137]{137}}
 \item A simple-model description for MFPADs, including $F_{LN}$ function decomposition \textsuperscript{\hyperref[csl:138]{138}}
 \item Matrix element retrieval from time-resolved photoelectron imaging experiments \textsuperscript{\hyperref[csl:139]{139}}.
-\item Time-resolved PADs and dynamics (including molecular alignment) \textsuperscript{\hyperref[csl:60]{60},\hyperref[csl:30]{30},\hyperref[csl:8]{8}}
-\item LF, RF and MFPADs theory and determination (review article) \textsuperscript{\hyperref[csl:49]{49}}
-\item Photoionization with a focus on alignment/RWP effects, including numerical studies \textsuperscript{\hyperref[csl:98]{98},\hyperref[csl:140]{140},\hyperref[csl:141]{141}}, and MFPAD case-study \textsuperscript{\hyperref[csl:59]{59}}.
+\item Time-resolved PADs and dynamics (including molecular alignment) \textsuperscript{\hyperref[csl:61]{61},\hyperref[csl:30]{30},\hyperref[csl:8]{8}}
+\item LF, RF and MFPADs theory and determination (review article) \textsuperscript{\hyperref[csl:50]{50}}
+\item Photoionization with a focus on alignment/RWP effects, including numerical studies \textsuperscript{\hyperref[csl:98]{98},\hyperref[csl:140]{140},\hyperref[csl:141]{141}}, and MFPAD case-study \textsuperscript{\hyperref[csl:60]{60}}.
 \item LF and MFPADs theory review and tutorials (with numerical examples) \textsuperscript{\hyperref[csl:11]{11}}
 \end{itemize}
 
@@ -1724,15 +1745,15 @@ A number of authors have developed relevant theory for photoionization problems.
 
 % 12/07/22 - started, but ran out of steam - might skip it? (Mainly pulling from QMet Vol. 2 Chpt. 8)
 
-The topic of complete photoionization experiments has been recently reviewed in \textsuperscript{\hyperref[csl:12]{12},\hyperref[csl:77]{77}}, see also older review articles \textsuperscript{\hyperref[csl:14]{14},\hyperref[csl:15]{15},\hyperref[csl:142]{142}}. Some representative and noteworthy examples are also listed below (see also Sect. \ref{appendix:MF-expt} above for cases involving MF measurements).
+The topic of complete photoionization experiments has been recently reviewed in \textsuperscript{\hyperref[csl:12]{12},\hyperref[csl:36]{36}}, see also older review articles \textsuperscript{\hyperref[csl:14]{14},\hyperref[csl:15]{15},\hyperref[csl:142]{142}}. Some representative and noteworthy examples are also listed below (see also Sect. \ref{appendix:MF-expt} above for cases involving MF measurements).
 
 \begin{itemize}
 \item First experimental demonstration for photoionization of an atomic target by Berry and coworkers \textsuperscript{\hyperref[csl:143]{143}}, who studied
 $Na(^{2}P_{1/2},\,^{2}P_{3/2})$.
-\item First molecular demonstration for $NO$, from the Zare group, with state-resolved LF measurements including linear and circularly polarized fields \textsuperscript{\hyperref[csl:144]{144}} (see also prior work \textsuperscript{\hyperref[csl:145]{145},\hyperref[csl:40]{40},\hyperref[csl:33]{33}}).
+\item First molecular demonstration for $NO$, from the Zare group, with state-resolved LF measurements including linear and circularly polarized fields \textsuperscript{\hyperref[csl:144]{144}} (see also prior work \textsuperscript{\hyperref[csl:145]{145},\hyperref[csl:41]{41},\hyperref[csl:33]{33}}).
 \item General theoretical discussion on complete experiments in atoms and molecules \textsuperscript{\hyperref[csl:109]{109}}.
 \item Time-resolved rotational-wavepacket methods applied to $NO$ (narrow wavepacket) \textsuperscript{\hyperref[csl:146]{146},\hyperref[csl:147]{147}}, see also Refs. \textsuperscript{\hyperref[csl:148]{148}} (review) and \textsuperscript{\hyperref[csl:139]{139}} (theory \& analysis).
-\item Non-linear polyatomic demonstration with state-resolved LF measurements ($NH_3$) \textsuperscript{\hyperref[csl:41]{41}}.
+\item Non-linear polyatomic demonstration with state-resolved LF measurements ($NH_3$) \textsuperscript{\hyperref[csl:42]{42}}.
 \item Theoretical investigation of matrix element retrieval for photoelectron imaging experiments \textsuperscript{\hyperref[csl:98]{98}} (see also \textsuperscript{\hyperref[csl:140]{140}} for rotational wavepacket reconstruction from complementary methods including high-harmonic generation).  
 \item Complete experiments with polarization shaping \textsuperscript{\hyperref[csl:78]{78},\hyperref[csl:79]{79}}.
 \item Time-resolved rotational-wavepacket method applied to $N_2$ (broad wavepacket) and bootstrap technique development \textsuperscript{\hyperref[csl:83]{83}} (as per Sect. \ref{sec:bootstrapping} herein.)
@@ -1748,7 +1769,7 @@ A complete accounting of the formalism used herein is given in the following sec
 
 The equations for the \(\beta_{LM}\) parameters, in the molecular and
 lab frames (MF \& AF respectively), written in terms of geometric
-tensor parameters, are given in Sect. \ref{sec:full-tensor-expansion}. The necessary tensor components are further detailed below. For further discussion and derivations see Refs. \textsuperscript{\hyperref[csl:70]{70},\hyperref[csl:60]{60},\hyperref[csl:8]{8}}, and Ref. \textsuperscript{\hyperref[csl:11]{11}} for a summary including various different formalisms; further examples can also be found in the ePSproc documentation \textsuperscript{(missing citation)}. For general discussion on tensor methods in atomic and molecular spectroscopy and related problems, see Refs. \textsuperscript{\hyperref[csl:36]{36},\hyperref[csl:32]{32}}. 
+tensor parameters, are given in Sect. \ref{sec:full-tensor-expansion}. The necessary tensor components are further detailed below. For further discussion and derivations see Refs. \textsuperscript{\hyperref[csl:71]{71},\hyperref[csl:61]{61},\hyperref[csl:8]{8}}, and Ref. \textsuperscript{\hyperref[csl:11]{11}} for a summary including various different formalisms; further examples can also be found in the ePSproc documentation \textsuperscript{(missing citation)}. For general discussion on tensor methods in atomic and molecular spectroscopy and related problems, see Refs. \textsuperscript{\hyperref[csl:37]{37},\hyperref[csl:32]{32}}. 
 
 Note, also, that several equivalent formalisms have been presented in the literature (Sect. \ref{sec:theory-lit}), often specialised to a particular problem or choice of phase conventions. In the following the equations are general, although the phase conventions are chosen to match those used in ePolyScat (Sect. \ref{sec:mat-ele-conventions}), hence the numerics for the analysis presented herein. In practice the ePSproc codes allow the user to set these conventions as desired. %[More on phase conventions - choice of harmonics, symmetrization etc...? Refs?]
 
@@ -1789,7 +1810,7 @@ Note, also, that several equivalent formalisms have been presented in the litera
 
 The
 \href{https://epsproc.readthedocs.io/en/latest/methods/geometric_method_dev_260220_090420_tidy.html\#E_\%7BP,R\%7D-tensor}{coupling
-of two 1-photon terms can be written as a tensor contraction} \textsuperscript{\hyperref[csl:36]{36},\hyperref[csl:32]{32}}:
+of two 1-photon terms can be written as a tensor contraction} \textsuperscript{\hyperref[csl:37]{37},\hyperref[csl:32]{32}}:
 
 \begin{equation}
 E_{P,R}(\hat{e})=[e\otimes e^{*}]_{R}^{P}=[P]^{\frac{1}{2}}\sum_{p}(-1)^{R}\left(\begin{array}{ccc}
@@ -1890,7 +1911,7 @@ And the observable is restricted to $L_{max}=|P+K|$, and $M=0$ only if  $Q=S=R=0
 
 % TODO - wavefunction conventions, symmetrized harmonics.
 
-Herein the numerical form of the dipole matrix elements is chosen to match the definitions used by ePolyScat \textsuperscript{\hyperref[csl:72]{72},\hyperref[csl:74]{74},\hyperref[csl:117]{117}}. In the notation of Ref. \textsuperscript{\hyperref[csl:117]{117}}:
+Herein the numerical form of the dipole matrix elements is chosen to match the definitions used by ePolyScat \textsuperscript{\hyperref[csl:73]{73},\hyperref[csl:75]{75},\hyperref[csl:117]{117}}. In the notation of Ref. \textsuperscript{\hyperref[csl:117]{117}}:
 
 \begin{equation}
 I_{l,m,\mu}^{p_{i}\mu_{i},p_{f}\mu_{f}}(\epsilon)=\langle\Psi_{i}^{p_{i},\mu_{i}}|\hat{d_{\mu}}|\Psi_{f}^{p_{f},\mu_{f}}\varphi_{klm}^{(-)}\rangle\label{eq:eps-I}
@@ -2124,9 +2145,9 @@ the given measurement), with dimensions dependent on the unique sets of quantum 
 \beta_{L,M}^{u}=\sum_{\zeta,\zeta'}\mathbf{\rho}_{L,M}^{u,\zeta\zeta'}
 \end{equation}
 
-In fact, this form arises naturally since the $\beta_{L,M}^{u}$ terms are the state multipoles (geometric tensors) defining the system, which can be thought of as a coupled basis equivalent of the density matrix representations (see, e.g., ref. \textsuperscript{\hyperref[csl:36]{36}}, Chpt. 4.).
+In fact, this form arises naturally since the $\beta_{L,M}^{u}$ terms are the state multipoles (geometric tensors) defining the system, which can be thought of as a coupled basis equivalent of the density matrix representations (see, e.g., ref. \textsuperscript{\hyperref[csl:37]{37}}, Chpt. 4.).
 
-In a more traditional notation (cf. Eqn. \ref{eq:cstate}, see also Refs. \textsuperscript{\hyperref[csl:71]{71}} 
+In a more traditional notation (cf. Eqn. \ref{eq:cstate}, see also Refs. \textsuperscript{\hyperref[csl:72]{72}} 
 %[plus VM electron coherences? And some older refs]
 ), the density operator can be expressed as:
 
@@ -2148,55 +2169,72 @@ with $\rho_i = |\Psi_i\rangle\langle\Psi_i|$. This is, effectively, equivalent t
 
 \subsection{Matrix inversion formalism\label{app:mat-inversion}}
 
-Following Gregory et. al. \textsuperscript{\hyperref[csl:71]{71}}, the formalism can also be rewritten with
-the ADMs separate (see also Reid \& Underwood convolution form, \textsuperscript{\hyperref[csl:70]{70}}), and the LF/AF given as (cf. Eqn. \ref{eq:BLM-tensor-AF}):
+% As discussed in Sect. \ref{sec:matrix-inv-intro}, following Gregory et. al. \textsuperscript{\hyperref[csl:72]{72}}, the formalism can also be rewritten with
+% the ADMs separate (see also Reid \& Underwood convolution form, \textsuperscript{\hyperref[csl:71]{71}}), and the LF/AF given as (cf. Eqn. \ref{eq:BLM-tensor-AF}):
+
+% \begin{equation}
+% \bar{\beta}_{L,M}(E,t)=\sum_{K,Q,S}C_{K,Q,S}^{L,M}(E)A_{Q,S}^{K}(t)
+% \end{equation}
+
+% % ($Q=0$ only in Gregory et. al., don't recall if this is general limitation however - may be symmetry and/or dimensionality related?)
+% (Note that $Q=0$ only for the derivations in Gregory et. al. \textsuperscript{\hyperref[csl:72]{72}}, although the results should generalise - see discussion therein for details, particularly Sect. 3.2 and the appendices.)
+
+% And the MF (cf. Eqn. \ref{eq:BLM-tensor-MF}):
+
+% \begin{equation}
+% \beta_{L,M}(E,\Omega)=\sum_{P,R,\Delta q}C_{P,R}^{L,M}(E,\Delta q)D_{R,\Delta q}^{P}(\Omega)
+% \end{equation}
+
+% In the original notation, the transformation can be written:
+
+% \begin{equation}
+% \mathbf{C}^{mol}=\mathbf{G}\mathbf{C}^{lab},
+% \end{equation}
+
+% \begin{equation}
+% C_{P,0}^{L,M}(E,\Delta q)=\hat{G}_{L'0KS}^{LMP\Delta q}\bar{C}_{K,0,S}^{L',0}(E)
+% \end{equation}
+
+% % (Here $M'=Q=R=0$, again not sure if this is required.)
+
+% And
+
+% \begin{equation}
+% \mathbf{G}_{L'M'KS}^{LMP\Delta q}=\mathbf{\Gamma}_{P0\Delta q}^{\zeta\zeta'LM}(\mathbf{\Gamma}_{K0S}^{\zeta\zeta'L^{\prime}M^{\prime}})^{+}
+% \end{equation}
+
+% Where $+$ denotes the Moore-Penrose inverse matrix.
+
+% \begin{equation}
+% \bar{C}_{KQS}^{LM}(\epsilon)=\sum_{\zeta\zeta'}d_{\zeta\zeta'}(\epsilon)\Gamma_{KQS}^{\zeta\zeta'LM}
+% \end{equation}
+
+% \begin{equation}
+% C_{PR}^{LM}(\epsilon,\Delta q)=\sum_{\zeta\zeta'}d_{\zeta\zeta'}(\epsilon)\Gamma_{PR\Delta q}^{\zeta\zeta'LM}
+% \end{equation}
+
+% \begin{equation}
+% D_{\zeta}(\epsilon)D_{\zeta'}^{*}(\epsilon)=d_{\zeta\zeta'}(\epsilon)
+% \end{equation}
+
+As discussed in Sect. \ref{sec:matrix-inv-intro}, and following Gregory et. al. \textsuperscript{\hyperref[csl:72]{72}}, the general formalism can also be rewritten with the ADMs separate (see also Reid \& Underwood convolution form, \textsuperscript{\hyperref[csl:71]{71}}), and the LF/AF given as per Eqn. \ref{eqn:beta-convolution-C} (cf. Eqn. \ref{eq:BLM-tensor-AF}). Herein, the notation from Gregory et. al. \textsuperscript{\hyperref[csl:72]{72}} is rewritten slightly, as per Eqns. \ref{eq:basic} - \ref{eq:MPinversion}.
+
+In the current notation, the full expressions are written as per Eqn. \ref{eqn:beta-convolution-C} for the LF/AF (cf. Eqn. \ref{eq:BLM-tensor-AF}):
 
 \begin{equation}
 \bar{\beta}_{L,M}(E,t)=\sum_{K,Q,S}C_{K,Q,S}^{L,M}(E)A_{Q,S}^{K}(t)
 \end{equation}
 
 % ($Q=0$ only in Gregory et. al., don't recall if this is general limitation however - may be symmetry and/or dimensionality related?)
-(Note that $Q=0$ only for the derivations in Gregory et. al. \textsuperscript{\hyperref[csl:71]{71}}, although the results should generalise - see discussion therein for details, particularly Sect. 3.2 and the appendices.)
+% (Note that $Q=0$ only for the derivations in Gregory et. al. \textsuperscript{\hyperref[csl:72]{72}}, although the results should generalise - see discussion therein for details, particularly Sect. 3.2 and the appendices.)
 
-And the MF (cf. Eqn. \ref{eq:BLM-tensor-MF}):
+And for the MF (cf. Eqn. \ref{eq:BLM-tensor-MF}):
 
 \begin{equation}
 \beta_{L,M}(E,\Omega)=\sum_{P,R,\Delta q}C_{P,R}^{L,M}(E,\Delta q)D_{R,\Delta q}^{P}(\Omega)
 \end{equation}
 
-And the transformation can be written as (eqn. 1, 28):
-
-\begin{equation}
-\mathbf{C}^{mol}=\mathbf{G}\mathbf{C}^{lab},\label{eq:basic}
-\end{equation}
-
-\begin{equation}
-C_{P,0}^{L,M}(E,\Delta q)=\hat{G}_{L'0KS}^{LMP\Delta q}\bar{C}_{K,0,S}^{L',0}(E)
-\end{equation}
-
-% (Here $M'=Q=R=0$, again not sure if this is required.)
-
-And
-
-\begin{equation}
-\mathbf{G}_{L'M'KS}^{LMP\Delta q}=\mathbf{\Gamma}_{P0\Delta q}^{\zeta\zeta'LM}(\mathbf{\Gamma}_{K0S}^{\zeta\zeta'L^{\prime}M^{\prime}})^{+}
-\end{equation}
-
-Where $+$ denotes the Moore-Penrose inverse matrix.
-
-\begin{equation}
-\bar{C}_{KQS}^{LM}(\epsilon)=\sum_{\zeta\zeta'}d_{\zeta\zeta'}(\epsilon)\Gamma_{KQS}^{\zeta\zeta'LM}
-\end{equation}
-
-\begin{equation}
-C_{PR}^{LM}(\epsilon,\Delta q)=\sum_{\zeta\zeta'}d_{\zeta\zeta'}(\epsilon)\Gamma_{PR\Delta q}^{\zeta\zeta'LM}
-\end{equation}
-
-\begin{equation}
-D_{\zeta}(\epsilon)D_{\zeta'}^{*}(\epsilon)=d_{\zeta\zeta'}(\epsilon)
-\end{equation}
-
-In the current notation, we can rewrite:
+And the required coefficients defined as:
 
 \begin{equation}
 \bar{C}_{KQS}^{LM}(\epsilon)=\sum_{\zeta\zeta'}\mathbb{I}_{\zeta\zeta'}^{\Gamma,\Gamma'}(\epsilon)\Gamma_{KQS}^{\zeta\zeta'LM}
@@ -2215,17 +2253,19 @@ C_{PR}^{LM}(\epsilon,\Delta q)=\sum_{\zeta\zeta'}\mathbb{I}_{\zeta\zeta'}^{\Gamm
 \Gamma_{PR\Delta q}^{\zeta\zeta'LM}=(-1)^{M}(2P+1)^{\frac{1}{2}}E_{P-R}(\hat{e};\mu_{0})(-1)^{(\mu'-\mu_{0})}\bar{\Lambda}_{\Delta q}(\mu,P,\Delta q)B_{L,-M}(l,l',m,m')
 \end{equation}
 
-assuming $R'=\Delta q$, and that the rotational matrix element $D_{R,\Delta q}^{P}(\Omega)$
+Where it is assumed that $R'=\Delta q$, and that the rotational matrix element $D_{R,\Delta q}^{P}(\Omega)$
 is computed independently (note that the current numerical function $\Lambda_{R',R}(R_{\hat{n}};\mu,P,R,R')$
 could possibly be used directly here, but this version keeps the angle-dependence
 separate as per the matrix inversion formalism).
 %; \textcolor{red}{alternatively a new function might be used here?}).
 
+Note also that $Q=0$ only for the derivations in Gregory et. al. \textsuperscript{\hyperref[csl:72]{72}}, and the the inverse matrix as given in Eqn. \ref{eq:MPinversion}, although the results should generalise - see discussion in Ref. \textsuperscript{\hyperref[csl:72]{72}} for details, particularly Sect. 3.2 and the appendices.
+
 \subsection{Numerical implementation in ePSproc and PEMtk\label{sec:numerical-notes}}
 
 \subsubsection{Photoionizaion calculations with ePSproc}
 
-The ePSproc codebase \textsuperscript{\hyperref[csl:85]{85},\hyperref[csl:75]{75},\hyperref[csl:86]{86}} aims to provide methods for post-processing with ePolyScat matrix elements (or equivalent matrix elements from other sources), including computation of AF and MF observables. The numerical implementation thus follows the conventions of ePolyScat, as given in Sect. \ref{sec:mat-ele-conventions}. Additionally, various switches can also be set to define alternative choices, e.g. conjugate forms, use of real harmonics etc., for computation of observables. Since the code is open-source Python, users may also swap libraries/conventions to their preference. By default the following conventions/libraries are used:
+The ePSproc codebase \textsuperscript{\hyperref[csl:85]{85},\hyperref[csl:76]{76},\hyperref[csl:86]{86}} aims to provide methods for post-processing with ePolyScat matrix elements (or equivalent matrix elements from other sources), including computation of AF and MF observables. The numerical implementation thus follows the conventions of ePolyScat, as given in Sect. \ref{sec:mat-ele-conventions}. Additionally, various switches can also be set to define alternative choices, e.g. conjugate forms, use of real harmonics etc., for computation of observables. Since the code is open-source Python, users may also swap libraries/conventions to their preference. By default the following conventions/libraries are used:
 
 \begin{itemize}
 \item Angular momentum functions (Wigner D and 3js) are currently implemented directly, or via the Spherical Functions library \textsuperscript{\hyperref[csl:150]{150}}, and have been tested for consistency with the definitions in Zare (for details see \href{https://epsproc.readthedocs.io/en/latest/tests/Spherical_function_testing_Aug_2019.html}{the ePSproc docs} \textsuperscript{\hyperref[csl:86]{86}}).\textsuperscript{\hyperref[csl:86]{86}}).\textsuperscript{\hyperref[csl:86]{86}}).
@@ -2236,11 +2276,14 @@ The ePSproc codebase \textsuperscript{\hyperref[csl:85]{85},\hyperref[csl:75]{75
 
 \subsubsection{Data handling and fitting with PEMtk}
 
-The Photoelectron Metrology Toolkit (PEMtk) codebase \textsuperscript{\hyperref[csl:84]{84},\hyperref[csl:76]{76}} aims to provide various general data handling routines for photoionization problems. At the time of writing, only fitting routines are implemented, along with some basic utility functions, and backend functionality from ePSproc. Further details can be found in the \href{https://pemtk.readthedocs.io/en/latest/about.html}{PEMtk documentation} \textsuperscript{\hyperref[csl:84]{84}}.
+The Photoelectron Metrology Toolkit (PEMtk) codebase \textsuperscript{\hyperref[csl:84]{84},\hyperref[csl:77]{77}} aims to provide various general data handling routines for photoionization problems. At the time of writing, only fitting routines are implemented, along with some basic utility functions, and backend functionality from ePSproc. Further details can be found in the \href{https://pemtk.readthedocs.io/en/latest/about.html}{PEMtk documentation} \textsuperscript{\hyperref[csl:84]{84}}.
 
 The results presented in Sect. \ref{sec:bootstrapping} make use of PEMtk routines, including functions provided to wrap matrix elements and ePSproc observable calculations for fitting, and analysis routines for identifying candidate matrix elements. The full analysis notebooks are available in the \href{http://dx.doi.org/10.6084/m9.figshare.20293782}{Figshare repository for this article} \textsuperscript{\hyperref[csl:3]{3}}.
 
-Non-linear optimization (fitting) is handled via the \href{https://lmfit.github.io/lmfit-py/index.html}{lmfit library}, which implements and/or wraps a range of non-linear fitting routines in Python \textsuperscript{\hyperref[csl:94]{94},\hyperref[csl:162]{162}}; for the Levenberg-Marquardt least-squares minimization method used herein this wraps \href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html}{Scipy's \verb+least_squares+  functionality}, which therefore constituted the core minimization routine \textsuperscript{\hyperref[csl:151]{151}} for the demonstration case.
+Non-linear optimization (fitting) is handled via the \href{https://lmfit.github.io/lmfit-py/index.html}{lmfit library}, which implements and/or wraps a range of non-linear fitting routines in Python \textsuperscript{\hyperref[csl:94]{94},\hyperref[csl:162]{162}}; for the Levenberg-Marquardt least-squares minimization method used herein this wraps 
+% \href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html}{Scipy's \verb+least_squares+  functionality}
+% Removed \verb -  OK in Authorea, but breaks in other places.
+\href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html}{Scipy's \texttt{least\_squares} functionality}, which therefore constituted the core minimization routine \textsuperscript{\hyperref[csl:151]{151}} for the demonstration case.
 
 Although not demonstrated herein, computation of $X_{hl}^{\Gamma\mu*}(\theta,\phi)$ (Eqn. \ref{eq:symm-harmonics}) is also currently implemented in the PEMtk codebase, making use of libmsym \textsuperscript{\hyperref[csl:158]{158},\hyperref[csl:159]{159}} (symmetry coefficients) and SHtools \textsuperscript{\hyperref[csl:152]{152},\hyperref[csl:153]{153}} (general spherical harmonic handling and conversion). For worked examples, see \href{https://pemtk.readthedocs.io/en/latest/sym/pemtk_symHarm_demo_160322_tidy.html}{the PEMtk docs} \textsuperscript{\hyperref[csl:84]{84}}. It is hoped that this will be a useful tool for tackling photoionization problems more generally, without \textit{a priori} knowledge of the matrix elements for a given system.
 
@@ -2296,31 +2339,31 @@ Although not demonstrated herein, computation of $X_{hl}^{\Gamma\mu*}(\theta,\ph
 \label{csl:16}16.Yagishita, A. {Photoelectron Angular Distributions from Single Oriented Molecules: {{Past}}, Present and Future}. \textit{Journal of Electron Spectroscopy and Related Phenomena} \textbf{200}, 247–256 (2015).
 
 \phantomsection
-\label{csl:17}17.Hockett, P. \textit{{Quantum {{Metrology}} with {{Photoelectrons}}, {{Volume}} 1 {{Foundations}}}}. ({IOP Publishing}, 2018). doi:10.1088/978-1-6817-4684-5.
+\label{csl:17}17.Young, L. \textit{et al.}. {Roadmap of Ultrafast X-Ray Atomic and Molecular Physics}. \textit{Journal of Physics B: Atomic, Molecular and Optical Physics} \textbf{51}, 032003 (2018).
 
 \phantomsection
-\label{csl:18}18.Young, L. \textit{et al.}. {Roadmap of Ultrafast X-Ray Atomic and Molecular Physics}. \textit{Journal of Physics B: Atomic, Molecular and Optical Physics} \textbf{51}, 032003 (2018).
+\label{csl:18}18.Ueda, K. \textit{et al.}. {Roadmap on Photonic, Electronic and Atomic Collision Physics: {{I}}. {{Light}}\textendash Matter Interaction}. \textit{Journal of Physics B: Atomic, Molecular and Optical Physics} \textbf{52}, 171001 (2019).
 
 \phantomsection
-\label{csl:19}19.Ueda, K. \textit{et al.}. {Roadmap on Photonic, Electronic and Atomic Collision Physics: {{I}}. {{Light}}\textendash Matter Interaction}. \textit{Journal of Physics B: Atomic, Molecular and Optical Physics} \textbf{52}, 171001 (2019).
+\label{csl:19}19.Mitra, D., Leung, K. H. \& Zelevinsky, T. {Quantum Control of Molecules for Fundamental Physics}. \textit{Physical Review A} \textbf{105}, 040101 (2022).
 
 \phantomsection
-\label{csl:20}20.Mitra, D., Leung, K. H. \& Zelevinsky, T. {Quantum Control of Molecules for Fundamental Physics}. \textit{Physical Review A} \textbf{105}, 040101 (2022).
+\label{csl:20}20.De Silva, A. H. N. C. \textit{et al.}. {Circular Dichroism in Atomic Resonance-Enhanced Few-Photon Ionization}. \textit{Physical Review A} \textbf{103}, 053125 (2021).
 
 \phantomsection
-\label{csl:21}21.De Silva, A. H. N. C. \textit{et al.}. {Circular Dichroism in Atomic Resonance-Enhanced Few-Photon Ionization}. \textit{Physical Review A} \textbf{103}, 053125 (2021).
+\label{csl:23}23.Felker, P. M. \& Zewail, A. H. {Purely Rotational Coherence Effect and Time-Resolved Sub-{{Doppler}} Spectroscopy of Large Molecules. {{I}}. {{Theoretical}}}. \textit{The Journal of Chemical Physics} \textbf{86}, 2460 (1987).
 
 \phantomsection
-\label{csl:24}24.Felker, P. M. \& Zewail, A. H. {Purely Rotational Coherence Effect and Time-Resolved Sub-{{Doppler}} Spectroscopy of Large Molecules. {{I}}. {{Theoretical}}}. \textit{The Journal of Chemical Physics} \textbf{86}, 2460 (1987).
+\label{csl:24}24.Schmiedt, H., Schlemmer, S. \& Jensen, P. {Symmetry of Extremely Floppy Molecules: {{Molecular}} States beyond Rotation-Vibration Separation}. \textit{The Journal of Chemical Physics} \textbf{143}, 154302 (2015).
 
 \phantomsection
-\label{csl:25}25.Schmiedt, H., Schlemmer, S. \& Jensen, P. {Symmetry of Extremely Floppy Molecules: {{Molecular}} States beyond Rotation-Vibration Separation}. \textit{The Journal of Chemical Physics} \textbf{143}, 154302 (2015).
+\label{csl:25}25.Yang, C. {On the {{Angular Distribution}} in {{Nuclear Reactions}} and {{Coincidence Measurements}}}. \textit{Physical Review} \textbf{74}, 764–772 (1948).
 
 \phantomsection
-\label{csl:26}26.Yang, C. {On the {{Angular Distribution}} in {{Nuclear Reactions}} and {{Coincidence Measurements}}}. \textit{Physical Review} \textbf{74}, 764–772 (1948).
+\label{csl:26}26.Dill, D. {Fixed-Molecule Photoelectron Angular Distributions}. \textit{The Journal of Chemical Physics} \textbf{65}, 1130–1133 (1976).
 
 \phantomsection
-\label{csl:27}27.Dill, D. {Fixed-Molecule Photoelectron Angular Distributions}. \textit{The Journal of Chemical Physics} \textbf{65}, 1130–1133 (1976).
+\label{csl:27}27.Hockett, P. \textit{{Quantum {{Metrology}} with {{Photoelectrons}}, {{Volume}} 1 {{Foundations}}}}. ({IOP Publishing}, 2018). doi:10.1088/978-1-6817-4684-5.
 
 \phantomsection
 \label{csl:28}28.Hockett, P. \textit{{Quantum {{Metrology}} with {{Photoelectrons}}, {{Volume}} 2 {{Applications}} and Advances}}. ({IOP Publishing}, 2018). doi:10.1088/978-1-6817-4688-3.
@@ -2347,130 +2390,130 @@ Although not demonstrated herein, computation of $X_{hl}^{\Gamma\mu*}(\theta,\ph
 \label{csl:35}35.Suzuki, T. \& Whitaker, B. J. {Non-Adiabatic Effects in Chemistry Revealed by Time-Resolved Charged-Particle Imaging}. \textit{International Reviews in Physical Chemistry} \textbf{20}, 313–356 (2001).
 
 \phantomsection
-\label{csl:36}36.Blum, K. \textit{{Density {{Matrix Theory}} and {{Applications}}}}. vol. 64 ({Springer Berlin Heidelberg}, 2012).
+\label{csl:36}36.Hockett, P. \textit{{Quantum {{Metrology}} with {{Photoelectrons}}, {{Volume}} 2: {{Applications}} and Advances}}. ({IOP Publishing}, 2018). doi:10.1088/978-1-6817-4688-3.
 
 \phantomsection
-\label{csl:37}37.Docker, M. P. {Alignment Measurements Using One, Two or Three Photons}. \textit{Chemical Physics} \textbf{125}, 185–210 (1988).
+\label{csl:37}37.Blum, K. \textit{{Density {{Matrix Theory}} and {{Applications}}}}. vol. 64 ({Springer Berlin Heidelberg}, 2012).
 
 \phantomsection
-\label{csl:38}38.Dubs, R. L. \& McKoy, V. {Molecular Alignment from Circular Dichroic Photoelectron Angular Distributions in (N+1) Resonance Enhanced Multiphoton Ionization}. \textit{The Journal of Chemical Physics} \textbf{91}, 5208 (1989).
+\label{csl:38}38.Docker, M. P. {Alignment Measurements Using One, Two or Three Photons}. \textit{Chemical Physics} \textbf{125}, 185–210 (1988).
 
 \phantomsection
-\label{csl:39}39.Greene, C. H. \& Zare, R. N. {Determination of Product Population and Alignment Using Laser-Induced Fluorescence}. \textit{The Journal of Chemical Physics} \textbf{78}, 6741 (1983).
+\label{csl:39}39.Dubs, R. L. \& McKoy, V. {Molecular Alignment from Circular Dichroic Photoelectron Angular Distributions in (N+1) Resonance Enhanced Multiphoton Ionization}. \textit{The Journal of Chemical Physics} \textbf{91}, 5208 (1989).
 
 \phantomsection
-\label{csl:40}40.Leahy, D. J., Reid, K. L. \& Zare, R. N. {Complete Description of Two-Photon (1+1') Ionization of {{NO}} Deduced from Rotationally Resolved Photoelectron Angular Distributions}. \textit{The Journal of Chemical Physics} \textbf{95}, 1757 (1991).
+\label{csl:40}40.Greene, C. H. \& Zare, R. N. {Determination of Product Population and Alignment Using Laser-Induced Fluorescence}. \textit{The Journal of Chemical Physics} \textbf{78}, 6741 (1983).
 
 \phantomsection
-\label{csl:41}41.Hockett, P., Staniforth, M., Reid, K. L. \& Townsend, D. {Rotationally {{Resolved Photoelectron Angular Distributions}} from a {{Nonlinear Polyatomic Molecule}}}. \textit{Physical Review Letters} \textbf{102}, 253002 (2009).
+\label{csl:41}41.Leahy, D. J., Reid, K. L. \& Zare, R. N. {Complete Description of Two-Photon (1+1') Ionization of {{NO}} Deduced from Rotationally Resolved Photoelectron Angular Distributions}. \textit{The Journal of Chemical Physics} \textbf{95}, 1757 (1991).
 
 \phantomsection
-\label{csl:42}42.Koch, C. P., Lemeshko, M. \& Sugny, D. {Quantum Control of Molecular Rotation}. (2019) doi:10.1103/RevModPhys.91.035005.
+\label{csl:42}42.Hockett, P., Staniforth, M., Reid, K. L. \& Townsend, D. {Rotationally {{Resolved Photoelectron Angular Distributions}} from a {{Nonlinear Polyatomic Molecule}}}. \textit{Physical Review Letters} \textbf{102}, 253002 (2009).
 
 \phantomsection
-\label{csl:43}43.Stapelfeldt, H. \& Seideman, T. {Colloquium: {{Aligning}} Molecules with Strong Laser Pulses}. \textit{Reviews of Modern Physics} \textbf{75}, 543–557 (2003).
+\label{csl:43}43.Koch, C. P., Lemeshko, M. \& Sugny, D. {Quantum Control of Molecular Rotation}. (2019) doi:10.1103/RevModPhys.91.035005.
 
 \phantomsection
-\label{csl:44}44.Hasegawa, H. \& Ohshima, Y. {Nonadiabatic {{Molecular Alignment}} and {{Orientation}}}. in \textit{Progress in {{Ultrafast Intense Laser Science XII}}} (eds. Yamanouchi, K., Roso, L., Li, R., Mathur, D. \& Normand, D.) 45–64 ({Springer International Publishing}, 2015). doi:10.1007/978-3-319-23657-5_3.
+\label{csl:44}44.Stapelfeldt, H. \& Seideman, T. {Colloquium: {{Aligning}} Molecules with Strong Laser Pulses}. \textit{Reviews of Modern Physics} \textbf{75}, 543–557 (2003).
 
 \phantomsection
-\label{csl:45}45.Puschnig, P. \textit{et al.}. {Reconstruction of Molecular Orbital Densities from Photoemission Data.}. \textit{Science} \textbf{326}, 702–6 (2009).
+\label{csl:45}45.Hasegawa, H. \& Ohshima, Y. {Nonadiabatic {{Molecular Alignment}} and {{Orientation}}}. in \textit{Progress in {{Ultrafast Intense Laser Science XII}}} (eds. Yamanouchi, K., Roso, L., Li, R., Mathur, D. \& Normand, D.) 45–64 ({Springer International Publishing}, 2015). doi:10.1007/978-3-319-23657-5_3.
 
 \phantomsection
-\label{csl:46}46.Dauth, M. \textit{et al.}. {Angle Resolved Photoemission from Organic Semiconductors: Orbital Imaging beyond the Molecular Orbital Interpretation}. \textit{New Journal of Physics} \textbf{16}, 103005 (2014).
+\label{csl:46}46.Puschnig, P. \textit{et al.}. {Reconstruction of Molecular Orbital Densities from Photoemission Data.}. \textit{Science} \textbf{326}, 702–6 (2009).
 
 \phantomsection
-\label{csl:47}47.Yampolsky, S. \textit{et al.}. {Seeing a Single Molecule Vibrate through Time-Resolved Coherent Anti-{{Stokes Raman}} Scattering}. \textit{Nature Photonics} \textbf{8}, 650–656 (2014).
+\label{csl:47}47.Dauth, M. \textit{et al.}. {Angle Resolved Photoemission from Organic Semiconductors: Orbital Imaging beyond the Molecular Orbital Interpretation}. \textit{New Journal of Physics} \textbf{16}, 103005 (2014).
 
 \phantomsection
-\label{csl:48}48.Yagishita, A., Hosaka, K. \& Adachi, J.-I. {Photoelectron Angular Distributions from Fixed-in-Space Molecules}. \textit{Journal of Electron Spectroscopy and Related Phenomena} \textbf{142}, 295–312 (2005).
+\label{csl:48}48.Yampolsky, S. \textit{et al.}. {Seeing a Single Molecule Vibrate through Time-Resolved Coherent Anti-{{Stokes Raman}} Scattering}. \textit{Nature Photonics} \textbf{8}, 650–656 (2014).
 
 \phantomsection
-\label{csl:49}49.Dowek, D. \& Lucchese, R. R. {Photoionization {{Dynamics}}: {{Photoemission In The Molecular Frame Of Small Molecules Ionized By Linearly And Elliptically Polarized Light}}}. in \textit{Dynamical {{Processes In Atomic And Molecular Physics}}} ({Bentham Science}, 2012).
+\label{csl:49}49.Yagishita, A., Hosaka, K. \& Adachi, J.-I. {Photoelectron Angular Distributions from Fixed-in-Space Molecules}. \textit{Journal of Electron Spectroscopy and Related Phenomena} \textbf{142}, 295–312 (2005).
 
 \phantomsection
-\label{csl:50}50.Jahnke, T. \& Rolles, D. {Photoelectron {{Diffraction}}}. in \textit{{{TBC}}} (2022).
+\label{csl:50}50.Dowek, D. \& Lucchese, R. R. {Photoionization {{Dynamics}}: {{Photoemission In The Molecular Frame Of Small Molecules Ionized By Linearly And Elliptically Polarized Light}}}. in \textit{Dynamical {{Processes In Atomic And Molecular Physics}}} ({Bentham Science}, 2012).
 
 \phantomsection
-\label{csl:51}51.Akoury, D. \textit{et al.}. {The Simplest Double Slit: Interference and Entanglement in Double Photoionization of {{H2}}.}. \textit{Science} \textbf{318}, 949–952 (2007).
+\label{csl:51}51.Jahnke, T. \& Rolles, D. {Photoelectron {{Diffraction}}}. in \textit{{{TBC}}} (2022).
 
 \phantomsection
-\label{csl:52}52.Stapelfeldt, H., Constant, E., Sakai, H. \& Corkum, P. B. {Time-Resolved {{Coulomb}} Explosion Imaging: {{A}} Method to Measure Structure and Dynamics of Molecular Nuclear Wave Packets}. \textit{Physical Review A} \textbf{58}, 426–433 (1998).
+\label{csl:52}52.Akoury, D. \textit{et al.}. {The Simplest Double Slit: Interference and Entanglement in Double Photoionization of {{H2}}.}. \textit{Science} \textbf{318}, 949–952 (2007).
 
 \phantomsection
-\label{csl:53}53.Underwood, J. G., Procino, I., Christiansen, L., Maurer, J. \& Stapelfeldt, H. {Velocity Map Imaging with Non-Uniform Detection: Quantitative Molecular Axis Alignment Measurements via {{Coulomb}} Explosion Imaging}. 14 (2015).
+\label{csl:53}53.Stapelfeldt, H., Constant, E., Sakai, H. \& Corkum, P. B. {Time-Resolved {{Coulomb}} Explosion Imaging: {{A}} Method to Measure Structure and Dynamics of Molecular Nuclear Wave Packets}. \textit{Physical Review A} \textbf{58}, 426–433 (1998).
 
 \phantomsection
-\label{csl:54}54.Slater, C. S. \textit{et al.}. {Coulomb-Explosion Imaging Using a Pixel-Imaging Mass-Spectrometry Camera}. \textit{Physical Review A} \textbf{91}, 1–14 (2015).
+\label{csl:54}54.Underwood, J. G., Procino, I., Christiansen, L., Maurer, J. \& Stapelfeldt, H. {Velocity Map Imaging with Non-Uniform Detection: Quantitative Molecular Axis Alignment Measurements via {{Coulomb}} Explosion Imaging}. 14 (2015).
 
 \phantomsection
-\label{csl:55}55.Boll, R. \textit{et al.}. {X-Ray Multiphoton-Induced {{Coulomb}} Explosion Images Complex Single Molecules}. \textit{Nature Physics} \textbf{18}, 423–428 (2022).
+\label{csl:55}55.Slater, C. S. \textit{et al.}. {Coulomb-Explosion Imaging Using a Pixel-Imaging Mass-Spectrometry Camera}. \textit{Physical Review A} \textbf{91}, 1–14 (2015).
 
 \phantomsection
-\label{csl:56}56.Moshammer, R., Unverzagt, M., Schmitt, W., Ullrich, J. \& {Schmidt-B{\"o}cking}, H. {A 4{$\pi$} Recoil-Ion Electron Momentum Analyzer: A High-Resolution ``Microscope'' for the Investigation of the Dynamics of Atomic, Molecular and Nuclear Reactions}. \textit{Nuclear Instruments and Methods in Physics Research Section B: Beam Interactions with Materials and Atoms} \textbf{108}, 425–445 (1996).
+\label{csl:56}56.Boll, R. \textit{et al.}. {X-Ray Multiphoton-Induced {{Coulomb}} Explosion Images Complex Single Molecules}. \textit{Nature Physics} \textbf{18}, 423–428 (2022).
 
 \phantomsection
-\label{csl:57}57.D{\"o}rner, R. \textit{et al.}. {Kinematically Complete Experiments Using Cold Target Recoil Ion Momentum Spectroscopy}. \textit{Nuclear Instruments and Methods in Physics Research Section B: Beam Interactions with Materials and Atoms} \textbf{124}, 225–231 (1997).
+\label{csl:57}57.Moshammer, R., Unverzagt, M., Schmitt, W., Ullrich, J. \& {Schmidt-B{\"o}cking}, H. {A 4{$\pi$} Recoil-Ion Electron Momentum Analyzer: A High-Resolution ``Microscope'' for the Investigation of the Dynamics of Atomic, Molecular and Nuclear Reactions}. \textit{Nuclear Instruments and Methods in Physics Research Section B: Beam Interactions with Materials and Atoms} \textbf{108}, 425–445 (1996).
 
 \phantomsection
-\label{csl:58}58.D{\"o}rner, R. \textit{et al.}. {Cold {{Target Recoil Ion Momentum Spectroscopy}}: A `Momentum Microscope' to View Atomic Collision Dynamics}. \textit{Physics Reports} \textbf{330}, 95–192 (2000).
+\label{csl:58}58.D{\"o}rner, R. \textit{et al.}. {Kinematically Complete Experiments Using Cold Target Recoil Ion Momentum Spectroscopy}. \textit{Nuclear Instruments and Methods in Physics Research Section B: Beam Interactions with Materials and Atoms} \textbf{124}, 225–231 (1997).
 
 \phantomsection
-\label{csl:59}59.Reid, K. L. {Accessing the Molecular Frame through Strong-Field Alignment of Distributions of Gas Phase Molecules}. \textit{Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences} \textbf{376}, 20170158 (2018).
+\label{csl:59}59.D{\"o}rner, R. \textit{et al.}. {Cold {{Target Recoil Ion Momentum Spectroscopy}}: A `Momentum Microscope' to View Atomic Collision Dynamics}. \textit{Physics Reports} \textbf{330}, 95–192 (2000).
 
 \phantomsection
-\label{csl:60}60.Underwood, J. G. \& Reid, K. L. {Time-Resolved Photoelectron Angular Distributions as a Probe of Intramolecular Dynamics: {{Connecting}} the Molecular Frame and the Laboratory Frame}. \textit{The Journal of Chemical Physics} \textbf{113}, 1067 (2000).
+\label{csl:60}60.Reid, K. L. {Accessing the Molecular Frame through Strong-Field Alignment of Distributions of Gas Phase Molecules}. \textit{Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences} \textbf{376}, 20170158 (2018).
 
 \phantomsection
-\label{csl:61}61.Takatsuka, K., Arasaki, Y., Wang, K. \& McKoy, V. {Probing Wavepacket Dynamics with Femtosecond Energy- and Angle-Resolved Photoelectron Spectroscopy}. \textit{Faraday discussions} \textbf{108}, 1–15; discussion 79–102 (2000).
+\label{csl:61}61.Underwood, J. G. \& Reid, K. L. {Time-Resolved Photoelectron Angular Distributions as a Probe of Intramolecular Dynamics: {{Connecting}} the Molecular Frame and the Laboratory Frame}. \textit{The Journal of Chemical Physics} \textbf{113}, 1067 (2000).
 
 \phantomsection
-\label{csl:62}62.Wang, K., McKoy, V., Hockett, P., Stolow, A. \& Schuurman, M. S. {Monitoring Non-Adiabatic Dynamics in {{CS2}} with Time- and Energy-Resolved Photoelectron Spectra of Wavepackets}. \textit{Chemical Physics Letters} (2017) doi:10.1016/j.cplett.2017.02.014.
+\label{csl:62}62.Takatsuka, K., Arasaki, Y., Wang, K. \& McKoy, V. {Probing Wavepacket Dynamics with Femtosecond Energy- and Angle-Resolved Photoelectron Spectroscopy}. \textit{Faraday discussions} \textbf{108}, 1–15; discussion 79–102 (2000).
 
 \phantomsection
-\label{csl:63}63.Eppink, A. T. J. B. \& Parker, D. H. {Velocity Map Imaging of Ions and Electrons Using Electrostatic Lenses: {{Application}} in Photoelectron and Photofragment Ion Imaging of Molecular Oxygen}. \textit{Review of Scientific Instruments} \textbf{68}, 3477 (1997).
+\label{csl:63}63.Wang, K., McKoy, V., Hockett, P., Stolow, A. \& Schuurman, M. S. {Monitoring Non-Adiabatic Dynamics in {{CS2}} with Time- and Energy-Resolved Photoelectron Spectra of Wavepackets}. \textit{Chemical Physics Letters} (2017) doi:10.1016/j.cplett.2017.02.014.
 
 \phantomsection
-\label{csl:64}64.Continetti, R. E. {Coincidence Spectroscopy.}. \textit{Annual review of physical chemistry} \textbf{52}, 165–92 (2001).
+\label{csl:64}64.Eppink, A. T. J. B. \& Parker, D. H. {Velocity Map Imaging of Ions and Electrons Using Electrostatic Lenses: {{Application}} in Photoelectron and Photofragment Ion Imaging of Molecular Oxygen}. \textit{Review of Scientific Instruments} \textbf{68}, 3477 (1997).
 
 \phantomsection
-\label{csl:65}65.Vallance, C. \textit{et al.}. {Fast Sensors for Time-of-Flight Imaging Applications.}. \textit{Physical chemistry chemical physics : PCCP} \textbf{16}, 383–95 (2013).
+\label{csl:65}65.Continetti, R. E. {Coincidence Spectroscopy.}. \textit{Annual review of physical chemistry} \textbf{52}, 165–92 (2001).
 
 \phantomsection
-\label{csl:66}66.Chandler, D. W., Houston, P. L. \& Parker, D. H. {Perspective: {{Advanced}} Particle Imaging}. \textit{The Journal of Chemical Physics} \textbf{147}, (2017).
+\label{csl:66}66.Vallance, C. \textit{et al.}. {Fast Sensors for Time-of-Flight Imaging Applications.}. \textit{Physical chemistry chemical physics : PCCP} \textbf{16}, 383–95 (2013).
 
 \phantomsection
-\label{csl:67}67.Shigemasa, E., Adachi, J., Oura, M. \& Yagishita, A. {Angular {{Distributions}} of {$<$}math Display=inline{$>$} {$<$}mn{$>$}1{$<$}/Mn{$>$} {$<$}mi{$>$}s{$<$}/Mi{$>$} {$<$}mi{$>\sigma<$}/Mi{$>$} {$<$}/Math{$>$} {{Photoelectrons}} from {{Fixed}}-in-{{Space}} {$<$}math Display=inline{$>$} {$<$}mrow{$>$} {$<$}msub{$>$} {$<$}mrow{$>$} {$<$}mi Mathvariant=normal{$>$}{{N}}{$<$}/Mi{$>$} {$<$}/Mrow{$>$} {$<$}mrow{$>$} {$<$}mn{$>$}2{$<$}/Mn{$>$} {$<$}/Mrow{$>$} {$<$}/Msub{$>$} {$<$}/Mrow{$>$} {$<$}/m}. \textit{Physical Review Letters} \textbf{74}, 359–362 (1995).
+\label{csl:67}67.Chandler, D. W., Houston, P. L. \& Parker, D. H. {Perspective: {{Advanced}} Particle Imaging}. \textit{The Journal of Chemical Physics} \textbf{147}, (2017).
 
 \phantomsection
-\label{csl:68}68.Cherepkov, N. A. \textit{et al.}. {K-Shell Photoionization of {{CO}}: {{II}}. {{Determination}} of Dipole Matrix Elements and Phase Differences}. \textit{Journal of Physics B: Atomic, Molecular and Optical Physics} \textbf{33}, 4213–4236 (2000).
+\label{csl:68}68.Shigemasa, E., Adachi, J., Oura, M. \& Yagishita, A. {Angular {{Distributions}} of {$<$}math Display=inline{$>$} {$<$}mn{$>$}1{$<$}/Mn{$>$} {$<$}mi{$>$}s{$<$}/Mi{$>$} {$<$}mi{$>\sigma<$}/Mi{$>$} {$<$}/Math{$>$} {{Photoelectrons}} from {{Fixed}}-in-{{Space}} {$<$}math Display=inline{$>$} {$<$}mrow{$>$} {$<$}msub{$>$} {$<$}mrow{$>$} {$<$}mi Mathvariant=normal{$>$}{{N}}{$<$}/Mi{$>$} {$<$}/Mrow{$>$} {$<$}mrow{$>$} {$<$}mn{$>$}2{$<$}/Mn{$>$} {$<$}/Mrow{$>$} {$<$}/Msub{$>$} {$<$}/Mrow{$>$} {$<$}/m}. \textit{Physical Review Letters} \textbf{74}, 359–362 (1995).
 
 \phantomsection
-\label{csl:69}69.Hikosaka, Y. \& Eland, J. H. D. {Molecular-Frame Photoelectron Angular Distributions in Inner-Valence Photoionization of {{N}} 2}. \textit{Journal of Physics B: Atomic, Molecular and Optical Physics} \textbf{33}, 3137–3147 (2000).
+\label{csl:69}69.Cherepkov, N. A. \textit{et al.}. {K-Shell Photoionization of {{CO}}: {{II}}. {{Determination}} of Dipole Matrix Elements and Phase Differences}. \textit{Journal of Physics B: Atomic, Molecular and Optical Physics} \textbf{33}, 4213–4236 (2000).
 
 \phantomsection
-\label{csl:70}70.Reid, K. L. \& Underwood, J. G. {Extracting Molecular Axis Alignment from Photoelectron Angular Distributions}. \textit{The Journal of Chemical Physics} \textbf{112}, 3643 (2000).
+\label{csl:70}70.Hikosaka, Y. \& Eland, J. H. D. {Molecular-Frame Photoelectron Angular Distributions in Inner-Valence Photoionization of {{N}} 2}. \textit{Journal of Physics B: Atomic, Molecular and Optical Physics} \textbf{33}, 3137–3147 (2000).
 
 \phantomsection
-\label{csl:71}71.Gregory, M., Hockett, P., Stolow, A. \& Makhija, V. {Towards Molecular Frame Photoelectron Angular Distributions in Polyatomic Molecules from Lab Frame Coherent Rotational Wavepacket Evolution}. \textit{Journal of Physics B: Atomic, Molecular and Optical Physics} \textbf{54}, 145601 (2021).
+\label{csl:71}71.Reid, K. L. \& Underwood, J. G. {Extracting Molecular Axis Alignment from Photoelectron Angular Distributions}. \textit{The Journal of Chemical Physics} \textbf{112}, 3643 (2000).
 
 \phantomsection
-\label{csl:72}72.Gianturco, F. A., Lucchese, R. R. \& Sanna, N. {Calculation of Low-Energy Elastic Cross Sections for Electron-{{CF4}} Scattering}. \textit{The Journal of Chemical Physics} \textbf{100}, 6464 (1994).
+\label{csl:72}72.Gregory, M., Hockett, P., Stolow, A. \& Makhija, V. {Towards Molecular Frame Photoelectron Angular Distributions in Polyatomic Molecules from Lab Frame Coherent Rotational Wavepacket Evolution}. \textit{Journal of Physics B: Atomic, Molecular and Optical Physics} \textbf{54}, 145601 (2021).
 
 \phantomsection
-\label{csl:73}73.Lucchese, R. R., Takatsuka, K. \& McKoy, V. {Applications of the {{Schwinger}} Variational Principle to Electron-Molecule Collisions and Molecular Photoionization}. \textit{Physics Reports} \textbf{131}, 147–221 (1986).
+\label{csl:73}73.Gianturco, F. A., Lucchese, R. R. \& Sanna, N. {Calculation of Low-Energy Elastic Cross Sections for Electron-{{CF4}} Scattering}. \textit{The Journal of Chemical Physics} \textbf{100}, 6464 (1994).
 
 \phantomsection
-\label{csl:74}74.Natalense, A. P. P. \& Lucchese, R. R. {Cross Section and Asymmetry Parameter Calculation for Sulfur 1s Photoionization of {{SF}}[Sub 6]}. \textit{The Journal of Chemical Physics} \textbf{111}, 5344 (1999).
+\label{csl:74}74.Lucchese, R. R., Takatsuka, K. \& McKoy, V. {Applications of the {{Schwinger}} Variational Principle to Electron-Molecule Collisions and Molecular Photoionization}. \textit{Physics Reports} \textbf{131}, 147–221 (1986).
 
 \phantomsection
-\label{csl:75}75.Hockett, P. {{{ePSproc}}: {{Post-processing}} for {{ePolyScat}} ({{Github}} Repository)}. (2016) doi:10.6084/m9.figshare.3545639.
+\label{csl:75}75.Natalense, A. P. P. \& Lucchese, R. R. {Cross Section and Asymmetry Parameter Calculation for Sulfur 1s Photoionization of {{SF}}[Sub 6]}. \textit{The Journal of Chemical Physics} \textbf{111}, 5344 (1999).
 
 \phantomsection
-\label{csl:76}76.Hockett, P. {Photoelectron {{Metrology Toolkit}} ({{PEMtk}}) {{Github}} Repository}. (2021).
+\label{csl:76}76.Hockett, P. {{{ePSproc}}: {{Post-processing}} for {{ePolyScat}} ({{Github}} Repository)}. (2016) doi:10.6084/m9.figshare.3545639.
 
 \phantomsection
-\label{csl:77}77.Hockett, P. \textit{{Quantum {{Metrology}} with {{Photoelectrons}}, {{Volume}} 2: {{Applications}} and Advances}}. ({IOP Publishing}, 2018). doi:10.1088/978-1-6817-4688-3.
+\label{csl:77}77.Hockett, P. {Photoelectron {{Metrology Toolkit}} ({{PEMtk}}) {{Github}} Repository}. (2021).
 
 \phantomsection
 \label{csl:78}78.Hockett, P., Wollenhaupt, M., Lux, C. \& Baumert, T. {Complete {{Photoionization Experiments}} via {{Ultrafast Coherent Control}} with {{Polarization Multiplexing}}}. \textit{Physical Review Letters} \textbf{112}, 223001 (2014).
