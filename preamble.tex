@@ -30,7 +30,7 @@
 \makeatother
 
 
-\usepackage{natbib}
+% \usepackage{natbib}
 
 
 
@@ -83,15 +83,23 @@
 % PLUS TEST BIBLATEX (styles from last CV tests), see also https://www.overleaf.com/learn/latex/Bibliography_management_with_biblatex
 % \RequirePackage[bibstyle=apa6,sorting=ymdnt,uniquename=init,defernumbers=true,apamaxprtauth=30]{biblatex}
 % \RequirePackage[bibstyle=apa6,uniquename=init]{biblatex}
-\RequirePackage[defernumbers=true,uniquename=init]{biblatex}
-% \addbibresource{bibliography/MF_recon_manuscript_June2020.bib}
+% \RequirePackage[defernumbers=true,uniquename=init]{biblatex}
+
+% Numerical compact with no sorting (reference order)
+\RequirePackage[style=numeric-comp,sorting=none]{biblatex}
+\addbibresource{bibliography/MF_recon_manuscript_June2020.bib}
+
 % THIS IS WORKING WELL, except missing links for software entries - fixed this with style mod before...?
 % NOW WITH UPDATED BIB FILES...
 % \addbibresource{bibliography/MF_recon_manuscript_June2020_BBT-URLs.bib}  % URLs and DOIs with links printed.
-\addbibresource{bibliography/MF_recon_manuscript_June2020_BBT-DOIsPref.bib}  % DOI or URL, inc. "visited on". Also arxiv links?
+% \addbibresource{bibliography/MF_recon_manuscript_June2020_BBT-DOIsPref.bib}  % DOI or URL, inc. "visited on". Also arxiv links?
 
 % TODO: check usual bib styles here...!  Try also different Authorea exports...?
 
 % Add ORCHID macro, see https://tex.stackexchange.com/a/478780
-\usepackage{academicons}
-\newcommand{\orcid}[1]{\href{https://orcid.org/#1}{\textcolor[HTML]{A6CE39}{\aiOrcid}}}
+% Academicons - not compatible with pdflatex.
+% Use fontawesome or orcidlink
+% \usepackage{academicons}
+% \newcommand{\orcid}[1]{\href{https://orcid.org/#1}{\textcolor[HTML]{A6CE39}{\aiOrcid}}}
+
+\usepackage{orcidlink}
