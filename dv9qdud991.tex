@@ -70,55 +70,72 @@ with $\rho_i = |\Psi_i\rangle\langle\Psi_i|$. This is, effectively, equivalent t
 
 \subsection{Matrix inversion formalism\label{app:mat-inversion}}
 
-Following Gregory et. al. \cite{gregory2021MolecularFramePhotoelectron}, the formalism can also be rewritten with
-the ADMs separate (see also Reid \& Underwood convolution form, \cite{Reid2000}), and the LF/AF given as (cf. Eqn. \ref{eq:BLM-tensor-AF}):
+% As discussed in Sect. \ref{sec:matrix-inv-intro}, following Gregory et. al. \cite{gregory2021MolecularFramePhotoelectron}, the formalism can also be rewritten with
+% the ADMs separate (see also Reid \& Underwood convolution form, \cite{Reid2000}), and the LF/AF given as (cf. Eqn. \ref{eq:BLM-tensor-AF}):
+
+% \begin{equation}
+% \bar{\beta}_{L,M}(E,t)=\sum_{K,Q,S}C_{K,Q,S}^{L,M}(E)A_{Q,S}^{K}(t)
+% \end{equation}
+
+% % ($Q=0$ only in Gregory et. al., don't recall if this is general limitation however - may be symmetry and/or dimensionality related?)
+% (Note that $Q=0$ only for the derivations in Gregory et. al. \cite{gregory2021MolecularFramePhotoelectron}, although the results should generalise - see discussion therein for details, particularly Sect. 3.2 and the appendices.)
+
+% And the MF (cf. Eqn. \ref{eq:BLM-tensor-MF}):
+
+% \begin{equation}
+% \beta_{L,M}(E,\Omega)=\sum_{P,R,\Delta q}C_{P,R}^{L,M}(E,\Delta q)D_{R,\Delta q}^{P}(\Omega)
+% \end{equation}
+
+% In the original notation, the transformation can be written:
+
+% \begin{equation}
+% \mathbf{C}^{mol}=\mathbf{G}\mathbf{C}^{lab},
+% \end{equation}
+
+% \begin{equation}
+% C_{P,0}^{L,M}(E,\Delta q)=\hat{G}_{L'0KS}^{LMP\Delta q}\bar{C}_{K,0,S}^{L',0}(E)
+% \end{equation}
+
+% % (Here $M'=Q=R=0$, again not sure if this is required.)
+
+% And
+
+% \begin{equation}
+% \mathbf{G}_{L'M'KS}^{LMP\Delta q}=\mathbf{\Gamma}_{P0\Delta q}^{\zeta\zeta'LM}(\mathbf{\Gamma}_{K0S}^{\zeta\zeta'L^{\prime}M^{\prime}})^{+}
+% \end{equation}
+
+% Where $+$ denotes the Moore-Penrose inverse matrix.
+
+% \begin{equation}
+% \bar{C}_{KQS}^{LM}(\epsilon)=\sum_{\zeta\zeta'}d_{\zeta\zeta'}(\epsilon)\Gamma_{KQS}^{\zeta\zeta'LM}
+% \end{equation}
+
+% \begin{equation}
+% C_{PR}^{LM}(\epsilon,\Delta q)=\sum_{\zeta\zeta'}d_{\zeta\zeta'}(\epsilon)\Gamma_{PR\Delta q}^{\zeta\zeta'LM}
+% \end{equation}
+
+% \begin{equation}
+% D_{\zeta}(\epsilon)D_{\zeta'}^{*}(\epsilon)=d_{\zeta\zeta'}(\epsilon)
+% \end{equation}
+
+As discussed in Sect. \ref{sec:matrix-inv-intro}, and following Gregory et. al. \cite{gregory2021MolecularFramePhotoelectron}, the general formalism can also be rewritten with the ADMs separate (see also Reid \& Underwood convolution form, \cite{Reid2000}), and the LF/AF given as per Eqn. \ref{eqn:beta-convolution-C} (cf. Eqn. \ref{eq:BLM-tensor-AF}). Herein, the notation from Gregory et. al. \cite{gregory2021MolecularFramePhotoelectron} is rewritten slightly, as per Eqns. \ref{eq:basic} - \ref{eq:MPinversion}.
+
+In the current notation, the full expressions are written as per Eqn. \ref{eqn:beta-convolution-C} for the LF/AF (cf. Eqn. \ref{eq:BLM-tensor-AF}):
 
 \begin{equation}
 \bar{\beta}_{L,M}(E,t)=\sum_{K,Q,S}C_{K,Q,S}^{L,M}(E)A_{Q,S}^{K}(t)
 \end{equation}
 
 % ($Q=0$ only in Gregory et. al., don't recall if this is general limitation however - may be symmetry and/or dimensionality related?)
-(Note that $Q=0$ only for the derivations in Gregory et. al. \cite{gregory2021MolecularFramePhotoelectron}, although the results should generalise - see discussion therein for details, particularly Sect. 3.2 and the appendices.)
+% (Note that $Q=0$ only for the derivations in Gregory et. al. \cite{gregory2021MolecularFramePhotoelectron}, although the results should generalise - see discussion therein for details, particularly Sect. 3.2 and the appendices.)
 
-And the MF (cf. Eqn. \ref{eq:BLM-tensor-MF}):
+And for the MF (cf. Eqn. \ref{eq:BLM-tensor-MF}):
 
 \begin{equation}
 \beta_{L,M}(E,\Omega)=\sum_{P,R,\Delta q}C_{P,R}^{L,M}(E,\Delta q)D_{R,\Delta q}^{P}(\Omega)
 \end{equation}
 
-And the transformation can be written as (eqn. 1, 28):
-
-\begin{equation}
-\mathbf{C}^{mol}=\mathbf{G}\mathbf{C}^{lab},\label{eq:basic}
-\end{equation}
-
-\begin{equation}
-C_{P,0}^{L,M}(E,\Delta q)=\hat{G}_{L'0KS}^{LMP\Delta q}\bar{C}_{K,0,S}^{L',0}(E)
-\end{equation}
-
-% (Here $M'=Q=R=0$, again not sure if this is required.)
-
-And
-
-\begin{equation}
-\mathbf{G}_{L'M'KS}^{LMP\Delta q}=\mathbf{\Gamma}_{P0\Delta q}^{\zeta\zeta'LM}(\mathbf{\Gamma}_{K0S}^{\zeta\zeta'L^{\prime}M^{\prime}})^{+}
-\end{equation}
-
-Where $+$ denotes the Moore-Penrose inverse matrix.
-
-\begin{equation}
-\bar{C}_{KQS}^{LM}(\epsilon)=\sum_{\zeta\zeta'}d_{\zeta\zeta'}(\epsilon)\Gamma_{KQS}^{\zeta\zeta'LM}
-\end{equation}
-
-\begin{equation}
-C_{PR}^{LM}(\epsilon,\Delta q)=\sum_{\zeta\zeta'}d_{\zeta\zeta'}(\epsilon)\Gamma_{PR\Delta q}^{\zeta\zeta'LM}
-\end{equation}
-
-\begin{equation}
-D_{\zeta}(\epsilon)D_{\zeta'}^{*}(\epsilon)=d_{\zeta\zeta'}(\epsilon)
-\end{equation}
-
-In the current notation, we can rewrite:
+And the required coefficients defined as:
 
 \begin{equation}
 \bar{C}_{KQS}^{LM}(\epsilon)=\sum_{\zeta\zeta'}\mathbb{I}_{\zeta\zeta'}^{\Gamma,\Gamma'}(\epsilon)\Gamma_{KQS}^{\zeta\zeta'LM}
@@ -137,8 +154,10 @@ C_{PR}^{LM}(\epsilon,\Delta q)=\sum_{\zeta\zeta'}\mathbb{I}_{\zeta\zeta'}^{\Gamm
 \Gamma_{PR\Delta q}^{\zeta\zeta'LM}=(-1)^{M}(2P+1)^{\frac{1}{2}}E_{P-R}(\hat{e};\mu_{0})(-1)^{(\mu'-\mu_{0})}\bar{\Lambda}_{\Delta q}(\mu,P,\Delta q)B_{L,-M}(l,l',m,m')
 \end{equation}
 
-assuming $R'=\Delta q$, and that the rotational matrix element $D_{R,\Delta q}^{P}(\Omega)$
+Where it is assumed that $R'=\Delta q$, and that the rotational matrix element $D_{R,\Delta q}^{P}(\Omega)$
 is computed independently (note that the current numerical function $\Lambda_{R',R}(R_{\hat{n}};\mu,P,R,R')$
 could possibly be used directly here, but this version keeps the angle-dependence
 separate as per the matrix inversion formalism).
 %; \textcolor{red}{alternatively a new function might be used here?}).
+
+Note also that $Q=0$ only for the derivations in Gregory et. al. \cite{gregory2021MolecularFramePhotoelectron}, and the the inverse matrix as given in Eqn. \ref{eq:MPinversion}, although the results should generalise - see discussion in Ref. \cite{gregory2021MolecularFramePhotoelectron} for details, particularly Sect. 3.2 and the appendices.
