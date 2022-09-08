@@ -1769,7 +1769,7 @@ A complete accounting of the formalism used herein is given in the following sec
 
 The equations for the \(\beta_{LM}\) parameters, in the molecular and
 lab frames (MF \& AF respectively), written in terms of geometric
-tensor parameters, are given in Sect. \ref{sec:full-tensor-expansion}. The necessary tensor components are further detailed below. For further discussion and derivations see Refs. \textsuperscript{\hyperref[csl:71]{71},\hyperref[csl:61]{61},\hyperref[csl:8]{8}}, and Ref. \textsuperscript{\hyperref[csl:11]{11}} for a summary including various different formalisms; further examples can also be found in the ePSproc documentation \textsuperscript{(missing citation)}. For general discussion on tensor methods in atomic and molecular spectroscopy and related problems, see Refs. \textsuperscript{\hyperref[csl:37]{37},\hyperref[csl:32]{32}}. 
+tensor parameters, are given in Sect. \ref{sec:full-tensor-expansion}. The necessary tensor components are further detailed below. For further discussion and derivations see Refs. \textsuperscript{\hyperref[csl:71]{71},\hyperref[csl:61]{61},\hyperref[csl:8]{8}}, and Ref. \textsuperscript{\hyperref[csl:11]{11}} for a summary including various different formalisms; further examples can also be found in the ePSproc documentation \textsuperscript{\hyperref[csl:86]{86}}. For general discussion on tensor methods in atomic and molecular spectroscopy and related problems, see Refs. \textsuperscript{\hyperref[csl:37]{37},\hyperref[csl:32]{32}}. 
 
 Note, also, that several equivalent formalisms have been presented in the literature (Sect. \ref{sec:theory-lit}), often specialised to a particular problem or choice of phase conventions. In the following the equations are general, although the phase conventions are chosen to match those used in ePolyScat (Sect. \ref{sec:mat-ele-conventions}), hence the numerics for the analysis presented herein. In practice the ePSproc codes allow the user to set these conventions as desired. %[More on phase conventions - choice of harmonics, symmetrization etc...? Refs?]
 
@@ -1943,7 +1943,7 @@ As noted previously, in general there are multiple equivalent definitions for th
 % In the ePSproc codebase, various switches can also be set to define alternative choices, e.g. conjugate forms, use of real harmonics etc., for computation of observables and matrix element retrieval. By default the following conventions/libraries are used:
 
 % \begin{itemize}
-% \item Angular momentum functions (Wigner D and 3js) are currently implemented directly, or via the Spherical Functions library \textsuperscript{\hyperref[csl:150]{150}}, and have been tested for consistency with the definitions in Zare (for details see \href{https://epsproc.readthedocs.io/en/latest/tests/Spherical_function_testing_Aug_2019.html}{the ePSproc docs} \textsuperscript{(missing citation)}).
+% \item Angular momentum functions (Wigner D and 3js) are currently implemented directly, or via the Spherical Functions library \textsuperscript{\hyperref[csl:149]{149}}, and have been tested for consistency with the definitions in Zare (for details see \href{https://epsproc.readthedocs.io/en/latest/tests/Spherical_function_testing_Aug_2019.html}{the ePSproc docs} \textsuperscript{(missing citation)}).
 % \item Spherical harmonics are defined with the usual physics conventions: orthonormalised, and including the Condon-Shortley phase. Numerically they are implemented directly or via SciPy's \verb+sph_harm+  function (see \href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.special.sph_harm.html}{the SciPy docs for details} \textsuperscript{\hyperref[csl:151]{151}}. Further manipulation and conversion between different normalisations can be readily implemented with the SHtools library \textsuperscript{\hyperref[csl:152]{152},\hyperref[csl:153]{153}}.
 % \item General tensor 
 % \end{itemize}
@@ -2127,7 +2127,7 @@ Following the tensor components detailed above, the full form of the channel fun
 As introduced in Sect. \ref{sec:density-mat-basic}, the (radial) density matrix can be expressed as the outer-product of the (radial) matrix elements. Following the channel function notation, it is also trivial to write the radial matrix elements in density matrix form in the $\zeta\zeta'$ representation:
 
 \begin{equation}
-\mathbf{\rho}^{\zeta\zeta'} = |\zeta\rangle\langle\zeta'| \equiv \mathbb{I}^{\zeta,\zeta'}\label{eqn:radial-density-mat}
+\mathbf{\rho}^{\zeta\zeta'} = |\zeta\rangle\langle\zeta'| \equiv \mathbb{I}^{\zeta,\zeta'}
 \end{equation}
 
 And the full final continuum state as a density matrix in the $\zeta\zeta'$ representation (with the observable dimensions $L,M$ explicitly included in the density matrix), which will also be dependent on the choice of channel functions ($u$):
@@ -2268,7 +2268,7 @@ Note also that $Q=0$ only for the derivations in Gregory et. al. \textsuperscrip
 The ePSproc codebase \textsuperscript{\hyperref[csl:85]{85},\hyperref[csl:76]{76},\hyperref[csl:86]{86}} aims to provide methods for post-processing with ePolyScat matrix elements (or equivalent matrix elements from other sources), including computation of AF and MF observables. The numerical implementation thus follows the conventions of ePolyScat, as given in Sect. \ref{sec:mat-ele-conventions}. Additionally, various switches can also be set to define alternative choices, e.g. conjugate forms, use of real harmonics etc., for computation of observables. Since the code is open-source Python, users may also swap libraries/conventions to their preference. By default the following conventions/libraries are used:
 
 \begin{itemize}
-\item Angular momentum functions (Wigner D and 3js) are currently implemented directly, or via the Spherical Functions library \textsuperscript{\hyperref[csl:150]{150}}, and have been tested for consistency with the definitions in Zare (for details see \href{https://epsproc.readthedocs.io/en/latest/tests/Spherical_function_testing_Aug_2019.html}{the ePSproc docs} \textsuperscript{\hyperref[csl:86]{86}}).\textsuperscript{\hyperref[csl:86]{86}}).\textsuperscript{\hyperref[csl:86]{86}}).
+\item Angular momentum functions (Wigner D and 3js) are currently implemented directly, or via the Spherical Functions library \textsuperscript{\hyperref[csl:149]{149}}, and have been tested for consistency with the definitions in Zare (for details see \href{https://epsproc.readthedocs.io/en/latest/tests/Spherical_function_testing_Aug_2019.html}{the ePSproc docs} \textsuperscript{\hyperref[csl:86]{86}}).\textsuperscript{\hyperref[csl:86]{86}}).\textsuperscript{\hyperref[csl:86]{86}}).
 \item Spherical harmonics are defined with the usual physics conventions: orthonormalised, and including the Condon-Shortley phase. Numerically they are implemented directly or via SciPy's \verb+sph_harm+  function (see \href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.special.sph_harm.html}{the SciPy docs for details} \textsuperscript{\hyperref[csl:151]{151}}. Further manipulation and conversion between different normalisations can be readily implemented with the SHtools library \textsuperscript{\hyperref[csl:152]{152},\hyperref[csl:153]{153}}.
 \item General tensor handling and manipulation makes use of the Xarray library \textsuperscript{\hyperref[csl:160]{160},\hyperref[csl:161]{161}}.
 \end{itemize}
@@ -2729,7 +2729,7 @@ Although not demonstrated herein, computation of $X_{hl}^{\Gamma\mu*}(\theta,\ph
 \label{csl:148}148.Suzuki, T. {Femtosecond Time-Resolved Photoelectron Imaging.}. \textit{Annual review of physical chemistry} \textbf{57}, 555–92 (2006).
 
 \phantomsection
-\label{csl:150}150.Boyle, M. {Spherical {{Functions}}}. (2022).
+\label{csl:149}149.Boyle, M. {Spherical {{Functions}}}. (2022).
 
 \phantomsection
 \label{csl:151}151.{{{SciPy}} Documentation}.
