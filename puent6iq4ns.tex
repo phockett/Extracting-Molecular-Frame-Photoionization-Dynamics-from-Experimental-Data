@@ -1,0 +1,34 @@
+\subsection{Matrix element retrieval from MFPADs\label{sec:recon-from-MFPADs}}
+
+To complete the circle, one can also consider whether MFPADs - either directly measured or reconstructed via matrix inversion - contain sufficient information to retrieve the underlying matrix elements.  The former case has already been the subject of several studies, for instance refs. \cite{Gessner2002a,Lebech2003,Cherepkov2005, Yagishita2005}, and shown to work well for at least homo and hetero nuclear diatomics. In a sense the latter case can be considered as (yet another) bootstrapping-type scheme - MFPADs are obtained via a minimum effort/information route, then leveraged to obtain underlying properties. 
+
+Fitting for MFPADs is currently implemented in the PEMtk suite in a similar manner to the AF fitting detailed in Sect. \ref{sec:bootstrapping}, based on the tensor formalism detailed in Sect. \ref{sec:tensor-formulation}. An extensive numerical example is not presented herein, but in testing for the $N_{2}$ example case, e.g. using MFPADs as shown in Fig. \ref{454268}, matrix element retrieval was found to be possible in general. However, in line with previous observations for other methods (and the underlying physics), the fidelity and retrievable relations again depend on the exact nature and quality - generally the information content - of the MFPAD dataset (or, equivalently, the set of measured $\beta_{L,M}$). In testing, a number of different datasets were trialed, and some notes and observations are given below.
+
+\begin{itemize}
+\item MFPADs were tested at single $\epsilon$ only, as a function of polarization geometry, cf. the MFPADs as shown in Fig. \ref{454268}.
+\item Data for fitting therefore consisted of parameters $\beta_{L,M}(\epsilon,R_{\hat{n}})$, with $L_{max}=6$.
+\item For fitting intensity-normalised MFPADs (i.e. $\beta_{0,0}=1$), for single or multiple polarization geometries from the ($x,y,z$) set:
+\begin{itemize}
+\item This was found to be sufficient to determine the corresponding continuum matrix elements in this case, i.e. $z$ polarization corresponds to the $\sigma_u$ continuum, and $x,y$ to the $\pi_u$ continuum. (This separation may not be so clean in other cases, depending on the symmetry of the system.)
+\item Matrix elements were constrained as expect, with only \textit{relative} magnitudes and phases obtained (per continuum) in this manner.
+\item Similarly, due to a lack of cross-terms between continua in this case, the phase relations between the $\sigma_u$ and $\pi_u$ continua were also underfined in this case.
+\item In line with the AF reconstruction procedure, the sign of the phases was also undefined in this case.
+\item Similarly, the fidelity on the retrieved matrix elements (for defined relations), was on the order of the uncertainties in the fitted dataset.
+\end{itemize}
+\item For determination of additional matrix element relations, additional data can be incorporated in the fitting.
+\begin{itemize}
+\item Incorporating absolute magnitudes ($\beta_{0,0}=\sigma$) allows for the relative magnitudes of the continua to be determined.
+\item Incorporating additional suitable interferences, e.g. diagonal polarization (cf. Fig. \ref{454268}), in the dataset allows for additional relative phase relationships to be determined, e.g. between the $\sigma_u$ and $\pi_u$ continua.
+% \item Use of circular polarization further provides information on the sign of the phases. [cf. Reid 1991? Discussed previously. HAVEN'T TESTED THIS]
+\end{itemize}
+\item Retrieval of matrix elements vs. $\epsilon$ is also possible; however, it is again constrained by the presence (or otherwise) of interferences. In the basic case, each energy is treated independently, and relative phases as a function of energy are undefined. However, these may be approximately defined by imposing an energy constraint, e.g. defining that the phases are smooth vs. energy or follow a certain functional form (see, for an example, Ref. \cite{Yagishita2005}). % DIDN'T TEST THIS AS YET, is discussed above somewhere.
+\end{itemize}
+
+In general, an MF fitting procedure, whether from directly measured MFPADs, or reconstructed MFPADs, may be expected to work generally in principle, with similar caveats to the full AF-bootstrapping methodology of Sect. \ref{sec:bootstrapping} (and the existing literature, see Sect. \ref{sec:CompleteLit}). Both methodologies are constrained by the symmetry of the system, and general information content. Notable differences are the implicit presence of cross-terms between continua in the AF case (Eqn. \ref{eq:BLM-tensor-AF}), which may be missing in the MF case (Eqn. \ref{eq:BLM-tensor-MF}), depending on the choice of polarization geometries.
+Outstanding questions remain similar for both cases, namely the fidelity of reconstruction, and the ability to scale-up to more complex cases (larger molecules, dynamic systems) and concomitant information content requirements, and are a subject of ongoing research.
+
+
+%UPDATE 18/08/22: basic numerical testing complete, added notes above. Still need to look at the stats, but basically works as expected.
+% UPDATE: stats look good, basically similar to AF case for 10pc noise tests
+
+% TODO - computational example from perfect \& reconstructed MFPADs, and compare fidelity.

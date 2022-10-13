@@ -1,6 +1,7 @@
 % From Pandas Latex export + added caption & label wrapper
 % TODO: update with Styled table (PD>1.3)
 \begin{table}
+\centering
 
 % \begin{tabular}{lllrrrrrr}
 % \toprule
@@ -61,5 +62,5 @@ pc & mean & num &    0.000 &    0.005 &     2.059 &     2.059 &     2.987 &     
 \bottomrule
 \end{tabular}
 
-\caption{\label{tab:matE}Retrieved values and statistics for (m)agnitudes, (p)hases and "corrected" phases (pc). For each type and parameter the mean result from the fits is given, along with the standard deviation, and a comparison to the (ref)erence computational data, with absolute and percentage differences. Finally, the value of the difference/standard deviation is given as a rough metric for veracity. [TODO update labels and style. FIX MEAN - currently averaging over +/- pairs]}
+\caption{\label{tab:matE}Retrieved values and statistics for (m)agnitudes, (p)hases and ``corrected" phases (pc). For each type and parameter the mean result from the fits is given, along with the standard deviation, and a comparison to the (ref)erence computational data, with absolute numeric (`num') and percentage differences as defined by the `dType' column. Finally, the value of the difference/standard deviation is given as a rough metric for veracity.}
 \end{table}

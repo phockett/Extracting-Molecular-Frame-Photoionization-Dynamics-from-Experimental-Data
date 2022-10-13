@@ -1,3 +1,4 @@
+abstract.html
 pu7ju8c3jno.tex
 hi5vvas6fng.tex
 nac5rkjtugg.tex
@@ -5,6 +6,7 @@ asih5mrvk18.tex
 figures/concepts_fig_draft_010417-02-01
 a5f0j4ktrtg.tex
 7l33c029ckg.tex
+hidgoffg3to.tex
 qi88tg0sgsg.html
 qj87lveem9.tex
 3loit19gp.html
@@ -12,8 +14,13 @@ ogqcphsg36g.tex
 3u1vm4gaba.html
 6ien6hf9npg.tex
 2j6jcd7ukq4.tex
+figures/QM_unified_schema_wrapped_280820-gv
 p4qafv1c7oc.tex
+figures/bootstrap_flowchart_030822-gv
+figures/matrix_inversion_flowchart_290822-gv1
+figures/MF_fitting_flowchart_290822-gv
 uj17o66ithg.tex
+ga62t0hhp5o.tex
 figures/dataDump_1000fitTests_multiFit_noise_051021_ADM-Pt-BLM_140422
 p4keivapgp8.tex
 figures/dataDump_1000fitTests_multiFit_noise_051021_fitHist
@@ -35,7 +42,11 @@ figures/output_166_1
 figures/output_169_1
 urt5uueqn6c.tex
 ash6n6fh56o.tex
+figures/GFinalplot
+figures/D2h1
+puent6iq4ns.tex
 ep33ka1g1ks.tex
+o16jd373dnc.tex
 esd4nbij95g.tex
 279cvv7ffug.tex
 13crmlnl4i.tex
@@ -43,4 +54,7 @@ sksejrf5rq.tex
 56g0bekuiik.tex
 31avcrl4qfo.html
 d7a002g9kpc.tex
+25sav5mn7gg.tex
+dv9qdud991.tex
+22oul84dtk8.tex
 9aq3erm0cf4.html

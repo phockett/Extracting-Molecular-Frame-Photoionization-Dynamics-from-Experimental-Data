@@ -1,0 +1,106 @@
+% Preamble as per Authorea export full_article.tex
+
+\documentclass[10pt]{article}
+
+\usepackage{fullpage}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage[section]{placeins}
+\usepackage{xcolor}
+\usepackage{breakcites}
+\usepackage{lineno}
+\usepackage{hyphenat}
+
+
+
+
+
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = blue,
+            anchorcolor = blue]{hyperref}
+\usepackage{etoolbox}
+\makeatletter
+%\patchcmd\@combinedblfloats{\box\@outputbox}{\unvbox\@outputbox}{}{%
+%  \errmessage{\noexpand\@combinedblfloats could not be patched}%
+%}%
+\makeatother
+
+
+% \usepackage{natbib}
+
+
+
+
+\renewenvironment{abstract}
+  {{\bfseries\noindent{\abstractname}\par\nobreak}\footnotesize}
+  {\bigskip}
+
+\titlespacing{\section}{0pt}{*3}{*1}
+\titlespacing{\subsection}{0pt}{*2}{*0.5}
+\titlespacing{\subsubsection}{0pt}{*1.5}{0pt}
+
+
+\usepackage{authblk}
+
+
+\usepackage{graphicx}
+\usepackage[space]{grffile}
+\usepackage{latexsym}
+\usepackage{textcomp}
+\usepackage{longtable}
+\usepackage{tabulary}
+\usepackage{booktabs,array,multirow}
+\usepackage{amsfonts,amsmath,amssymb}
+\providecommand\citet{\cite}
+\providecommand\citep{\cite}
+\providecommand\citealt{\cite}
+% You can conditionalize code for latexml or normal latex using this.
+\newif\iflatexml\latexmlfalse
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}%
+
+\AtBeginDocument{\DeclareGraphicsExtensions{.pdf,.PDF,.eps,.EPS,.png,.PNG,.tif,.TIF,.jpg,.JPG,.jpeg,.JPEG}}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+
+
+\usepackage{float}
+
+% Additional mods added manually.
+\usepackage{bm}   % For math \bm
+\usepackage{csquotes}
+
+% \usepackage[numbers]{natbib}   % Update Natbib settings to numerical
+% \bibliographystyle{unsrt}   % OK, but missing hyperlinks?
+% \bibliographystyle{abbrvnat}  % Includes links/URLs as text, but not active.
+
+% TODO: check usual bib styles here...!  Try also different Authorea exports...?
+
+% PLUS TEST BIBLATEX (styles from last CV tests), see also https://www.overleaf.com/learn/latex/Bibliography_management_with_biblatex
+% \RequirePackage[bibstyle=apa6,sorting=ymdnt,uniquename=init,defernumbers=true,apamaxprtauth=30]{biblatex}
+% \RequirePackage[bibstyle=apa6,uniquename=init]{biblatex}
+% \RequirePackage[defernumbers=true,uniquename=init]{biblatex}
+
+% Numerical compact with no sorting (reference order)
+\RequirePackage[style=numeric-comp,sorting=none]{biblatex}
+\addbibresource{bibliography/MF_recon_manuscript_June2020.bib}
+
+% THIS IS WORKING WELL, except missing links for software entries - fixed this with style mod before...?
+% NOW WITH UPDATED BIB FILES...
+% \addbibresource{bibliography/MF_recon_manuscript_June2020_BBT-URLs.bib}  % URLs and DOIs with links printed.
+% \addbibresource{bibliography/MF_recon_manuscript_June2020_BBT-DOIsPref.bib}  % DOI or URL, inc. "visited on". Also arxiv links?
+
+% TODO: check usual bib styles here...!  Try also different Authorea exports...?
+
+% Add ORCHID macro, see https://tex.stackexchange.com/a/478780
+% Academicons - not compatible with pdflatex.
+% Use fontawesome or orcidlink
+% \usepackage{academicons}
+% \newcommand{\orcid}[1]{\href{https://orcid.org/#1}{\textcolor[HTML]{A6CE39}{\aiOrcid}}}
+
+\usepackage{orcidlink}

@@ -1,14 +1,14 @@
 ---
 version: 2
 multicolumn: false
-web-width: 1200px
+web-width: 1000px
 align: center
 float: h!
 grid:
   rows: 1
   columns: 1
   grid_elements:
-  - path: figures/dataDump_1000fitTests_multiFit_noise_051021_fitHist/dataDump_1000fitTests_multiFit_noise_051021_fitHist.html
+  - path: figures/dataDump_1000fitTests_multiFit_noise_051021_fitHist/dataDump_1000fitTests_multiFit_noise_051021_fitHistPlot_290722_11-26-30.html
     type: html
     from:
     - 1
@@ -16,7 +16,7 @@ grid:
     to:
     - 1
     - 1
-    url: "/users/71114/articles/447808/master/file/figures/dataDump_1000fitTests_multiFit_noise_051021_fitHist/dataDump_1000fitTests_multiFit_noise_051021_fitHist.html"
     folder_url: "/users/71114/articles/447808/master/folder/figures/dataDump_1000fitTests_multiFit_noise_051021_fitHist"
-web-height: 600px
-export-filename: dataDump_1000fitTests_multiFit_noise_051021_fitHist.png
+    url: "/users/71114/articles/447808/master/file/figures/dataDump_1000fitTests_multiFit_noise_051021_fitHist/dataDump_1000fitTests_multiFit_noise_051021_fitHistPlot_290722_11-26-30.html"
+web-height: 500px
+export-filename: dataDump_1000fitTests_multiFit_noise_051021_fitHistPlot_290722_11-26-28.png

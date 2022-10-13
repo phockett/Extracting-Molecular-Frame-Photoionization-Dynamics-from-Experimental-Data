@@ -1,0 +1,163 @@
+\subsection{Final state density matrix\label{sec:density-mat-full}}
+
+% Write the full final state as a density matrix:
+
+% \begin{equation}
+% \mathbf{\bar{\rho}}_{L,M}^{\zeta\zeta'}=\varUpsilon_{L,M}^{u,\zeta\zeta'}\mathbf{\rho}^{\zeta\zeta'}
+% \end{equation}
+
+% Here the density matrix can be interpreted as the final, LF/AF or
+% MF density matrix, incorporating both the intrinsic and extrinsic
+% effects (i.e. all channel couplings and radial matrix elements for
+% the given measurement). The $L,M$notation indicates here that these
+% dimensions should not be summed over, hence we can still write the
+% tensor coupling into the $\beta_{L,M}^{u}$ parameters:
+
+% \begin{equation}
+% \beta_{L,M}^{u}=\sum_{\zeta,\zeta'}\mathbf{\bar{\rho}}_{L,M}^{\zeta\zeta'}
+% \end{equation}
+
+% [02/08/22 - moved text from main section. Keep that simple, more details here]
+
+% \textbf{I don't think I fully understand this section. In the partial wave basis, wouldn't the density operator be,}
+% \begin{equation}
+% \rho(t) =\sum_{LM}\sum_{KQS}A^{K}_{QS}(t)\sum_{\zeta\zeta^{\prime}}\Gamma^{\zeta\zeta^{\prime}LM}_{KQS}|\zeta,\Psi_+\rangle\langle\zeta,\Psi_+|\mu_q\rho_i\mu_{q\prime}^{*}|\zeta^{\prime},\Psi_+\rangle\langle\zeta^{\prime},\Psi_+|
+% \end{equation}
+% \textbf{with} $\rho_i = |\Psi_i\rangle\langle\Psi_i|$\textbf{ ? It's likely I'm not fully understanding the notation here, because I'm used the notation in MG 2021. Either way, maybe we don't need to include the density matrix version here? Eq.~\ref{eq:cstate} is intended to drive home the quantum tomography perspective.}\\
+
+As introduced in Sect. \ref{sec:density-mat-basic}, the (radial) density matrix can be expressed as the outer-product of the (radial) matrix elements. Following the channel function notation, it is also trivial to write the radial matrix elements in density matrix form in the $\zeta\zeta'$ representation:
+
+\begin{equation}
+\mathbf{\rho}^{\zeta\zeta'} = |\zeta\rangle\langle\zeta'| \equiv \mathbb{I}^{\zeta,\zeta'}
+\end{equation}
+
+And the full final continuum state as a density matrix in the $\zeta\zeta'$ representation (with the observable dimensions $L,M$ explicitly included in the density matrix), which will also be dependent on the choice of channel functions ($u$):
+
+\begin{equation}
+\mathbf{\rho}_{L,M}^{u,\zeta\zeta'}=\varUpsilon_{L,M}^{u,\zeta\zeta'}\mathbb{I}^{\zeta,\zeta'}
+\end{equation}
+
+Here the density matrix can be interpreted as the final, LF/AF or
+MF density matrix (depending on the channel functions used), incorporating both the intrinsic and extrinsic
+effects (i.e. all channel couplings and radial matrix elements for
+the given measurement), with dimensions dependent on the unique sets of quantum numbers required - in the simplest case, this will just be a set of partial waves $\zeta = (l,m)$. Note that this final state is distinct from the ``radial" density matrix (Eqn. \ref{eqn:radial-density-mat}), which encodes purely intrinsic (molecular scattering) photoionization dynamics (thus characterises the scattering event). The $L,M$ notation indicates here that these dimensions should not be summed over, hence the tensor coupling into the $\beta_{L,M}^{u}$ parameters can also be written in terms of the density matrix:
+
+\begin{equation}
+\beta_{L,M}^{u}=\sum_{\zeta,\zeta'}\mathbf{\rho}_{L,M}^{u,\zeta\zeta'}
+\end{equation}
+
+In fact, this form arises naturally since the $\beta_{L,M}^{u}$ terms are the state multipoles (geometric tensors) defining the system, which can be thought of as a coupled basis equivalent of the density matrix representations (see, e.g., ref. \cite{BlumDensityMat}, Chpt. 4.).
+
+In a more traditional notation (cf. Eqn. \ref{eq:cstate}, see also Refs. \cite{gregory2021MolecularFramePhotoelectron} 
+%[plus VM electron coherences? And some older refs]
+), the density operator can be expressed as:
+
+% \begin{equation}
+% \rho(t) =\sum_{LM}\sum_{KQS}A^{K}_{QS}(t)\sum_{\zeta\zeta^{\prime}}\Gamma^{\zeta\zeta^{\prime}LM}_{KQS}|\zeta,\Psi_+\rangle\langle\zeta,\Psi_+|\mu_q\rho_i\mu_{q\prime}^{*}|\zeta^{\prime},\Psi_+\rangle\langle\zeta^{\prime},\Psi_+|
+% \end{equation}
+
+
+\begin{equation}
+\rho(t) =\sum_{LM}\sum_{KQS}A^{K}_{QS}(t)\sum_{\zeta\zeta^{\prime}}\varUpsilon_{L,M}^{u,\zeta\zeta'}|\zeta,\Psi_+\rangle\langle\zeta,\Psi_+|\mu_q\rho_i\mu_{q\prime}^{*}|\zeta^{\prime},\Psi_+\rangle\langle\zeta^{\prime},\Psi_+|
+\end{equation}
+
+
+with $\rho_i = |\Psi_i\rangle\langle\Psi_i|$. This is, effectively, equivalent to an expansion in the various tensor operators defined above, in a state-vector notation.
+
+
+% TODO: confirm notation here, may want to include more discussion from Blum? (See Fig. \ref{998904} for results, should also confirm representation here from outer product case, maybe plot LM representation too - see \href{https://epsproc.readthedocs.io/en/dev/methods/density_mat_notes_demo_300821.html}{ePSproc density matrix notes} esp. \href{https://epsproc.readthedocs.io/en/dev/methods/density_mat_notes_demo_300821.html#Density-matrix-from-geometric-tensors}{Density matrix from geometric tensors section}.)
+
+
+\subsection{Matrix inversion formalism\label{app:mat-inversion}}
+
+% As discussed in Sect. \ref{sec:matrix-inv-intro}, following Gregory et. al. \cite{gregory2021MolecularFramePhotoelectron}, the formalism can also be rewritten with
+% the ADMs separate (see also Reid \& Underwood convolution form, \cite{Reid2000}), and the LF/AF given as (cf. Eqn. \ref{eq:BLM-tensor-AF}):
+
+% \begin{equation}
+% \bar{\beta}_{L,M}(E,t)=\sum_{K,Q,S}C_{K,Q,S}^{L,M}(E)A_{Q,S}^{K}(t)
+% \end{equation}
+
+% % ($Q=0$ only in Gregory et. al., don't recall if this is general limitation however - may be symmetry and/or dimensionality related?)
+% (Note that $Q=0$ only for the derivations in Gregory et. al. \cite{gregory2021MolecularFramePhotoelectron}, although the results should generalise - see discussion therein for details, particularly Sect. 3.2 and the appendices.)
+
+% And the MF (cf. Eqn. \ref{eq:BLM-tensor-MF}):
+
+% \begin{equation}
+% \beta_{L,M}(E,\Omega)=\sum_{P,R,\Delta q}C_{P,R}^{L,M}(E,\Delta q)D_{R,\Delta q}^{P}(\Omega)
+% \end{equation}
+
+% In the original notation, the transformation can be written:
+
+% \begin{equation}
+% \mathbf{C}^{mol}=\mathbf{G}\mathbf{C}^{lab},
+% \end{equation}
+
+% \begin{equation}
+% C_{P,0}^{L,M}(E,\Delta q)=\hat{G}_{L'0KS}^{LMP\Delta q}\bar{C}_{K,0,S}^{L',0}(E)
+% \end{equation}
+
+% % (Here $M'=Q=R=0$, again not sure if this is required.)
+
+% And
+
+% \begin{equation}
+% \mathbf{G}_{L'M'KS}^{LMP\Delta q}=\mathbf{\Gamma}_{P0\Delta q}^{\zeta\zeta'LM}(\mathbf{\Gamma}_{K0S}^{\zeta\zeta'L^{\prime}M^{\prime}})^{+}
+% \end{equation}
+
+% Where $+$ denotes the Moore-Penrose inverse matrix.
+
+% \begin{equation}
+% \bar{C}_{KQS}^{LM}(\epsilon)=\sum_{\zeta\zeta'}d_{\zeta\zeta'}(\epsilon)\Gamma_{KQS}^{\zeta\zeta'LM}
+% \end{equation}
+
+% \begin{equation}
+% C_{PR}^{LM}(\epsilon,\Delta q)=\sum_{\zeta\zeta'}d_{\zeta\zeta'}(\epsilon)\Gamma_{PR\Delta q}^{\zeta\zeta'LM}
+% \end{equation}
+
+% \begin{equation}
+% D_{\zeta}(\epsilon)D_{\zeta'}^{*}(\epsilon)=d_{\zeta\zeta'}(\epsilon)
+% \end{equation}
+
+As discussed in Sect. \ref{sec:matrix-inv-intro}, and following Gregory et. al. \cite{gregory2021MolecularFramePhotoelectron}, the general formalism can also be rewritten with the ADMs separate (see also Reid \& Underwood convolution form, \cite{Reid2000}), and the LF/AF given as per Eqn. \ref{eqn:beta-convolution-C} (cf. Eqn. \ref{eq:BLM-tensor-AF}). Herein, the notation from Gregory et. al. \cite{gregory2021MolecularFramePhotoelectron} is rewritten slightly, as per Eqns. \ref{eq:basic} - \ref{eq:MPinversion}.
+
+In the current notation, the full expressions are written as per Eqn. \ref{eqn:beta-convolution-C} for the LF/AF (cf. Eqn. \ref{eq:BLM-tensor-AF}):
+
+\begin{equation}
+\bar{\beta}_{L,M}(E,t)=\sum_{K,Q,S}C_{K,Q,S}^{L,M}(E)A_{Q,S}^{K}(t)
+\end{equation}
+
+% ($Q=0$ only in Gregory et. al., don't recall if this is general limitation however - may be symmetry and/or dimensionality related?)
+% (Note that $Q=0$ only for the derivations in Gregory et. al. \cite{gregory2021MolecularFramePhotoelectron}, although the results should generalise - see discussion therein for details, particularly Sect. 3.2 and the appendices.)
+
+And for the MF (cf. Eqn. \ref{eq:BLM-tensor-MF}):
+
+\begin{equation}
+\beta_{L,M}(E,\Omega)=\sum_{P,R,\Delta q}C_{P,R}^{L,M}(E,\Delta q)D_{R,\Delta q}^{P}(\Omega)
+\end{equation}
+
+And the required coefficients defined as:
+
+\begin{equation}
+\bar{C}_{KQS}^{LM}(\epsilon)=\sum_{\zeta\zeta'}\mathbb{I}_{\zeta\zeta'}^{\Gamma,\Gamma'}(\epsilon)\Gamma_{KQS}^{\zeta\zeta'LM}
+\end{equation}
+
+\begin{eqnarray}
+\Gamma_{KQS}^{\zeta\zeta'LM} & = & (-1)^{M}[P]^{\frac{1}{2}}E_{P-R}(\hat{e};\mu_{0})(-1)^{(\mu'-\mu_{0})}\bar{\Lambda}_{R'}(\mu,P,R')B_{L,S-R'}(l,l',m,m')\Delta_{L,M}(K,Q,S)\\
+ & = & \bar{\varUpsilon}_{L,M}^{u,\zeta\zeta'}/A_{Q,S}^{K}(t)
+\end{eqnarray}
+
+\begin{equation}
+C_{PR}^{LM}(\epsilon,\Delta q)=\sum_{\zeta\zeta'}\mathbb{I}_{\zeta\zeta'}^{\Gamma,\Gamma'}(\epsilon)\Gamma_{PR\Delta q}^{\zeta\zeta'LM}
+\end{equation}
+
+\begin{equation}
+\Gamma_{PR\Delta q}^{\zeta\zeta'LM}=(-1)^{M}(2P+1)^{\frac{1}{2}}E_{P-R}(\hat{e};\mu_{0})(-1)^{(\mu'-\mu_{0})}\bar{\Lambda}_{\Delta q}(\mu,P,\Delta q)B_{L,-M}(l,l',m,m')
+\end{equation}
+
+Where it is assumed that $R'=\Delta q$, and that the rotational matrix element $D_{R,\Delta q}^{P}(\Omega)$
+is computed independently (note that the current numerical function $\Lambda_{R',R}(R_{\hat{n}};\mu,P,R,R')$
+could possibly be used directly here, but this version keeps the angle-dependence
+separate as per the matrix inversion formalism).
+%; \textcolor{red}{alternatively a new function might be used here?}).
+
+Note also that $Q=0$ only for the derivations in Gregory et. al. \cite{gregory2021MolecularFramePhotoelectron}, and the the inverse matrix as given in Eqn. \ref{eq:MPinversion}, although the results should generalise - see discussion in Ref. \cite{gregory2021MolecularFramePhotoelectron} for details, particularly Sect. 3.2 and the appendices.

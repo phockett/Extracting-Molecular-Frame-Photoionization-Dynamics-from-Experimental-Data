@@ -1,0 +1,25 @@
+\subsection{Numerical implementation in ePSproc and PEMtk\label{sec:numerical-notes}}
+
+\subsubsection{Photoionizaion calculations with ePSproc}
+
+The ePSproc codebase \cite{ePSprocAuthorea, ePSprocGithub, ePSprocDocs} aims to provide methods for post-processing with ePolyScat matrix elements (or equivalent matrix elements from other sources), including computation of AF and MF observables. The numerical implementation thus follows the conventions of ePolyScat, as given in Sect. \ref{sec:mat-ele-conventions}. Additionally, various switches can also be set to define alternative choices, e.g. conjugate forms, use of real harmonics etc., for computation of observables. Since the code is open-source Python, users may also swap libraries/conventions to their preference. By default the following conventions/libraries are used:
+
+\begin{itemize}
+\item Angular momentum functions (Wigner D and 3js) are currently implemented directly, or via the Spherical Functions library \cite{boyle2022SphericalFunctions}, and have been tested for consistency with the definitions in Zare (for details see \href{https://epsproc.readthedocs.io/en/latest/tests/Spherical_function_testing_Aug_2019.html}{the ePSproc docs} \cite{ePSprocDocs}).\cite{ePSprocDocs}).\cite{ePSprocDocs}).
+\item Spherical harmonics are defined with the usual physics conventions: orthonormalised, and including the Condon-Shortley phase. Numerically they are implemented directly or via SciPy's \verb+sph_harm+ function (see \href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.special.sph_harm.html}{the SciPy docs for details} \cite{SciPyDocumentation}. Further manipulation and conversion between different normalisations can be readily implemented with the SHtools library \cite{wieczorek2018SHToolsToolsWorking,SHtoolsGithub}.
+\item General tensor handling and manipulation makes use of the Xarray library \cite{hoyer2017XarrayNDLabeled,XarrayDocumentation}.
+\end{itemize}
+
+
+\subsubsection{Data handling and fitting with PEMtk}
+
+The Photoelectron Metrology Toolkit (PEMtk) codebase \cite{hockett2021PEMtkDocs, hockett2021PEMtkGithub} aims to provide various general data handling routines for photoionization problems. At the time of writing, only fitting routines are implemented, along with some basic utility functions, and backend functionality from ePSproc. Further details can be found in the \href{https://pemtk.readthedocs.io/en/latest/about.html}{PEMtk documentation} \cite{hockett2021PEMtkDocs}.
+
+The results presented in Sect. \ref{sec:bootstrapping} make use of PEMtk routines, including functions provided to wrap matrix elements and ePSproc observable calculations for fitting, and analysis routines for identifying candidate matrix elements. The full analysis notebooks are available in the \href{http://dx.doi.org/10.6084/m9.figshare.20293782}{Figshare repository for this article} \cite{hockett2022MFreconFigshare}.
+
+Non-linear optimization (fitting) is handled via the \href{https://lmfit.github.io/lmfit-py/index.html}{lmfit library}, which implements and/or wraps a range of non-linear fitting routines in Python \cite{LMFITDocumentation, newville2014LMFITNonLinearLeastSquare}; for the Levenberg-Marquardt least-squares minimization method used herein this wraps 
+% \href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html}{Scipy's \verb+least_squares+ functionality}
+% Removed \verb - OK in Authorea, but breaks in other places.
+\href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html}{Scipy's \texttt{least\_squares} functionality}, which therefore constituted the core minimization routine \cite{SciPyDocumentation} for the demonstration case.
+
+Although not demonstrated herein, computation of $X_{hl}^{\Gamma\mu*}(\theta,\phi)$ (Eqn. \ref{eq:symm-harmonics}) is also currently implemented in the PEMtk codebase, making use of libmsym \cite{johansson2017AutomaticProcedureGeneratinga, johansson2022LibmsymGithub} (symmetry coefficients) and SHtools \cite{wieczorek2018SHToolsToolsWorking,SHtoolsGithub} (general spherical harmonic handling and conversion). For worked examples, see \href{https://pemtk.readthedocs.io/en/latest/sym/pemtk_symHarm_demo_160322_tidy.html}{the PEMtk docs} \cite{hockett2021PEMtkDocs}. It is hoped that this will be a useful tool for tackling photoionization problems more generally, without \textit{a priori} knowledge of the matrix elements for a given system.
