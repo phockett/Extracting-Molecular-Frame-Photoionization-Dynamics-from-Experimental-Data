@@ -508,6 +508,30 @@
   keywords = {\#nosource}
 }
 
+@article{brown2020RMTRmatrixTimedependence,
+  ids = {brown2019RMTRmatrixTimedependence},
+  title = {{{RMT}}: {{R-matrix}} with Time-Dependence. {{Solving}} the Semi-Relativistic, Time-Dependent {{Schrödinger}} Equation for General, Multielectron Atoms and Molecules in Intense, Ultrashort, Arbitrarily Polarized Laser Pulses},
+  shorttitle = {{{RMT}}},
+  author = {Brown, Andrew C. and Armstrong, Gregory S. J. and Benda, Jakub and Clarke, Daniel D. A. and Wragg, Jack and Hamilton, Kathryn R. and Mašín, Zdeněk and Gorfinkiel, Jimena D. and van der Hart, Hugo W.},
+  options = {useprefix=true},
+  date = {2020-05-01},
+  journaltitle = {Computer Physics Communications},
+  shortjournal = {Computer Physics Communications},
+  volume = {250},
+  eprint = {1905.06156},
+  eprinttype = {arxiv},
+  pages = {107062},
+  issn = {0010-4655},
+  doi = {10.1016/j.cpc.2019.107062},
+  url = {https://www.sciencedirect.com/science/article/pii/S0010465519303856},
+  urldate = {2022-11-09},
+  abstract = {RMT is a programme which solves the time-dependent Schrödinger equation for general, multielectron atoms, ions and molecules interacting with laser light. As such it can be used to model ionization (single-photon, multiphoton and strong-field), recollision (high-harmonic generation, strong-field rescattering) and, more generally, absorption or scattering processes with a full account of the multielectron correlation effects in a time-dependent manner. Calculations can be performed for targets interacting with ultrashort, intense laser pulses of long wavelength and arbitrary polarization. Calculations for atoms can optionally include the Breit–Pauli correction terms for the description of relativistic (in particular, spin–orbit) effects. Program summary Program Title: (RMT) R-matrix with time-dependence Program Files doi: http://dx.doi.org/10.17632/3ptyfg2bmx.1 Licensing provisions: GPLv3 Programming language: Fortran Nature of problem: The interaction of laser light with matter can be modelled with the time-dependent Schrödinger equation (TDSE). The solution of the TDSE for general, multielectron atomic and molecular systems is computationally demanding, and has previously been limited either to particular laser wavelengths and intensities, or to simple, few-electron cases. RMT overcomes this limitation by using a general approach to modelling dynamics in atoms and molecules which is applicable to multielectron systems and a wide range of perturbative and non-perturbative phenomena. Solution method: We use the R-matrix paradigm, partitioning the interaction region into an ‘inner’ and an ‘outer’ region. In the inner region (within some small radius of the nucleus/nuclei), full account is taken of all multielectron interactions including electron exchange and correlation. In the outer region, far from the nucleus/nuclei, these are neglected and a single, ionized electron moves in the long-range potential of the residual ionic system and the laser field. The key computational aspect of the RMT approach is the use of a different numerical scheme in each region, facilitating efficient parallelization without sacrificing accuracy. Given an initial wavefunction and the electric field of the driving laser pulse, the wavefunction for all subsequent times and the associated observables are computed using an explicit, Arnoldi propagator method. Additional comments including restrictions and unusual features: The description of the atomic/molecular structure is provided from other, time-independent R-matrix codes [1], [2], [3], and the capabilities (in terms of structure) are, in some sense, inherited therefrom. Thus, the atomic calculations can optionally include Breit–Pauli relativistic corrections to the Hamiltonian, in order to account for the spin–orbit effect. However, no such capability exists for the molecular case. Furthermore, the fixed-nuclei approximation is adopted in the molecular calculations (so nuclear motion is neglected). Similarly, all calculations are restricted to the description of a single electron in the outer region, and consequently the study of double-ionization phenomena is not yet within the capabilities of the method. Finally, the parallel strategy employed necessitates the use of at least two (and usually many more) computer cores. As a result, there is no option for serial calculations and, for most realistic cases, a massively parallel architecture (several hundred cores) will be required. Program repository available at: https://gitlab.com/Uk-amor/RMT References [1] C. P. Ballance Parallel R-matrix codes, http://connorb.freeshell.org. [2] R-matrix II codes, http://gitlab.com/uk-amor/rmt/rmatrixii. [3] Z. Mašín et al UKRmol+: a suite for modelling of electronic processes in molecules interacting with electrons, positrons and photons using the R-matrix method, Comput. Phys. Commun., accepted, http://dx.doi.org/10.1016/j.cpc.2019.107092.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {-matrix,\#nosource,Attosecond physics,Electron correlation,Ionization,Strong-field physics,Ultrafast physics},
+  file = {D\:\\literature\\LiteratureStore\\Computer Physics Communications\\2020\\brown_et_al_2020_rmt.pdf;D\:\\literature\\databases\\PHzot2020_Stimpy\\storage\\NDVLB5CZ\\S0010465519303856.html}
+}
+
 @article{Bryan2007,
   title = {Mapping the Evolution of Optically Generated Rotational Wave Packets in a Room-Temperature Ensemble of {{D}}\_\{2\}},
   author = {Bryan, W. and English, E. and McKenna, J. and Wood, J. and Calvert, C. and Turcu, I. and Torres, R. and Collier, J. and Williams, I. and Newell, W.},
@@ -2141,6 +2165,79 @@
   file = {D\:\\literature\\LiteratureStore\\Physical Review A\\2015\\Hockett et al. - 2015 - Maximum-information photoelectron metrology.pdf}
 }
 
+@article{hockett2016EPSprocAuthorea,
+  title = {{{ePSproc}}: {{Post-processing}} Suite for {{ePolyScat}} Electron-Molecule Scattering Calculations},
+  author = {Hockett, Paul},
+  date = {2016},
+  journaltitle = {Authorea},
+  doi = {10.6084/m9.figshare.3545639},
+  url = {https://www.authorea.com/users/71114/articles/122402/_show_article},
+  author+an = {1=lead},
+  keywords = {\#nosource,Preprint,Publication}
+}
+
+@software{hockett2016EPSprocFigshare,
+  title = {{{ePSproc}}: {{Post-processing}} for {{ePolyScat}} (v1.0.0 Release and Manuscript)},
+  author = {Hockett, Paul},
+  date = {2016},
+  doi = {10.6084/m9.figshare.3545639},
+  url = {https://figshare.com/articles/ePSproc_Post-processing_for_ePolyScat_v1_0_0_/3545639},
+  abstract = {Initial development release. (754 views, 424 downloads on Figshare to date.)},
+  keywords = {\#nosource,Release,Repo,Software}
+}
+
+@online{hockett2016FigshareRepository,
+  title = {Figshare Repository},
+  author = {Hockett, Paul},
+  date = {2016},
+  url = {https://figshare.com/authors/Paul_Hockett/100955},
+  urldate = {2022-02-16},
+  abstract = {Collections of data, code \& presentations over a range of projects. (25250 item views total, 9657 item downloads.)},
+  keywords = {Collection,General,Repo},
+  file = {D\:\\literature\\databases\\PHzot2020_Stimpy\\storage\\G3X9YNBC\\100955.html}
+}
+
+@article{hockett2016OpenScienceFoundation,
+  title = {Open {{Science Foundation}} ({{OSF}}) Repositories},
+  author = {Hockett, Paul},
+  date = {2016},
+  publisher = {{OSF}},
+  url = {https://osf.io/ry49v/},
+  urldate = {2022-02-16},
+  abstract = {Hosted on the Open Science Framework},
+  langid = {english},
+  keywords = {Collection,Data,General,Projects,Repo,Software},
+  file = {D\:\\literature\\databases\\PHzot2020_Stimpy\\storage\\P99UYHPT\\ry49v.html}
+}
+
+@article{hockett2016PresentationsArchiveUltrafast,
+  title = {Presentations Archive: Ultrafast Light-Matter Interactions},
+  shorttitle = {Presentations Archive},
+  author = {Hockett, Paul},
+  date = {2016},
+  publisher = {{figshare}},
+  doi = {10.6084/m9.figshare.c.3312291},
+  url = {https://figshare.com/collections/Presentations/3312291},
+  urldate = {2022-02-16},
+  abstract = {A collection of presentations from the last few years, in the area of ultrafast laser physics, photoionization spectroscopy, quantum dynamics, photoelectron interferometry and so on. (1295 collection views on Figshare.)},
+  langid = {english},
+  keywords = {Collection,General,Presentations,Repo},
+  file = {D\:\\literature\\databases\\PHzot2020_Stimpy\\storage\\M3TDNJ2N\\3312291.html}
+}
+
+@online{hockett2016PresentationsArchiveVideos,
+  title = {Presentations Archive: Videos on {{Vimeo}}},
+  author = {Hockett, Paul},
+  date = {2016},
+  url = {https://vimeo.com/user54189134},
+  urldate = {2022-02-24},
+  abstract = {(1.1k total views to date (Feb 2022).)},
+  langid = {english},
+  organization = {{Vimeo}},
+  keywords = {Collection,General,Presentations,Repo},
+  file = {D\:\\literature\\databases\\PHzot2020_Stimpy\\storage\\TKBPN3XH\\user54189134.html}
+}
+
 @article{hockett2017AngleresolvedRABBITTTheory,
   title = {Angle-Resolved {{RABBITT}}: Theory and Numerics},
   author = {Hockett, Paul},
@@ -2157,6 +2254,17 @@
   keywords = {angle-resolved,atto,photoelectron spectroscopy,photoionization,Publication,ultrafast},
   annotation = {\_eprint: 1703.08586},
   file = {D\:\\literature\\LiteratureStore\\Journal of Physics B Atomic, Molecular and Optical Physics\\2017\\Hockett - 2017 - Angle-resolved RABBITT theory and numerics.pdf;D\:\\literature\\LiteratureStore\\Journal of Physics B Atomic, Molecular and Optical Physics\\2017\\Hockett - 2017 - Angle-resolved RABBITT theory and numerics(2).pdf}
+}
+
+@software{hockett2017QuantumMetrologyPhotoelectrons,
+  title = {Quantum {{Metrology}} with {{Photoelectrons}} - Code for {{Vols}}. 1 \& 2},
+  author = {Hockett, Paul},
+  date = {2017},
+  origdate = {2017-08-24T20:23:15Z},
+  url = {https://github.com/phockett/Quantum-Metrology-with-Photoelectrons},
+  urldate = {2022-02-18},
+  abstract = {Code to go with the eponymous book.},
+  keywords = {Documentation,Software}
 }
 
 @book{hockett2018QMP1,
@@ -2201,6 +2309,14 @@
   file = {D\:\\literature\\databases\\PHzot2020_Stimpy\\storage\\75ZAJ6GY\\ePSdata.html}
 }
 
+@online{hockett2019EPSdataRepositoriesZenodo,
+  title = {{{ePSdata}} Repositories on {{Zenodo}}},
+  author = {Hockett, Paul},
+  date = {2019},
+  url = {https://zenodo.org/search?page=1&size=20&q=hockett&keywords=Data},
+  keywords = {Collection,Data,Repo}
+}
+
 @software{hockett2021PEMtkDocs,
   title = {{{PEMtk}} - the {{Photoelectron Metrology Toolkit}} - Documentation},
   author = {Hockett, Paul},
@@ -2236,6 +2352,16 @@
   langid = {english},
   keywords = {AFPAD,Complete experiment,Data,data sharing,LFPAD,MFPAD},
   file = {D\:\\literature\\databases\\PHzot2020_Stimpy\\storage\\TEWK9HBG\\20293782.html}
+}
+
+@book{hockett2022QuantumMetrologyPhotoelectrons,
+  title = {Quantum {{Metrology}} with {{Photoelectrons}}, {{Volume}} 3: {{Analysis}} Methodologies (Commissioned by {{IOP Press Jan}} 2022, Ongoing Online/Open Source Version Available Now - Final Publication Due 2023)},
+  author = {Hockett, Paul},
+  date = {2022},
+  publisher = {{IOP Publishing}},
+  url = {https://phockett.github.io/Quantum-Metrology-with-Photoelectrons-Vol3},
+  author+an = {1=lead},
+  keywords = {\#nosource}
 }
 
 @software{hockettOpenPhotoionizationDocker,
@@ -3280,6 +3406,19 @@
   keywords = {\#nosource}
 }
 
+@article{masin2019UKRmolSuiteModelling,
+  title = {{{UKRmol}}+: {{A}} Suite for Modelling Electronic Processes in Molecules Interacting with Electrons, Positrons and Photons Using the {{R-matrix}} Method},
+  author = {Mašín, Zdeněk and Benda, Jakub and Gorfinkiel, Jimena D. and Harvey, Alex G. and Tennyson, Jonathan},
+  date = {2019-12},
+  journaltitle = {Computer Physics Communications},
+  pages = {107092},
+  issn = {00104655},
+  doi = {10.1016/j.cpc.2019.107092},
+  url = {https://linkinghub.elsevier.com/retrieve/pii/S0010465519303972},
+  urldate = {2020-01-21},
+  file = {D\:\\literature\\LiteratureStore\\Computer Physics Communications\\2019\\Mašín et al. - 2019 - UKRmol A suite for modelling electronic processes in molecules interacting with electrons, positrons and photons.pdf}
+}
+
 @article{matsakis2019RenamingProposalAuger,
   title = {A Renaming Proposal: “{{The Auger}}–{{Meitner}} Effect”},
   shorttitle = {A Renaming Proposal},
@@ -4233,6 +4372,21 @@
   url = {http://pra.aps.org/abstract/PRA/v13/i4/p1411_1},
   urldate = {2013-04-25},
   file = {D\:\\literature\\LiteratureStore\\Physical Review A\\1976\\Ritchie - 1976 - Theory of the angular distribution of photoelectrons ejected from optically active molecules and molecular negative ion.pdf}
+}
+
+@software{RmatrixRepo,
+  ids = {brown2019RMTRmatrixTimedependence},
+  title = {{{RMT}}: {{R-matrix}} with Time-Dependence (Repository)},
+  shorttitle = {{{RMT}}},
+  author = {Brown, Andrew C. and Armstrong, Gregory S. J. and Benda, Jakub and Clarke, Daniel D. A. and Wragg, Jack and Hamilton, Kathryn R. and Mašín, Zdeněk and Gorfinkiel, Jimena D. and van der Hart, Hugo W.},
+  options = {useprefix=true},
+  date = {2020-05-01},
+  eprint = {1905.06156},
+  eprinttype = {arxiv},
+  url = {https://gitlab.com/Uk-amor/RMT/rmt},
+  urldate = {2022-11-09},
+  archiveprefix = {arXiv},
+  keywords = {-matrix,\#nosource,Attosecond physics,Electron correlation,Ionization,Strong-field physics,Ultrafast physics}
 }
 
 @article{Rosca-Pruna2001,
