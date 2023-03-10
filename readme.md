@@ -15,6 +15,6 @@ This repo: LaTex source from [Authorea master version](https://www.authorea.com/
 ## Additional build notes
 
 - `./figures` contains full figure set, including interactive HTML versions.
-- PDF builds on Authorea currently broken (as of mid-August 2022).
-- PDF builds via local or Overleaf, source compiled via modified version of [eteq's authorea_scipts](https://github.com/eteq/authorea-scripts), custom version in `./authorea_scripts`. (TODO: Github action for this.)
+- PDF builds via Authorea are available directly.
+- PDF builds via local or Overleaf in `./builds`, source compiled via modified version of [eteq's authorea_scipts](https://github.com/eteq/authorea-scripts), custom version in `./authorea_scripts`. (TODO: Github action for this.)
 - Reference PDF source and builds in `./builds`.
