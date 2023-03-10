@@ -12,7 +12,7 @@
 
 \subsubsection{Tensor formulation of photoionization\label{sec:tensor-formulation}}
 
-A number of authors have treated MFPADs and related problems, see Appendix \ref{sec:theory-lit} for some examples. Herein, a geometric tensor based formalism is developed, which is close in spirit to the treatments given by Underwood and co-workers \cite{Reid2000, Stolow2008, Underwood2000}, but further separates various sets of physical parameters into dedicated tensors; this allows for a unified theoretical and numerical treatment, where the latter computes properties as tensor variables which can be further manipulated and investigated.%\footnote{It should be emphasized, however, that the underlying physical quantities are essentially identical in all these approaches, with a set of coupled angular-momenta defining the geometrical part of the photoionization problem, despite these differences in the details of the theory and notation. The current tensorial numerical implementation is in contradistinction to standard numerical routines in which the requisite terms are usually computed from vectorial and/or nested summations, which can be somewhat opaque to detailed interpretation, and typically implement the full computation of the observables in one computational routine. The main cost of a tensor-based approach is that more RAM is required to store the full set of tensor variables.} 
+A number of authors have treated MFPADs and related problems, see Appendix \ref{sec:theory-lit} for some examples. Herein, a geometric tensor based formalism is developed, which is close in spirit to the treatments given by Underwood and co-workers \cite{Reid2000, Stolow2008, Underwood2000}, but further separates various sets of physical parameters into dedicated tensors. This allows for a unified theoretical and numerical treatment, where the latter computes properties as tensor variables which can be further manipulated and investigated. %\footnote{It should be emphasized, however, that the underlying physical quantities are essentially identical in all these approaches, with a set of coupled angular-momenta defining the geometrical part of the photoionization problem, despite these differences in the details of the theory and notation. The current tensorial numerical implementation is in contradistinction to standard numerical routines in which the requisite terms are usually computed from vectorial and/or nested summations, which can be somewhat opaque to detailed interpretation, and typically implement the full computation of the observables in one computational routine. The main cost of a tensor-based approach is that more RAM is required to store the full set of tensor variables.} 
 Furthermore, the tensors can readily be converted to a density matrix representation \cite{BlumDensityMat, zareAngMom}, which is more natural for some quantities, and also emphasizes the link to quantum state tomography and other quantum information techniques. Much of the theoretical background, as well as application to aspects of the current problem, can be found in the textbooks of Blum \cite{BlumDensityMat} and Zare \cite{zareAngMom}.
 
 Within this treatment, the observables can be defined in a series of simplified forms, emphasizing the quantities of interest for a given problem. Some details are defined in the following subsections, and further detailed in Appendix \ref{appendix:formalism}.
@@ -20,7 +20,10 @@ Within this treatment, the observables can be defined in a series of simplified 
 
 \subsubsection{Channel functions\label{sec:channel-funcs}}
 
-A simple form of the equations, amenable to fitting, is to write the observables in terms of ``channel functions", which define the ionization continuum for a given case and set of parameters $u$ (e.g. defined for the MF, or defined for a specific experimental configuration),
+% 07/03/23 - added longer lead-in here, may also want to add notes on fitting?
+A simple form of the equations, amenable to fitting, is to write the observables in terms of ``channel functions", which define the ionization continuum for a given case and set of parameters $u$ (e.g. defined for the MF, or defined for a specific experimental configuration). Here we briefly introduce the notation, which expresses the observables $\beta_{L,M}^{u}$ (Eq. \ref{eq:AF-PAD-general}) as a tensor product of channel functions ($\varUpsilon_{L,M}^{u,\zeta\zeta'}$), which collect all of the geometric parameters, and ionization matrix elements $\mathbb{I}^{\zeta\zeta'}$. At a basic level, the channel functions can be viewed simply as defining all of the analytical parameters in a given case; further theoretical details are unpacked below (Sect. \ref{sec:full-tensor-expansion} and Appendix \ref{appendix:formalism}), and specific cases in Sect. \ref{sec:bootstrapping-info-sensitivity}.
+
+Making use of the channel functions, the observables can be written as:
 
 \begin{equation}
 \beta_{L,M}^{u}=\sum_{\zeta,\zeta'}\varUpsilon_{L,M}^{u,\zeta\zeta'}\mathbb{I}^{\zeta\zeta'}\label{eqn:channel-fns}
@@ -29,7 +32,7 @@ A simple form of the equations, amenable to fitting, is to write the observables
 % \sum_{\zeta,\zeta'}\varUpsilon_{L,M}^{u,\zeta\zeta'}\mathbb{I}_{\zeta\zeta'}^{\Gamma,\Gamma'}=
 % \equiv\sum_{\zeta,\zeta'}\varUpsilon_{L,M}^{u,\zeta\zeta'}\mathbf{\rho}^{\zeta\zeta'}
 
-Where $\zeta,\zeta'$ collect all the required quantum numbers, and define all (coherent) pairs of components. The term $\mathbb{I}^{\zeta\zeta'}$ denotes the coherent square of the ionization matrix elements:
+where $\zeta,\zeta'$ collect all the required quantum numbers, and define all (coherent) pairs of components. The term $\mathbb{I}^{\zeta\zeta'}$ denotes the coherent square of the ionization matrix elements:
 
 \begin{equation}
 \mathbb{I}^{\zeta,\zeta}=I^{\zeta}(\epsilon)I^{\zeta'*}(\epsilon)
@@ -43,7 +46,7 @@ I^{\zeta}(\epsilon)\equiv\mathbf{r}_{\zeta}\equiv r_{\zeta}e^{i\phi_{\zeta}}
 \end{equation}
 
 
-This tensorial form is numerically implemented in the ePSproc codebase \cite{ePSprocGithub}, and is in contradistinction to standard numerical routines in which the requisite terms are usually computed from vectorial and/or nested summations, which can be somewhat opaque to detailed interpretation, and typically implement the full computation of the observables in one computational routine. The PEMtk codebase \cite{hockett2021PEMtkGithub} implements matrix element retrieval based on this formalism, with pre-computation of all the geometric tensor components (channel functions) prior to a fitting protocol for matrix element analysis, essentially a fit to Eqn. \ref{eqn:channel-fns}, with terms $I^{\zeta}(\epsilon)$ as the unknowns (in magnitude, phase form). The main computational cost of a tensor-based approach is that more RAM is required to store the full set of tensor variables.
+This tensorial form is numerically implemented in the ePSproc codebase \cite{ePSprocGithub}. This is in contradistinction to standard numerical routines in which the requisite terms are usually computed from vectorial and/or nested summations, and typically implement the full computation of the observables in one computational routine. The standard approach can be somewhat opaque to detailed interpretation.  The PEMtk codebase \cite{hockett2021PEMtkGithub} implements matrix element retrieval based on this formalism, with pre-computation of all the geometric tensor components (channel functions) prior to a fitting protocol for matrix element analysis. This is essentially a fit to Eqn. \ref{eqn:channel-fns} given a set of $\beta_{L,M}^{u}$, with $I^{\zeta}(\epsilon)$ as the unknowns (in magnitude, phase form). The main computational cost of a tensor-based approach is that more RAM is required to store the full set of tensor variables.
 
 \subsubsection{Density matrix representation\label{sec:density-mat-basic}}
 The density operator associated with the continuum state in Eq.~\ref{eq:cstate} is easily written as $\hat{\rho}=|\Psi_c\rangle\langle\Psi_c|$. In the channel function basis, this leads to a density matrix given by the radial matrix elements:
@@ -148,14 +151,15 @@ M_{u}=\sum_{u}\mathrm{n}\{\beta_{L,M}^{u}\}
 
 In the case where a single measurement contains multiple $\beta_{L,M}$, e.g. as a function of energy $\epsilon$ or time $t$, the information content will naturally be larger:
 
+% 06/03/23: tried to clarify (E,t) here a bit, may still need work.
 \begin{eqnarray}
-M_{u} & = & \sum_{u,k,t}\mathrm{n}\{\beta_{L,M}^{u}(\epsilon,t)\}\\
- & = & M_{u}\times M
+M_{u,\epsilon,t} & = & \sum_{u,\epsilon,t}\mathrm{n}\{\beta_{L,M}^{u}(\epsilon,t)\}\\
+ & = & M_{u}\times M_{\epsilon,t}
 \end{eqnarray}
 
 where the second line pertains if each measurement has the same native
-information content, independent of $u$. It may be that the variable
-$k$ is continuous (e.g. photoelectron energy), but in practice it
+information content $M_{\epsilon,t}$ per energy and time point, independent of any other experimental parameters $u$. It may be that the variable
+$\epsilon$ is continuous (e.g. photoelectron energy), but in practice it
 will usually be discretized in some fashion by the measurement.
 
 In terms of purely experimental methodologies, a larger $M_{u}$ clearly defines a richer experimental measurement which explores more of the total measurement space spanned by the full set of $\{\beta_{L,M}^{u}(k,t)\}$. However, in this basic definition a larger $M_{u}$ does not necessarily indicate a higher information content for quantum retrieval applications.
@@ -172,7 +176,7 @@ also include the channel couplings, i.e. sensitivity/dependence of the observabl
 M_{u}=\mathrm{n}\{\varUpsilon_{L,M}^{u}(\epsilon,t)\}
 \end{equation}
 
-In this case, each $(\epsilon,t)$ is treated as an independent measurement with unique information content, although there may be redundancy as a function of $t$ depending on the nature of the rotational wavepacket and channel functions - this is explored further in Sect. \ref{sec:bootstrapping-info-sensitivity}. (Note this is in distinction to previously demonstrated cases where the time-dependence was created from a shaped laser-field, and was integrated over in the measurements, which provided a coherently-multiplexed case, see refs. \cite{hockett2014CompletePhotoionizationExperiments, hockett2015CompletePhotoionizationExperiments,hockett2015CoherentControlPhotoelectron} for details.)
+In this case, each $(\epsilon,t)$ is treated as an independent measurement with unique information content, although there may be redundancy as a function of $t$ depending on the nature of the rotational wavepacket and channel functions. This is explored further in Sect. \ref{sec:bootstrapping-info-sensitivity}. (Note this is in distinction to previously demonstrated cases where the time-dependence was created from a shaped laser-field, and was integrated over in the measurements, which provided a coherently-multiplexed case, see refs. \cite{hockett2014CompletePhotoionizationExperiments, hockett2015CompletePhotoionizationExperiments,hockett2015CoherentControlPhotoelectron} for details.)
 
 
 
