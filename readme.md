@@ -1,9 +1,10 @@
 # Topical Review: Extracting Molecular Frame Photoionization Dynamics from Experimental Data
-09/09/22
+v2 13/03/23
+v1 09/09/22
 
 Paul Hockett and Varun Makhija
 
-This repo: LaTex source from [Authorea master version](https://www.authorea.com/users/71114/articles/447808-extracting-molecular-frame-photoionization-dynamics-from-experimental-data).
+This repo: LaTex source (multi-part) from [Authorea master version](https://www.authorea.com/users/71114/articles/447808-extracting-molecular-frame-photoionization-dynamics-from-experimental-data), plus some additional build tools and versions.
 
 ## Readable versions & resources
 
@@ -14,7 +15,8 @@ This repo: LaTex source from [Authorea master version](https://www.authorea.com/
 
 ## Additional build notes
 
+- Full PDF builds via Authorea or arXiv are available directly from links above.
 - `./figures` contains full figure set, including interactive HTML versions.
-- PDF builds via Authorea are available directly.
-- PDF builds via local or Overleaf in `./builds`, source compiled via modified version of [eteq's authorea_scipts](https://github.com/eteq/authorea-scripts), custom version in `./authorea_scripts`. (TODO: Github action for this.)
-- Reference PDF source and builds in `./builds`.
+- Reference PDF source and builds in `./builds`. 
+- - PDF builds via local compilation or Overleaf also in `./builds`, includes single-source .tex versions compiled via modified version of [eteq's authorea_scipts](https://github.com/eteq/authorea-scripts), custom version in `./authorea_scripts`. (TODO: Github action for this.)
+
